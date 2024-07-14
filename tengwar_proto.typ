@@ -450,7 +450,7 @@
 
   // If a tehta is not on a consonnant, add a carrier (exclude theta-y)
   txt = txt.replace(regex("(.?)(" + array-to-string-or(quenya-tehtar.slice(0,-1)) + ")"),
-    m => if (quenya-consonants + (carrier-i, tehta-y)).contains(m.captures.at(0)) {
+    m => if (quenya-consonants + (carrier-i, carrier-j, tehta-y)).contains(m.captures.at(0)) {
       m.captures.at(0) + m.captures.at(1)
     } else {
       m.captures.at(0) + carrier-i + m.captures.at(1)

@@ -184,6 +184,8 @@ The proper Tengwar parenthesis is mapped to ‘/’.
 *Example:*
 #tengwar-snippet("quenya[123]") 
 
+#pagebreak()
+
 === Example: Namárië
 
 One of the most famous texts written in Quenya is the poem _Namárië_ (#tengwar.quenya[Namárië]), originally written in @lotr #footnote[Book 2, ch. 8 "Farewell to Lórien"] and available for instance in Reference @namarie.
@@ -248,6 +250,8 @@ Nai elyë hiruva. Namárië!
 == Black Speech
 
 *Not yet implemented*
+
+#pagebreak()
 
 = How to contribute
 

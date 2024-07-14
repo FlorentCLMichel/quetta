@@ -103,7 +103,7 @@
 
 // Code snippet
 #let tengwar-snippet(code) = context {
-  let inset = 4pt
+  let inset = 3pt
   set text(bottom-edge: "baseline")
   set text(top-edge: "bounds")
   let y = eval("tengwar." + code, mode: "code", scope: (tengwar: tengwar))
@@ -114,11 +114,18 @@
     measure([
       #set text(bottom-edge: "bounds")
       #code]).height - measure(box(code, clip: true)).height)
-  box(
-    box(raw(code, block: true, lang: "Typst"), 
-        inset: (bottom: dy+inset, top: inset, left: inset, right: inset))
-      + box(y, fill: white, 
-          inset: (bottom: dy+inset, top: inset, left: inset, right: inset)),
+  let code-block = raw(code, block: true, lang: "Typst")
+  let box-l = box(code-block, 
+                  inset: (bottom: dy+inset, top: inset, left: inset, right: inset))
+  let dy2 = measure([
+      #set text(bottom-edge: "bounds")
+      #box-l]).height - 2*inset - measure([
+      #set text(bottom-edge: "bounds")
+      #y]).height
+  if dy2 < 0pt { dy2 = 0pt }
+  let box-r = box(y, fill: white, 
+                  inset: (bottom: dy+inset, top: dy2+inset, left: inset, right: inset - 1pt))
+  box(box-l + box-r,
     inset: 0pt,
     fill: luma(200),
     stroke: luma(200),
@@ -162,6 +169,11 @@ The implementation of the Quenya mode follows Reference @tengwar-eruantalince.
 === S mode
 
 === Punctuation
+
+End-of-paragraph symbols can be obtained by combining commas and periods: \
+#tengwar-snippet("quenya[.,]") #h(1em)
+#tengwar-snippet("quenya[..]") #h(1em)
+#tengwar-snippet("quenya[,.,]")
 
 *Note:* Generally, parentheses in Quenya are denoted by the sungle symbol #tengwar.quenya[/]—there is no distinction between opening and closing parentheses. 
 We deviate from this convention by mabbing the symbol ‘(’ to #tengwar.quenya[(] and ‘)’ to #tengwar.quenya[)]. 

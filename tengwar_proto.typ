@@ -45,7 +45,7 @@
 #let vala = "\u{0079}"
 #let arda = "\u{0075}"
 #let silmenuquerna = "\u{0069}"
-#let halla = "\u{007e}"
+#let halla = "\u{00bd}"
 #let calma = "\u{0061}"
 #let anga = "\u{0073}"
 #let aha = "\u{0064}"
@@ -65,8 +65,10 @@
 #let essenuquerna = "\u{003c}"
 #let essenuquerna-alt = "\u{002c}"
 #let uglide = "\u{002e}"
-#let carrier = "\u{0060}"
+#let carrier-i = "\u{0060}"
+#let carrier-j = "\u{007e}"
 #let comma = "\u{003d}"
+#let period = "\u{002d}"
 #let period = "\u{002d}"
 #let en-dash = "\u{005c}"
 #let em-dash = "\u{00c2}"
@@ -78,65 +80,71 @@
 #let tehta-o = "\u{004e}"
 #let tehta-u = "\u{004d}"
 #let tehta-y = "\u{00cf}"
+#let l-paren = "\u{0152}"
+#let r-paren = "\u{0153}"
+#let slash = "\u{203a}"
 
 // TODO: check all combinations
 #let map-quenya = (
-  t    : tinco,            T    : tinco,
-  nd   : ando,             Nd   : ando,
-  ss   : esse,             Ss   : esse,
-  s    : silme,            S    : silme,
-  th   : sule,             Th   : sule,
-  nt   : anto,             Nt   : anto,
-  n    : numen,            N    : numen, // TODO: full n mode
-  ŕ    : romen,            Ŕ    : romen,
-  r    : ore,              R    : ore,
-  p    : parma,            P    : parma,
-  mb   : umbar,            Mb   : umbar,
-  f    : formen,           F    : formen,
-  mp   : ampa,             Mp   : ampa,
-  m    : malta,            M    : malta,
-  v    : vala,             V    : vala,
-  rd   : arda,             Rd   : arda,
-  k    : calma,            K    : calma,
-  ng   : anga,             Ng   : anga, 
-  h    : aha,              H    : aha, // TODO: full h mode
-  nk   : anca,             Nk   : anca,
-  y    : anna,             Y    : anna,
-  ld   : alda,             Ld   : alda,
-  l    : lambe,            L    : lambe,
-  kw   : quesse,           Kw   : quesse,
-  ngw  : ungwe,            Ngw  : ungwe,
-  hw   : hwesta,           Hw   : hwesta,
-  w    : wilya,            W    : wilya,
-  ai   : iglide + tehta-a, Ai   : iglide + tehta-a,
-  ei   : iglide + tehta-e, Ei   : iglide + tehta-e,
-  oi   : iglide + tehta-o, Oi   : iglide + tehta-o,
-  ui   : iglide + tehta-u, Ui   : iglide + tehta-u,
-  au   : uglide + tehta-a, Au   : uglide + tehta-a,
-  eu   : uglide + tehta-e, Eu   : uglide + tehta-e,
-  iu   : uglide + tehta-i, Iu   : uglide + tehta-i,
-  ou   : uglide + tehta-o, Ou   : uglide + tehta-o,
-  a    : tehta-a,          A    : tehta-a,
-  e    : tehta-e,          E    : tehta-e,
-  i    : tehta-i,          I    : tehta-i,
-  o    : tehta-o,          O    : tehta-o,
-  u    : tehta-u,          U    : tehta-u,
-  á    : halla + tehta-a,  Á    : halla + tehta-a,
-  é    : halla + tehta-e,  É    : halla + tehta-e,
-  í    : halla + tehta-i,  Í    : halla + tehta-i,
-  ó    : halla + tehta-o,  Ó    : halla + tehta-o,
-  ú    : halla + tehta-u,  Ú    : halla + tehta-u,
-  ä    : tehta-a,          Ä    : tehta-a,
-  ë    : tehta-e,          Ë    : tehta-e,
-  ï    : tehta-i,          Ï    : tehta-i,
-  ö    : tehta-o,          Ö    : tehta-o,
-  ü    : tehta-u,          Ü    : tehta-u,
+  t    : tinco,                T    : tinco,
+  nd   : ando,                 Nd   : ando,
+  ss   : esse,                 Ss   : esse,
+  s    : silme,                S    : silme,
+  th   : sule,                 Th   : sule,
+  nt   : anto,                 Nt   : anto,
+  n    : numen,                N    : numen, // TODO: full n mode
+  ŕ    : romen,                Ŕ    : romen,
+  r    : ore,                  R    : ore,
+  p    : parma,                P    : parma,
+  mb   : umbar,                Mb   : umbar,
+  f    : formen,               F    : formen,
+  mp   : ampa,                 Mp   : ampa,
+  m    : malta,                M    : malta,
+  v    : vala,                 V    : vala,
+  rd   : arda,                 Rd   : arda,
+  k    : calma,                K    : calma,
+  ng   : anga,                 Ng   : anga, 
+  h    : aha,                  H    : aha, // TODO: full h mode
+  nk   : anca,                 Nk   : anca,
+  y    : anna,                 Y    : anna,
+  ld   : alda,                 Ld   : alda,
+  l    : lambe,                L    : lambe,
+  kw   : quesse,               Kw   : quesse,
+  ngw  : ungwe,                Ngw  : ungwe,
+  hw   : hwesta,               Hw   : hwesta,
+  w    : wilya,                W    : wilya,
+  ai   : iglide + tehta-a,     Ai   : iglide + tehta-a,
+  ei   : iglide + tehta-e,     Ei   : iglide + tehta-e,
+  oi   : iglide + tehta-o,     Oi   : iglide + tehta-o,
+  ui   : iglide + tehta-u,     Ui   : iglide + tehta-u,
+  au   : uglide + tehta-a,     Au   : uglide + tehta-a,
+  eu   : uglide + tehta-e,     Eu   : uglide + tehta-e,
+  iu   : uglide + tehta-i,     Iu   : uglide + tehta-i,
+  ou   : uglide + tehta-o,     Ou   : uglide + tehta-o,
+  a    : tehta-a,              A    : tehta-a,
+  e    : tehta-e,              E    : tehta-e,
+  i    : tehta-i,              I    : tehta-i,
+  o    : tehta-o,              O    : tehta-o,
+  u    : tehta-u,              U    : tehta-u,
+  á    : carrier-j + tehta-a,  Á    : carrier-j + tehta-a,
+  é    : carrier-j + tehta-e,  É    : carrier-j + tehta-e,
+  í    : carrier-j + tehta-i,  Í    : carrier-j + tehta-i,
+  ó    : carrier-j + tehta-o,  Ó    : carrier-j + tehta-o,
+  ú    : carrier-j + tehta-u,  Ú    : carrier-j + tehta-u,
+  ä    : tehta-a,              Ä    : tehta-a,
+  ë    : tehta-e,              Ë    : tehta-e,
+  ï    : tehta-i,              Ï    : tehta-i,
+  ö    : tehta-o,              Ö    : tehta-o,
+  ü    : tehta-u,              Ü    : tehta-u,
   ","  : comma,
   "."  : period,
   "--" : em-dash,
   "—"  : em-dash,
   "-"  : en-dash,
   "!"  : exclamationmark,
+  "("  : l-paren,
+  ")"  : r-paren,
+  "/"  : slash,
   "?"  : questionmark,
 )
 
@@ -181,8 +189,8 @@
 )
 
 #let quenya-voyels = (
-  carrier,
-  halla,
+  carrier-i,
+  carrier-j,
   tehta-a,
   tehta-e,
   tehta-i,
@@ -395,6 +403,10 @@
   // Undo the number glyph shifts
   txt = txt.replace(regex("(" + array-to-string-or(quenya-numbers-unshift.keys()) + ")"),
                     m => quenya-numbers-unshift.at(m.captures.first()))
+  
+  // Replace aha by halla if followed by ore, romen, or lambe
+  txt = txt.replace(regex(aha + "(" + ore + "|" + romen + "|" + lambe + ")"), 
+                    m => halla + m.captures.first())
 
   // Replace aha by hyarmen and add two dots below anna at start of word
   txt = txt.replace(regex("(\ +)" + aha), m => m.captures.first() + hyarmen)
@@ -438,10 +450,10 @@
 
   // If a tehta is not on a consonnant, add a carrier (exclude theta-y)
   txt = txt.replace(regex("(.?)(" + array-to-string-or(quenya-tehtar.slice(0,-1)) + ")"),
-    m => if (quenya-consonants + (carrier, halla, tehta-y)).contains(m.captures.at(0)) {
+    m => if (quenya-consonants + (carrier-i, tehta-y)).contains(m.captures.at(0)) {
       m.captures.at(0) + m.captures.at(1)
     } else {
-      m.captures.at(0) + carrier + m.captures.at(1)
+      m.captures.at(0) + carrier-i + m.captures.at(1)
     })
 
   // Adjust the positions of tehtars

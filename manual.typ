@@ -153,11 +153,19 @@ The implementation of the Quenya mode follows Reference @tengwar-eruantalince.
 
 #tengwar-snippet("quenya[namárië]")
 
+=== N mode
+
 === H mode
 
 === Y mode
 
 === S mode
+
+=== Punctuation
+
+*Note:* Generally, parentheses in Quenya are denoted by the sungle symbol #tengwar.quenya[/]—there is no distinction between opening and closing parentheses. 
+We deviate from this convention by mabbing the symbol ‘(’ to #tengwar.quenya[(] and ‘)’ to #tengwar.quenya[)]. 
+The proper Tengwar parenthesis is mapped to ‘/’.
 
 === Number system
 

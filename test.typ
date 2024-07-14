@@ -24,11 +24,24 @@ aksa
 
 ai! laurië lantar lassi súrinen, \
 yéni únótimë ve rámar aldaron! \
-yéni ve lintë yuldar avánier \
+Yéni ve lintë yuldar avánier \
 mi oromardi lisse-miruvóreva \
-andúnë pella, Vardo tellumar \
+andúnë pella, vardo tellumar \
 nu luini yassen tintilar i eleni \
-ómaryo airetári-lírinen.
+ómaryo airetári-lírinen. \
+
+sí man i yulma nin enquantuva?
+
+an sí tintallë Varda oiolossëo \
+ve fanyar máryat elentári ortanë, \
+ar ilyë tier undulávë lumbulë, \
+ar sindanóriello caita mornië \
+i falmalinnar imbë met, ar hísië \
+untúpa Calaciryo míri oialë. \
+sí vanwa ná, rómello vanwa, valimar! \
+
+namárië! nai hiruvalyë valimar. \
+nai elyë hiruva. namárië!
 
 #colbreak()
 
@@ -55,8 +68,21 @@ aksa
 
 ai! laurië lantar lassi súrinen, \
 yéni únótimë ve rámar aldaron! \
-yéni ve lintë yuldar avánier \
+Yéni ve lintë yuldar avánier \
 mi oromardi lisse-miruvóreva \
-andúnë pella, Vardo tellumar \
+andúnë pella, vardo tellumar \
 nu luini yassen tintilar i eleni \
-ómaryo airetári-lírinen.
+ómaryo airetári-lírinen. \
+
+sí man i yulma nin enquantuva?
+
+an sí tintallë Varda oiolossëo \
+ve fanyar máryat elentári ortanë, \
+ar ilyë tier undulávë lumbulë, \
+ar sindanóriello caita mornië \
+i falmalinnar imbë met, ar hísië \
+untúpa Calaciryo míri oialë. \
+sí vanwa ná, rómello vanwa, valimar! \
+
+namárië! nai hiruvalyë valimar. \
+nai elyë hiruva. namárië!

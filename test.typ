@@ -26,7 +26,7 @@ ai! laurië lantar lassi súrinen, \
 yéni únótimë ve rámar aldaron! \
 yéni ve lintë yuldar avánier \
 mi oromardi lisse-miruvóreva \
-Andúnë pella, Vardo tellumar \
+andúnë pella, Vardo tellumar \
 nu luini yassen tintilar i eleni \
 ómaryo airetári-lírinen.
 
@@ -57,6 +57,6 @@ ai! laurië lantar lassi súrinen, \
 yéni únótimë ve rámar aldaron! \
 yéni ve lintë yuldar avánier \
 mi oromardi lisse-miruvóreva \
-Andúnë pella, Vardo tellumar \
+andúnë pella, Vardo tellumar \
 nu luini yassen tintilar i eleni \
 ómaryo airetári-lírinen.

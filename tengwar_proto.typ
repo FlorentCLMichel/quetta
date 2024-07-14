@@ -68,6 +68,8 @@
 #let carrier = "\u{0060}"
 #let comma = "\u{003d}"
 #let period = "\u{002d}"
+#let en-dash = "\u{005c}"
+#let em-dash = "\u{00c2}"
 #let exclamationmark = "\u{00c1}"
 #let questionmark = "\u{00c0}"
 #let tehta-a = "\u{0043}"
@@ -75,6 +77,7 @@
 #let tehta-i = "\u{0042}"
 #let tehta-o = "\u{004e}"
 #let tehta-u = "\u{004d}"
+#let tehta-y = "\u{00cf}"
 
 // TODO: check all combinations
 #let map-quenya = (
@@ -134,6 +137,9 @@
   ü    : tehta-u,
   ","  : comma,
   "."  : period,
+  "--" : em-dash,
+  "—"  : em-dash,
+  "-"  : en-dash,
   "!"  : exclamationmark,
   "?"  : questionmark,
 )
@@ -153,7 +159,7 @@
   formen,
   ampa,
   malta,
-  "[" + vala + "]",
+  str(vala),
   arda,
   silmenuquerna,
   halla,
@@ -186,6 +192,7 @@
   tehta-i,
   tehta-o,
   tehta-u,
+  tehta-y,
 )
 
 #let letter-shapes = (
@@ -235,6 +242,7 @@
   str(tehta-i),
   str(tehta-o),
   str(tehta-u),
+  str(tehta-y),
 )
 
 #let quenya-voyels-shifted = (
@@ -243,46 +251,55 @@
   tehta-i + "m" : "\u{0025}",
   tehta-o + "m" : "\u{005e}",
   tehta-u + "m" : "\u{0026}",
+  tehta-y + "m" : "\u{00cc}",
   tehta-a + "O" : "\u{0023}",
   tehta-e + "O" : "\u{0024}",
   tehta-i + "O" : "\u{0025}",
   tehta-o + "O" : "\u{005e}",
   tehta-u + "O" : "\u{0026}",
+  tehta-y + "O" : "\u{00b4}",
   tehta-a + "yy" : "\u{0023}",
   tehta-e + "yy" : "\u{0024}",
   tehta-i + "yy" : "\u{0025}",
   tehta-o + "yy" : "\u{005e}",
   tehta-u + "yy" : "\u{0026}",
+  tehta-y + "yy" : "\u{00cc}",
   tehta-a + "bb" : "\u{0023}",
   tehta-e + "bb" : "\u{0024}",
   tehta-i + "bb" : "\u{0025}",
   tehta-o + "bb" : "\u{005e}",
   tehta-u + "bb" : "\u{0026}",
+  tehta-y + "bb" : "\u{00cc}",
   tehta-a + "n" : "\u{0045}",
   tehta-e + "n" : "\u{0052}",
   tehta-i + "n" : "\u{0054}",
   tehta-o + "n" : "\u{0059}",
   tehta-u + "n" : "\u{0055}",
+  tehta-y + "n" : "\u{00cd}",
   tehta-a + "o" : "\u{0044}",
   tehta-e + "o" : "\u{0046}",
   tehta-i + "o" : "\u{0047}",
   tehta-o + "o" : "\u{0048}",
   tehta-u + "o" : "\u{0050}",
+  tehta-y + "o" : "\u{00ce}",
   tehta-a + "b" : "\u{0044}",
   tehta-e + "b" : "\u{0046}",
   tehta-i + "b" : "\u{0047}",
   tehta-o + "b" : "\u{0048}",
   tehta-u + "b" : "\u{004a}",
+  tehta-y + "b" : "\u{00cd}",
   tehta-a + "y" : "\u{0044}",
   tehta-e + "y" : "\u{0046}",
   tehta-i + "y" : "\u{0047}",
   tehta-o + "y" : "\u{0048}",
   tehta-u + "y" : "\u{004a}",
+  tehta-y + "y" : "\u{00cd}",
   tehta-a + "d" : "\u{0044}",
   tehta-e + "d" : "\u{0046}",
   tehta-i + "d" : "\u{0047}",
   tehta-o + "d" : "\u{0048}",
   tehta-u + "d" : "\u{004a}",
+  tehta-y + "d" : "\u{00cd}",
 )
 
 
@@ -383,18 +400,29 @@
   txt = txt.replace(regex("(" + array-to-string-or(quenya-numbers-unshift.keys()) + ")"),
                     m => quenya-numbers-unshift.at(m.captures.first()))
 
-  // Replace aha by hyarmen at start of word
+  // Replace aha by hyarmen and add two dots below anna at start of word
   txt = txt.replace(regex("(\ +)" + aha), m => m.captures.first() + hyarmen)
+  txt = txt.replace(regex("(\ +)" + anna), m => m.captures.first() + anna + tehta-y)
   txt = txt.replace(regex("(.)"), 
-                    m => if m.captures.first() == aha { hyarmen } else { m.captures.first() }, 
+                    m => if m.captures.first() == aha { 
+                      hyarmen 
+                    } else if m.captures.first() == anna {
+                      anna + tehta-y
+                    } else { 
+                      m.captures.first() 
+                    }, 
                     count: 1)
 
+  // If anna follows a consonant, replace it by two dots under the tengwa
+  txt = txt.replace(regex("(" + array-to-string-or(quenya-consonants) + ")" + anna),
+                    m => m.captures.first() + tehta-y)
+  
   // If órë is followed by a voyel or by anna and a voyel, replace it with rómen 
   txt = txt.replace(regex(ore + "(" + array-to-string-or(quenya-voyels) + ")"),
                     m => romen + m.captures.first())
   txt = txt.replace(regex(ore + anna + "(" + array-to-string-or(quenya-voyels) + ")"),
                     m => romen + anna + m.captures.first())
-  
+   
   // Use S-hooks if possible, and move the following tehtar if needed
   txt = txt.replace(regex("(" + array-to-string-or(quenya-consonants) + ")" 
                           + silme
@@ -412,25 +440,29 @@
   txt = txt.replace(regex(esse + "(" + array-to-string-or(quenya-tehtar) + ")"), 
                     m => essenuquerna-alt + m.captures.first())
 
-  // Adjust the positions of tehtars
-  txt = txt.replace(
-    regex("(" + array-to-string-or(quenya-consonants) + ")(" + array-to-string-or(quenya-voyels) + ")"),
-    m => m.captures.at(0) + 
-      if (letter-shapes.keys().contains(m.captures.at(0))) {
-        quenya-voyels-shifted.at(
-          m.captures.at(1) + letter-shapes.at(m.captures.at(0)),
-          default: m.captures.at(1))
-      } else {
-        m.captures.at(1)
-      })
-
-  // If a tehta is not on a consonnant, add a carrier
-  txt = txt.replace(regex("(.?)(" + array-to-string-or(quenya-tehtar) + ")"),
-    m => if (quenya-consonants + (carrier, halla)).contains(m.captures.at(0)) {
+  // If a tehta is not on a consonnant, add a carrier (exclude theta-y)
+  txt = txt.replace(regex("(.?)(" + array-to-string-or(quenya-tehtar.slice(0,-1)) + ")"),
+    m => if (quenya-consonants + (carrier, halla, tehta-y)).contains(m.captures.at(0)) {
       m.captures.at(0) + m.captures.at(1)
     } else {
       m.captures.at(0) + carrier + m.captures.at(1)
     })
+
+  // Adjust the positions of tehtars
+  txt = txt.replace(
+    regex("(" + array-to-string-or(quenya-consonants) 
+           + ")(" + tehta-y + "?)("
+           + array-to-string-or(quenya-voyels) + ")"),
+    m => m.captures.at(0) +
+      if (letter-shapes.keys().contains(m.captures.at(0))) {
+        quenya-voyels-shifted.at(
+          m.captures.at(1) + letter-shapes.at(m.captures.at(0)),
+          default: m.captures.at(1)) + quenya-voyels-shifted.at(
+          m.captures.at(2) + letter-shapes.at(m.captures.at(0)),
+          default: m.captures.at(2))
+      } else {
+        m.captures.at(1) + m.captures.at(2)
+      })
 
   // Combine repeated consonants
   txt = txt.replace(regex("(" + array-to-string-or(quenya-consonants) + ")(" + array-to-string-or(quenya-consonants) + ")"),

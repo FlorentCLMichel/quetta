@@ -3,7 +3,7 @@ A simple module to write [tengwar](https://en.wikipedia.org/wiki/Tengwar) in [Ty
 ## Requirements
 
 - [Typst](https://github.com/typst/typst) version 1.11.1 or up
-- The [Tengwar Annatar](https://www.dafont.com/tengwar-annatar.font) fonts version 1.10
+- The [Tengwar Annatar](https://www.fontspace.com/tengwar-annatar-font-f2244) fonts version 1.20
 
 ## How to use? 
 

@@ -1,4 +1,5 @@
 #let tengwar-font = "Tengwar Annatar";
+#let tengwar-font-alt = "Tengwar Annatar Alt";
 
 #let to-string(content) = {
   if content.has("text") {
@@ -36,6 +37,7 @@
 #let ore = "\u{0036}"
 #let romen = "\u{0037}"
 #let silme = "\u{0038}"
+#let silme-alt = "\u{002a}"
 #let hyarmen = "\u{0039}"
 #let parma = "\u{0071}"
 #let umbar = "\u{0077}"
@@ -45,6 +47,7 @@
 #let vala = "\u{0079}"
 #let arda = "\u{0075}"
 #let silmenuquerna = "\u{0069}"
+#let silmenuquerna-alt = "\u{0049}"
 #let halla = "\u{00bd}"
 #let calma = "\u{0061}"
 #let anga = "\u{0073}"
@@ -54,6 +57,7 @@
 #let anna = "\u{0068}"
 #let lambe = "\u{006a}"
 #let esse = "\u{006b}"
+#let esse-alt = "\u{004b}"
 #let iglide = "\u{006c}"
 #let quesse = "\u{007a}"
 #let ungwe = "\u{0078}"
@@ -62,8 +66,8 @@
 #let nwalme = "\u{0062}"
 #let wilya = "\u{006e}"
 #let alda = "\u{006d}"
-#let essenuquerna = "\u{003c}"
-#let essenuquerna-alt = "\u{002c}"
+#let essenuquerna = "\u{002c}"
+#let essenuquerna-alt = "\u{003c}"
 #let uglide = "\u{002e}"
 #let carrier-i = "\u{0060}"
 #let carrier-j = "\u{007e}"
@@ -88,10 +92,13 @@
 #let map-quenya = (
   t    : tinco,                T    : tinco,
   nd   : ando,                 Nd   : ando,
+  "£ss": esse-alt,             "£Ss": esse-alt,
+  "£s" : silme-alt,            "£S" : silme-alt,
   ss   : esse,                 Ss   : esse,
   s    : silme,                S    : silme,
   th   : sule,                 Th   : sule,
   nt   : anto,                 Nt   : anto,
+  "£n" : noldo,                "£N" : noldo,
   n    : numen,                N    : numen, // TODO: full n mode
   ŕ    : romen,                Ŕ    : romen,
   r    : ore,                  R    : ore,
@@ -109,6 +116,7 @@
   y    : anna,                 Y    : anna,
   ld   : alda,                 Ld   : alda,
   l    : lambe,                L    : lambe,
+  qu   : quesse,               Qu   : quesse,
   kw   : quesse,               Kw   : quesse,
   ngw  : ungwe,                Ngw  : ungwe,
   hw   : hwesta,               Hw   : hwesta,
@@ -157,6 +165,7 @@
   ore,
   romen,
   silme,
+  "\\" + silme-alt,
   hyarmen,
   parma,
   umbar,
@@ -166,6 +175,7 @@
   str(vala),
   arda,
   silmenuquerna,
+  silmenuquerna-alt,
   halla,
   calma,
   anga,
@@ -175,6 +185,7 @@
   anna,
   lambe,
   esse,
+  esse-alt,
   quesse,
   ungwe,
   hwesta,
@@ -208,6 +219,7 @@
   str(ore)              : "n",
   str(romen)            : "y",
   str(silme)            : "y",
+  str(silme-alt)        : "y",
   str(hyarmen)          : "b",
   str(parma)            : "y",
   str(umbar)            : "yy",
@@ -217,6 +229,7 @@
   str(vala)             : "n",
   str(arda)             : "y",
   str(silmenuquerna)    : "y",
+  str(silmenuquerna-alt): "y",
   str(halla)            : "b",
   str(calma)            : "y",
   str(anga)             : "yy",
@@ -226,6 +239,7 @@
   str(anna)             : "o",
   str(lambe)            : "O",
   str(esse)             : "d",
+  str(esse-alt)         : "d",
   str(uglide)           : "o",
   str(quesse)           : "y",
   str(ungwe)            : "yy",
@@ -446,6 +460,10 @@
   txt = txt.replace(regex(silme + "(" + array-to-string-or(quenya-tehtar) + ")"), 
                     m => silmenuquerna + m.captures.first())
   txt = txt.replace(regex(esse + "(" + array-to-string-or(quenya-tehtar) + ")"), 
+                    m => essenuquerna + m.captures.first())
+  txt = txt.replace(regex("\\" + silme-alt + "(" + array-to-string-or(quenya-tehtar) + ")"), 
+                    m => silmenuquerna-alt + m.captures.first())
+  txt = txt.replace(regex(esse-alt + "(" + array-to-string-or(quenya-tehtar) + ")"), 
                     m => essenuquerna-alt + m.captures.first())
 
   // If a tehta is not on a consonnant, add a carrier (exclude theta-y)
@@ -484,6 +502,8 @@
 }
 
 #let quenya(it) = {
+  show "«": ct => text(font: tengwar-font-alt)[#ct]
+  show "»": ct => text(font: tengwar-font-alt)[#ct]
   if it.has("text") {
     text(quenya-str(it.text))
   } else if it.has("body") {

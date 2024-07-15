@@ -16,7 +16,7 @@
 #let smallspace = h(0.2em)
 
 // Document metadata
-#let title = "Manual for tengwar-proto"
+#let title = "Manual for the quetta (" + tengwar.quenya[Quetta] + ") package"
 #let author = "Florent Michel"
 #let keywords = ("Tengwar", "Typst")
 #set document(
@@ -146,9 +146,32 @@
 
 = Introduction
 
+== ‘Quetta’?
+
+_‘Quetta’_ (#tengwar.quenya[Quetta]) means ‘Word’ in Quenya, one of the fictional languages invented by British author and linguist J. R. R. Tolkien. 
+
+== The Tengwar script
+
 = How to use
 
 == Design principles
+
+Alternative glyphs, when they exist, can be obtained with the symbol `£`.
+For instance, typing `n` produces the tengwa #tengwar.quenya[n] (_numen_) while typing `£n` produces #tengwar.quenya[£n] (_noldo_): 
+
+#v(1em)
+
+#tengwar-snippet("quenya[n]") #h(1em) #tengwar-snippet("quenya[£n]") 
+
+#v(1em)
+
+#tengwar-snippet("quenya[s]") #h(1em) #tengwar-snippet("quenya[£s]") 
+#h(1em) #tengwar-snippet("quenya[ss]") #h(1em) #tengwar-snippet("quenya[£ss]") 
+
+#v(1em)
+
+#tengwar-snippet("quenya[sa]") #h(1em) #tengwar-snippet("quenya[£sa]") 
+#h(1em) #tengwar-snippet("quenya[ssa]") #h(1em) #tengwar-snippet("quenya[£ssa]") 
 
 == Quenya
 
@@ -175,9 +198,17 @@ End-of-paragraph symbols can be obtained by combining commas and periods: \
 #tengwar-snippet("quenya[..]") #h(1em)
 #tengwar-snippet("quenya[,.,]")
 
-*Note:* Generally, parentheses in Quenya are denoted by the sungle symbol #tengwar.quenya[/]—there is no distinction between opening and closing parentheses. 
+*Note:* Generally, parentheses in Quenya are denoted by the single symbol #tengwar.quenya[/]—there is no distinction between opening and closing parentheses. 
 We deviate from this convention by mabbing the symbol ‘(’ to #tengwar.quenya[(] and ‘)’ to #tengwar.quenya[)]. 
 The proper Tengwar parenthesis is mapped to ‘/’.
+
+#v(1em)
+
+#h(-paragraph-indent) The decorations #h(0.5em)#tengwar.quenya[»] and #tengwar.quenya[«]#h(0.5em) are obtained using the French quotation marks ‘»’ and ‘«’:
+
+#v(1em)
+
+#tengwar-snippet("quenya[_»quenya«_]")
 
 === Number system
 

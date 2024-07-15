@@ -1,5 +1,4 @@
 #import "tengwar_proto.typ" as tengwar
-#import "@preview/showybox:2.0.1": showybox
 
 // Define the fonts
 #let font_serif = "New Computer Modern"

@@ -1,23 +1,23 @@
 #import "tengwar_proto.typ" as tengwar
 
 // Define the fonts
-#let font_serif = "New Computer Modern"
-#let font_sans = "New Computer Modern Sans"
-#let font_mono = "New Computer Modern Mono"
-#let font_math = "New Computer Modern Math"
+#let font-serif = "New Computer Modern"
+#let font-sans = "New Computer Modern Sans"
+#let font-mono = "New Computer Modern Mono"
+#let font-math = "New Computer Modern Math"
 
 // Other useful definitions
-#let font_stroke_width = 0pt
+#let font-stroke-width = 0pt
 #let paragraph-indent = 1em
-#let par_skip_bis = 0.5em
-#let subsec_skip = 1em
-#let link_color = color.rgb(0, 100, 200)
-#let smallspace = h(0.2em)
+#let subsec-skip-1 = 0.5em
+#let subsec-skip-2 = 0.5em
+#let link-color = color.rgb(0, 100, 200)
 
 // Document metadata
 #let title = "Manual for the quetta (" + tengwar.quenya[Quetta] + ") package"
 #let author = "Florent Michel"
 #let keywords = ("Tengwar", "Typst")
+#let version = "0.0.1"
 #set document(
   title: title,
   author: author,
@@ -37,37 +37,37 @@
   
 // Main font
 #set text (
-  font: font_serif,
+  font: font-serif,
   weight: 500,
   fallback: false,
-  stroke: font_stroke_width,
+  stroke: font-stroke-width,
   size: 10.5pt)
 
 // Math font
 #show math.equation: set text(
-  font: font_math,
+  font: font-math,
   weight: 500, 
-  stroke: font_stroke_width)
+  stroke: font-stroke-width)
 
 // Paragraph format
 #set par(
   justify: true,
   leading: 0.5em,
+  spacing: 0.67em,
   first-line-indent: paragraph-indent)
-#show par: set block(spacing: 0.67em)
 
 // Link format
 #show link: set text(
-  link_color,
-  stroke: font_stroke_width + link_color)
+  link-color,
+  stroke: font-stroke-width + link-color)
 
 // Headings format
 #set heading(numbering: "1.")
-#show heading: set text(font: font_sans)
+#show heading: set text(font: font-sans)
 #show heading: it => {
-  v(subsec_skip)
+  v(subsec-skip-1)
   it
-  v(0.5em)
+  v(subsec-skip-2)
 }
 
 // Outline format
@@ -75,9 +75,9 @@
   indent: true, 
   depth: 2)
 #show outline: set text(
-  font: font_sans,
-  link_color, 
-  stroke: link_color + font_stroke_width)
+  font: font-sans,
+  link-color, 
+  stroke: link-color + font-stroke-width)
 #show outline.entry.where(level: 1): it => {
   v(12pt, weak: true)
   strong(it)
@@ -88,15 +88,15 @@
   tight: false,
   marker: ([•], [‣], [–]),
   indent: 1em,
-  spacing: 0.5em)
+  spacing: 1em)
 
 // Footnote format
 #set footnote.entry(indent: 0pt)
-#show footnote: set text(link_color)
+#show footnote: set text(link-color)
 
 // Citation format
 #show cite: it => {
-  show regex("\d+"): set text(fill: link_color)
+  show regex("\d+"): set text(fill: link-color)
   it
 }
 
@@ -122,11 +122,12 @@
       #set text(bottom-edge: "bounds")
       #y]).height
   if dy2 < 0pt { dy2 = 0pt }
-  let box-r = box(y, fill: white, 
+  let box-r = box(y, fill: white, radius: 5pt,
                   inset: (bottom: dy+inset, top: dy2+inset, left: inset, right: inset - 1pt))
   box(box-l + box-r,
     inset: 0pt,
-    fill: luma(200),
+    radius: 5pt, 
+    fill: rgb(200, 200, 200),
     stroke: luma(200),
     baseline: 28%)
 }
@@ -135,25 +136,42 @@
 #if (title != none) {
   align(
     center,
-    text(17pt, font: font_sans)[#strong(title)]
-    + v(0.5em)
-    + if (author != "") { text(15pt, font: "Latin Modern Sans")[#author] }
+    text(17pt, font: font-sans)[#strong(title)]
+    + if (author != "") { v(.5em) + text(15pt, font: "Latin Modern Sans")[#author] }
+    + if (version != "") { v(.5em) + text(12pt, font: "Latin Modern Sans")[version #version] }
   )
 }
 
-#outline(title: text("Contents" + v(-0.25em)))
+#outline(title: text(fill: black, "Contents" + v(-0.25em)))
 
 = Introduction
 
 == ‘Quetta’?
 
-_‘Quetta’_ (#tengwar.quenya[Quetta]) means ‘Word’ in Quenya, one of the fictional languages invented by British author and linguist J. R. R. Tolkien. 
+_‘Quetta’_ (#tengwar.quenya[Quetta]) means ‘word’ in Quenya @elfdict, one of the fictional languages invented by British writer and philologist J. R. R. Tolkien. 
+It thus seemed fitting for a module aimed at making the process of typing these languages easier. 
+
+Words are also, loosely speaking, the base units this module works on, as we shall see in more detailes below. 
+While its general philosophy is to map each symbol used in Tolkien's elvish languages to letters from the Latin alphabet, a few word-wise substitution rules were implemented so that, in _most_ (but probably not all) cases the correct spelling can be obtained by typing the word phonetically. 
+For the same reason, the mapping generally works on groups of letters when there is no natural one-to-one mapping between individual symbols.
 
 == The Tengwar script
+
+A proper introduction to Tengwar is way beyond the scope of this document. 
+We refer interested readers to Appendix E of Reference @lotr and online references such as #link("https://en.wikipedia.org/wiki/Tengwar")[wikipedia] #link("https://tolkiengateway.net/wiki/Tengwar")[tolkiengateway.net], #link("https://www.omniglot.com/conscripts/tengwar.htm")[omniglot.com], or #link("https://www.tecendil.com/tengwar-handbook/")[tecendil.com].
+
+In short, Tengwar (#tengwar.quenya[tengwar] in Quenya mode) is one of the scripts invented by Tolkien, primarily consisting of 36 letters (called _tengwar_; singular: _tengwa_ (#tengwar.quenya[tengwa])) and diacritics (_tehtar_ (#tengwar.quenya[tehtar]; singular: _tehta_ (#tengwar.quenya[tehta]))). 
+There are several ways to relate tengwar to sounds, called _modes_.
+This module primarily focuses on the Quenya (#tengwar.quenya[Quenya]), or ‘classical’, mode, in universe the original way to write tengwar.
+Support for the other modes described by Tolkien is planned for a future version.
 
 = How to use
 
 == Design principles
+
+The module provides one main command for each supported mode (in the curr).
+
+\*\*\*
 
 Alternative glyphs, when they exist, can be obtained with the symbol `£`.
 For instance, typing `n` produces the tengwa #tengwar.quenya[n] (_numen_) while typing `£n` produces #tengwar.quenya[£n] (_noldo_): 
@@ -222,6 +240,8 @@ One of the most famous texts written in Quenya is the poem _Namárië_ (#tengwar
 Below we show the same text without (left) and with (right) the `#show: quenya` command.
 We use a spacing between line of 0.7em to clearly separate them (some tengwar have a relatively large vertical extension).
 
+#v(1em)
+
 #[
 #show: rest => columns(2, rest)
 #set par(
@@ -281,11 +301,21 @@ Nai elyë hiruva. Namárië!
 
 *Not yet implemented*
 
+Although the Black Speech is not implemented yet, the One Ring inscription can be reproduced using the Quenya mode as follows:#footnote[This is obviously a bit of a hack, meant only to show how the limitations of hwving only one mode implemented can be circumvented. This example is not supposed to be stable and might render differently in a later version.]
+
+\*\*\*
+
+
+#align(center, 
+  tengwar.quenya[_»_] + tengwar.quenya[_«_] + "\n" + tengwar.quenya[_kwô, £Ngwamb£rossmo£kiiquŕpe\~talo_])
+
 #pagebreak()
 
 = How to contribute
 
 Any kind of contribution is warmly welcome! Here are a few ways you can help: 
+
+#v(0.5em)
 
 - *Bug reports:* Some text rendering incorrectly in Tengwar? Unexpected formatting? Any other issue with the code or documentation? Please report it! This module was only tested on a very small corpus so far, and identifying any corner case where it does not work as intended is very useful!
 

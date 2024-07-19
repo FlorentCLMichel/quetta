@@ -30,7 +30,9 @@
 }
 
 #let tinco = "\u{0031}"
+#let tinco-alt = "\u{0021}"
 #let ando = "\u{0032}"
+#let ando-alt = "\u{0040}"
 #let sule = "\u{0033}"
 #let anto = "\u{0034}"
 #let numen = "\u{0035}"
@@ -40,7 +42,9 @@
 #let silme-alt = "\u{002a}"
 #let hyarmen = "\u{0039}"
 #let parma = "\u{0071}"
+#let parma-alt = "\u{0051}"
 #let umbar = "\u{0077}"
+#let umbar-alt = "\u{0057}"
 #let formen = "\u{0065}"
 #let ampa = "\u{0072}"
 #let malta = "\u{0074}"
@@ -50,7 +54,9 @@
 #let silmenuquerna-alt = "\u{0049}"
 #let halla = "\u{00bd}"
 #let calma = "\u{0061}"
+#let calma-alt = "\u{0041}"
 #let anga = "\u{0073}"
+#let anga-alt = "\u{0053}"
 #let aha = "\u{0064}"
 #let anca = "\u{0066}"
 #let noldo = "\u{0067}"
@@ -60,7 +66,9 @@
 #let esse-alt = "\u{004b}"
 #let iglide = "\u{006c}"
 #let quesse = "\u{007a}"
+#let quesse-alt = "\u{005a}"
 #let ungwe = "\u{0078}"
+#let ungwe-alt = "\u{0058}"
 #let hwesta = "\u{0063}"
 #let unque = "\u{0076}"
 #let nwalme = "\u{0062}"
@@ -84,81 +92,102 @@
 #let tehta-o = "\u{004e}"
 #let tehta-u = "\u{004d}"
 #let tehta-y = "\u{00cf}"
+#let tehta-aa = "\u{ffff}\u{0043}\u{fffe}"
+#let tehta-ee = "\u{ffff}\u{0056}\u{fffe}"
+#let tehta-ii = "\u{ffff}\u{0042}\u{fffe}"
+#let tehta-oo = "\u{ffff}\u{004e}\u{fffe}"
+#let tehta-uu = "\u{ffff}\u{004d}\u{fffe}"
 #let l-paren = "\u{0152}"
 #let r-paren = "\u{0153}"
+#let tilde = "p"
 #let slash = "\u{203a}"
 
 // TODO: check all combinations
 #let map-quenya = (
-  t    : tinco,                T    : tinco,
-  nd   : ando,                 Nd   : ando,
-  "£ss": esse-alt,             "£Ss": esse-alt,
-  "£s" : silme-alt,            "£S" : silme-alt,
-  ss   : esse,                 Ss   : esse,
-  s    : silme,                S    : silme,
-  th   : sule,                 Th   : sule,
-  nt   : anto,                 Nt   : anto,
-  "£n" : noldo,                "£N" : noldo,
-  n    : numen,                N    : numen, // TODO: full n mode
-  ŕ    : romen,                Ŕ    : romen,
-  r    : ore,                  R    : ore,
-  p    : parma,                P    : parma,
-  mb   : umbar,                Mb   : umbar,
-  f    : formen,               F    : formen,
-  mp   : ampa,                 Mp   : ampa,
-  m    : malta,                M    : malta,
-  v    : vala,                 V    : vala,
-  rd   : arda,                 Rd   : arda,
-  k    : calma,                K    : calma,
-  ng   : anga,                 Ng   : anga, 
-  h    : aha,                  H    : aha, // TODO: full h mode
-  nk   : anca,                 Nk   : anca,
-  y    : anna,                 Y    : anna,
-  ld   : alda,                 Ld   : alda,
-  l    : lambe,                L    : lambe,
-  qu   : quesse,               Qu   : quesse,
-  kw   : quesse,               Kw   : quesse,
-  ngw  : ungwe,                Ngw  : ungwe,
-  hw   : hwesta,               Hw   : hwesta,
-  w    : wilya,                W    : wilya,
-  ai   : iglide + tehta-a,     Ai   : iglide + tehta-a,
-  ei   : iglide + tehta-e,     Ei   : iglide + tehta-e,
-  oi   : iglide + tehta-o,     Oi   : iglide + tehta-o,
-  ui   : iglide + tehta-u,     Ui   : iglide + tehta-u,
-  au   : uglide + tehta-a,     Au   : uglide + tehta-a,
-  eu   : uglide + tehta-e,     Eu   : uglide + tehta-e,
-  iu   : uglide + tehta-i,     Iu   : uglide + tehta-i,
-  ou   : uglide + tehta-o,     Ou   : uglide + tehta-o,
-  a    : tehta-a,              A    : tehta-a,
-  e    : tehta-e,              E    : tehta-e,
-  i    : tehta-i,              I    : tehta-i,
-  o    : tehta-o,              O    : tehta-o,
-  u    : tehta-u,              U    : tehta-u,
-  á    : carrier-j + tehta-a,  Á    : carrier-j + tehta-a,
-  é    : carrier-j + tehta-e,  É    : carrier-j + tehta-e,
-  í    : carrier-j + tehta-i,  Í    : carrier-j + tehta-i,
-  ó    : carrier-j + tehta-o,  Ó    : carrier-j + tehta-o,
-  ú    : carrier-j + tehta-u,  Ú    : carrier-j + tehta-u,
-  ä    : tehta-a,              Ä    : tehta-a,
-  ë    : tehta-e,              Ë    : tehta-e,
-  ï    : tehta-i,              Ï    : tehta-i,
-  ö    : tehta-o,              Ö    : tehta-o,
-  ü    : tehta-u,              Ü    : tehta-u,
-  ","  : comma,
-  "."  : period,
-  "--" : em-dash,
-  "—"  : em-dash,
-  "-"  : en-dash,
-  "!"  : exclamationmark,
-  "("  : l-paren,
-  ")"  : r-paren,
-  "/"  : slash,
-  "?"  : questionmark,
+  "£t"   : tinco-alt,            "£T"   : tinco-alt,
+  t      : tinco,                T      : tinco,
+  "£nd"  : ando-alt,             "£Nd"  : ando-alt,
+  nd     : ando,                 Nd     : ando,
+  "£ss"  : esse-alt,             "£Ss"  : esse-alt,
+  "£s"   : silme-alt,            "£S"   : silme-alt,
+  ss     : esse,                 Ss     : esse,
+  s      : silme,                S      : silme,
+  th     : sule,                 Th     : sule,
+  nt     : anto,                 Nt     : anto,
+  "£ngw" : ungwe-alt,            "£Ngw" : ungwe-alt,
+  "£n"   : noldo,                "£N"   : noldo,
+  ngw    : ungwe,                Ngw    : ungwe,
+  n      : numen,                N      : numen, // TODO: full n mode
+  "£r"   : romen,                "£R"   : romen,
+  r      : ore,                  R      : ore,
+  "£p"   : parma-alt,            "£P"   : parma-alt,
+  p      : parma,                P      : parma,
+  "£mb"  : umbar-alt,            "£Mb"  : umbar-alt,
+  mb     : umbar,                Mb     : umbar,
+  f      : formen,               F      : formen,
+  mp     : ampa,                 Mp     : ampa,
+  m      : malta,                M      : malta,
+  v      : vala,                 V      : vala,
+  rd     : arda,                 Rd     : arda,
+  "£qu"  : quesse-alt,           "£Qu"  : quesse-alt,
+  qu     : quesse,               Qu     : quesse,
+  "£kw"  : quesse-alt,           "£Kw"  : quesse-alt,
+  kw     : quesse,               Kw     : quesse,
+  "£k"   : calma-alt,            "£K"   : calma-alt,
+  k      : calma,                K      : calma,
+  "£ng"  : anga-alt,             "£Ng"  : anga-alt, 
+  ng     : anga,                 Ng     : anga, 
+  h      : aha,                  H      : aha, // TODO: full h mode
+  nk     : anca,                 Nk     : anca,
+  y      : anna,                 Y      : anna,
+  ld     : alda,                 Ld     : alda,
+  l      : lambe,                L      : lambe,
+  hw     : hwesta,               Hw     : hwesta,
+  w      : wilya,                W      : wilya,
+  ai     : iglide + tehta-a,     Ai     : iglide + tehta-a,
+  ei     : iglide + tehta-e,     Ei     : iglide + tehta-e,
+  oi     : iglide + tehta-o,     Oi     : iglide + tehta-o,
+  ui     : iglide + tehta-u,     Ui     : iglide + tehta-u,
+  au     : uglide + tehta-a,     Au     : uglide + tehta-a,
+  eu     : uglide + tehta-e,     Eu     : uglide + tehta-e,
+  iu     : uglide + tehta-i,     Iu     : uglide + tehta-i,
+  ou     : uglide + tehta-o,     Ou     : uglide + tehta-o,
+  a      : tehta-a,              A      : tehta-a,
+  e      : tehta-e,              E      : tehta-e,
+  i      : tehta-i,              I      : tehta-i,
+  o      : tehta-o,              O      : tehta-o,
+  u      : tehta-u,              U      : tehta-u,
+  á      : carrier-j + tehta-a,  Á      : carrier-j + tehta-a,
+  é      : carrier-j + tehta-e,  É      : carrier-j + tehta-e,
+  í      : carrier-j + tehta-i,  Í      : carrier-j + tehta-i,
+  ó      : carrier-j + tehta-o,  Ó      : carrier-j + tehta-o,
+  ú      : carrier-j + tehta-u,  Ú      : carrier-j + tehta-u,
+  ä      : tehta-a,              Ä      : tehta-a,
+  ë      : tehta-e,              Ë      : tehta-e,
+  ï      : tehta-i,              Ï      : tehta-i,
+  ö      : tehta-o,              Ö      : tehta-o,
+  ü      : tehta-u,              Ü      : tehta-u,
+  ô      : tehta-oo,             Ô      : tehta-oo,
+  ","    : comma,
+  "."    : period,
+  "--"   : em-dash,
+  "—"    : em-dash,
+  "-"    : en-dash,
+  "!"    : exclamationmark,
+  "("    : l-paren,
+  ")"    : r-paren,
+  "~"    : tilde,
+  "/"    : slash,
+  "«"    : "\u{ffff}«\u{fffe}",
+  "»"    : "\u{ffff}»\u{fffe}",
+  "?"    : questionmark,
 )
 
 #let quenya-consonants = (
   tinco,
+  tinco-alt,
   ando,
+  ando-alt,
   sule,
   anto,
   numen,
@@ -168,7 +197,9 @@
   "\\" + silme-alt,
   hyarmen,
   parma,
+  parma-alt,
   umbar,
+  umbar-alt,
   formen,
   ampa,
   malta,
@@ -178,7 +209,9 @@
   silmenuquerna-alt,
   halla,
   calma,
+  calma-alt,
   anga,
+  anga-alt,
   aha,
   anca,
   noldo,
@@ -187,7 +220,9 @@
   esse,
   esse-alt,
   quesse,
+  quesse-alt,
   ungwe,
+  ungwe-alt,
   hwesta,
   unque,
   nwalme,
@@ -212,7 +247,9 @@
 
 #let letter-shapes = (
   str(tinco)            : "y",
+  str(tinco-alt)        : "y",
   str(ando)             : "yy",
+  str(ando-alt)         : "yy",
   str(sule)             : "b",
   str(anto)             : "bb",
   str(numen)            : "m",
@@ -222,7 +259,9 @@
   str(silme-alt)        : "y",
   str(hyarmen)          : "b",
   str(parma)            : "y",
+  str(parma-alt)        : "y",
   str(umbar)            : "yy",
+  str(umbar-alt)        : "yy",
   str(formen)           : "b",
   str(ampa)             : "bb",
   str(malta)            : "m",
@@ -232,7 +271,9 @@
   str(silmenuquerna-alt): "y",
   str(halla)            : "b",
   str(calma)            : "y",
+  str(calma-alt)        : "y",
   str(anga)             : "yy",
+  str(anga-alt)         : "yy",
   str(aha)              : "n",
   str(anca)             : "b",
   str(noldo)            : "m",
@@ -242,7 +283,9 @@
   str(esse-alt)         : "d",
   str(uglide)           : "o",
   str(quesse)           : "y",
+  str(quesse-alt)       : "y",
   str(ungwe)            : "yy",
+  str(ungwe-alt)        : "yy",
   str(hwesta)           : "b",
   str(nwalme)           : "bb",
   str(nwalme)           : "m",
@@ -332,30 +375,37 @@
 )
 
 #let quenya-s-hooks = (
-  str(tinco)  : "\u{002b}",
-  str(ando)   : "\u{002b}",
-  str(sule)   : "\u{002b}",
-  str(anto)   : "\u{002b}",
-  str(numen)  : "\u{002b}",
-  str(ore)    : "\u{002b}",
-  str(parma)  : "\u{00a1}",
-  str(umbar)  : "\u{00a1}",
-  str(formen) : "\u{00a1}",
-  str(ampa)   : "\u{00a1}",
-  str(malta)  : "\u{00a1}",
-  str(vala)   : "\u{00a1}",
-  str(calma)  : "\u{007c}",
-  str(anga)   : "\u{007c}",
-  str(aha)    : "\u{007c}",
-  str(anca)   : "\u{007c}",
-  str(noldo)  : "\u{007c}",
-  str(anna)   : "\u{007c}",
-  str(quesse) : "\u{007c}",
-  str(ungwe)  : "\u{007c}",
-  str(hwesta) : "\u{007c}",
-  str(unque)  : "\u{007c}",
-  str(nwalme) : "\u{007c}",
-  str(wilya)  : "\u{007c}",
+  str(tinco)      : "\u{002b}",
+  str(tinco-alt)  : "\u{002b}",
+  str(ando)       : "\u{002b}",
+  str(ando-alt)   : "\u{002b}",
+  str(sule)       : "\u{002b}",
+  str(anto)       : "\u{002b}",
+  str(numen)      : "\u{002b}",
+  str(ore)        : "\u{002b}",
+  str(parma)      : "\u{00a1}",
+  str(parma-alt)  : "\u{00a1}",
+  str(umbar)      : "\u{00a1}",
+  str(umbar-alt)  : "\u{00a1}",
+  str(formen)     : "\u{00a1}",
+  str(ampa)       : "\u{00a1}",
+  str(malta)      : "\u{00a1}",
+  str(vala)       : "\u{00a1}",
+  str(calma)      : "\u{007c}",
+  str(calma-alt)  : "\u{007c}",
+  str(anga)       : "\u{007c}",
+  str(anga-alt)   : "\u{007c}",
+  str(aha)        : "\u{007c}",
+  str(anca)       : "\u{007c}",
+  str(noldo)      : "\u{007c}",
+  str(anna)       : "\u{007c}",
+  str(quesse)     : "\u{007c}",
+  str(quesse-alt) : "\u{007c}",
+  str(ungwe-alt)  : "\u{007c}",
+  str(hwesta)     : "\u{007c}",
+  str(unque)      : "\u{007c}",
+  str(nwalme)     : "\u{007c}",
+  str(wilya)      : "\u{007c}",
 )
 
 #let quenya-numbers-shifted = (
@@ -439,11 +489,11 @@
   txt = txt.replace(regex("(" + array-to-string-or(quenya-consonants) + ")" + anna),
                     m => m.captures.first() + tehta-y)
   
-  // If órë is followed by a voyel or by anna and a voyel, replace it with rómen 
-  txt = txt.replace(regex(ore + "(" + array-to-string-or(quenya-voyels) + ")"),
-                    m => romen + m.captures.first())
-  txt = txt.replace(regex(ore + anna + "(" + array-to-string-or(quenya-voyels) + ")"),
-                    m => romen + anna + m.captures.first())
+  // If órë is followed by a voyel or by anna and a voyel, replace it with rómen, and conversely
+  txt = txt.replace(regex("([" + ore + romen + "])" + "(" + array-to-string-or(quenya-voyels) + ")"),
+                    m => {if m.captures.at(0) == ore { romen } else { ore }} + m.captures.at(1))
+  txt = txt.replace(regex("([" + ore + romen + "])" + anna + "(" + array-to-string-or(quenya-voyels) + ")"),
+                    m => {if m.captures.at(0) == ore { romen } else { ore }} + anna + m.captures.first())
    
   // Use S-hooks if possible, and move the following tehtar if needed
   txt = txt.replace(regex("(" + array-to-string-or(quenya-consonants) + ")" 
@@ -456,7 +506,7 @@
     }
   )
 
-  // Use alternate versions of silme and esse if followed by a short voyek
+  // Use alternate versions of silme and esse if followed by a short voyel
   txt = txt.replace(regex(silme + "(" + array-to-string-or(quenya-tehtar) + ")"), 
                     m => silmenuquerna + m.captures.first())
   txt = txt.replace(regex(esse + "(" + array-to-string-or(quenya-tehtar) + ")"), 
@@ -466,9 +516,9 @@
   txt = txt.replace(regex(esse-alt + "(" + array-to-string-or(quenya-tehtar) + ")"), 
                     m => essenuquerna-alt + m.captures.first())
 
-  // If a tehta is not on a consonnant, add a carrier (exclude theta-y)
+  // If a tehta is not on a consonnant nor preceded by \u{ffff}, add a carrier (exclude theta-y)
   txt = txt.replace(regex("(.?)(" + array-to-string-or(quenya-tehtar.slice(0,-1)) + ")"),
-    m => if (quenya-consonants + (carrier-i, carrier-j, tehta-y)).contains(m.captures.at(0)) {
+    m => if (quenya-consonants + (carrier-i, carrier-j, tehta-y, "\u{ffff}")).contains(m.captures.at(0)) {
       m.captures.at(0) + m.captures.at(1)
     } else {
       m.captures.at(0) + carrier-i + m.captures.at(1)
@@ -477,17 +527,18 @@
   // Adjust the positions of tehtars
   txt = txt.replace(
     regex("(" + array-to-string-or(quenya-consonants) 
-           + ")(" + tehta-y + "?)("
+           + ")(\u{ffff}?)("
+           + tehta-y + "?)("
            + array-to-string-or(quenya-voyels) + ")"),
-    m => m.captures.at(0) +
+    m => m.captures.at(0) + m.captures.at(1) + 
       if (letter-shapes.keys().contains(m.captures.at(0))) {
         quenya-voyels-shifted.at(
-          m.captures.at(1) + letter-shapes.at(m.captures.at(0)),
-          default: m.captures.at(1)) + quenya-voyels-shifted.at(
           m.captures.at(2) + letter-shapes.at(m.captures.at(0)),
-          default: m.captures.at(2))
+          default: m.captures.at(2)) + quenya-voyels-shifted.at(
+          m.captures.at(3) + letter-shapes.at(m.captures.at(0)),
+          default: m.captures.at(3))
       } else {
-        m.captures.at(1) + m.captures.at(2)
+        m.captures.at(2) + m.captures.at(3)
       })
 
   // Combine repeated consonants
@@ -498,12 +549,17 @@
       m.captures.at(0) + m.captures.at(1)
     })
 
+  // Use alt font for tet between \u{ffff} and \u{fffe}
+  let re-alt-font = regex("\u{ffff}(.*)\u{fffe}")
+  show re-alt-font : it => {
+    let m = it.text.match(re-alt-font).captures.first()
+    text(font: tengwar-font-alt, m)
+  }
+
   txt
 }
 
 #let quenya(it) = {
-  show "«": ct => text(font: tengwar-font-alt)[#ct]
-  show "»": ct => text(font: tengwar-font-alt)[#ct]
   if it.has("text") {
     text(quenya-str(it.text))
   } else if it.has("body") {
@@ -515,5 +571,4 @@
   }
 }
 
-// TODO: add commands for individual symbols
 // TODO: add Sindarin and Beleriand modes

@@ -14,7 +14,7 @@
 #let link-color = color.rgb(0, 100, 200)
 
 // Document metadata
-#let title = "Manual for the quetta (" + tengwar.quenya[Quetta] + ") package"
+#let title = "Manual for the quetta (" + tengwar.quenya[Quetta] + ") module"
 #let author = "Florent Michel"
 #let keywords = ("Tengwar", "Typst")
 #let version = "0.0.1"
@@ -298,6 +298,8 @@ Nai elyë hiruva. Namárië!
 
 *Not yet implemented*
 
+#pagebreak()
+
 == Black Speech
 
 *Not yet implemented*
@@ -307,8 +309,14 @@ Although the Black Speech is not implemented yet, the One Ring inscription can b
 \*\*\*
 
 
-#align(center, 
-  tengwar.quenya[_»_] + tengwar.quenya[_«_] + "\n" + tengwar.quenya[_kwô, £Ngwamb£rossmo£kiiquŕpe\~talo_])
+#[
+#set text(top-edge: "ascender", bottom-edge: "descender")
+#align(center, block(
+  fill: gradient.linear(rgb(157,103,7), rgb(250,250,152), rgb(157,103,7), space: rgb, angle: 80deg),
+  inset: (top: 0.5em, left: 1em, right: 0.5em, bottom: 1.5em),
+  radius: 5pt,
+  tengwar.quenya[_»_] + tengwar.quenya[_«_] + "\n" + tengwar.quenya[_kwô, £Ngwamb£rossmo£kiiquŕpe\~talo_]))
+]
 
 #pagebreak()
 

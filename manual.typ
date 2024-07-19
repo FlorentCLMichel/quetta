@@ -211,6 +211,7 @@ The implementation of the Quenya mode follows Reference @tengwar-eruantalince.
 === Punctuation
 
 End-of-paragraph symbols can be obtained by combining commas and periods: \
+#tengwar-snippet("quenya[.-]") #h(1em)
 #tengwar-snippet("quenya[.,]") #h(1em)
 #tengwar-snippet("quenya[..]") #h(1em)
 #tengwar-snippet("quenya[,.,]")

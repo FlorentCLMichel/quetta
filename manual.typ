@@ -320,7 +320,7 @@ Although the Black Speech is not implemented yet, the One Ring inscription can b
   fill: gradient.linear(rgb(157,103,7), rgb(250,250,152), rgb(157,103,7), space: rgb, angle: 80deg),
   inset: (top: 0.5em, left: 1em, right: 0.5em, bottom: 1.5em),
   radius: 5pt,
-  tengwar.quenya(style: "italic")[_»£kanssangwnd£rombta£lokwô, £kanssangw:ngwmbe­talo« #linebreak()#v(0.7em) £kanssangws£rquata£lokwô, £Ngwamb£rossmo£kiiqu£rpe­talo_]))
+  tengwar.quenya[_»£kanssangwnd£rombta£lokwô, £kanssangw:ngwmbe­talo« #linebreak()#v(0.7em) £kanssangws£rquata£lokwô, £Ngwamb£rossmo£kiiqu£rpe­talo_]))
 ]
 
 #pagebreak()

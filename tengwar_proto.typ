@@ -587,7 +587,7 @@
   let re-esse-adjust = regex(esse + "(" + array-to-string-or(quenya-consonants) + ")")
   show re-esse-adjust: it => {
     let m = it.text.match(re-esse-adjust).captures.first()
-    if (style == "italic") and ("n", "m", "o").contains(letter-shapes.at(m)) {
+    if (text.style == "italic") and ("n", "m", "o").contains(letter-shapes.at(m)) {
       esse + h(-0.1em) + m
     } else {
       esse + m
@@ -595,11 +595,16 @@
   }
 
   if it.has("text") {
-    context text(quenya-str(it.text), style: text.style)
+    text(quenya-str(it.text), style: style)
   } else if it.has("body") {
-    it.func()(quenya(it.body))
+    if (repr(it.func()) == "emph") {
+      set text(style: "italic")
+      quenya(it.body, style: "italic")
+    } else {
+      it.func()(quenya(it.body, style: style))
+    }
   } else if it.has("children") {
-    it.children.map(quenya).join()
+    it.children.map(it => quenya(it, style: style)).join()
   } else {
     it
   }

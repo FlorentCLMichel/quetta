@@ -577,13 +577,25 @@
 
   // Remove \u{fffd}
   show "\u{fffd}": ""
-
+  
   txt
 }
 
-#let quenya(it) = {
+#let quenya(it, style: "normal") = { 
+  
+  // Adjust the spacing between some letters in italic mode
+  let re-esse-adjust = regex(esse + "(" + array-to-string-or(quenya-consonants) + ")")
+  show re-esse-adjust: it => {
+    let m = it.text.match(re-esse-adjust).captures.first()
+    if (style == "italic") and ("n", "m", "o").contains(letter-shapes.at(m)) {
+      esse + h(-0.1em) + m
+    } else {
+      esse + m
+    }
+  }
+
   if it.has("text") {
-    text(quenya-str(it.text))
+    context text(quenya-str(it.text), style: text.style)
   } else if it.has("body") {
     it.func()(quenya(it.body))
   } else if it.has("children") {

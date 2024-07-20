@@ -62,6 +62,7 @@
 #let noldo = "\u{0067}"
 #let anna = "\u{0068}"
 #let lambe = "\u{006a}"
+#let lambe-alt = "\u{ffff}\u{006a}\u{fffe}"
 #let esse = "\u{006b}"
 #let esse-alt = "\u{004b}"
 #let iglide = "\u{006c}"
@@ -141,6 +142,7 @@
   nk     : anca,                 Nk     : anca,
   y      : anna,                 Y      : anna,
   ld     : alda,                 Ld     : alda,
+  "£l"   : lambe-alt,            "£L"   : lambe-alt,
   l      : lambe,                L      : lambe,
   hw     : hwesta,               Hw     : hwesta,
   w      : wilya,                W      : wilya,
@@ -176,10 +178,11 @@
   "!"    : exclamationmark,
   "("    : l-paren,
   ")"    : r-paren,
-  "~"    : tilde,
+  "­"    : tilde,
   "/"    : slash,
   "«"    : "\u{ffff}«\u{fffe}",
   "»"    : "\u{ffff}»\u{fffe}",
+  ":"    : "\u{fffd}",
   "?"    : questionmark,
 )
 
@@ -217,6 +220,7 @@
   noldo,
   anna,
   lambe,
+  lambe-alt,
   esse,
   esse-alt,
   quesse,
@@ -279,6 +283,7 @@
   str(noldo)            : "m",
   str(anna)             : "o",
   str(lambe)            : "O",
+  str(lambe-alt)        : "O",
   str(esse)             : "d",
   str(esse-alt)         : "d",
   str(uglide)           : "o",
@@ -349,13 +354,13 @@
   tehta-o + "b" : "\u{0048}",
   tehta-u + "b" : "\u{004a}",
   tehta-y + "b" : "\u{00cd}",
-  tehta-a + "y" : "\u{0044}",
-  tehta-e + "y" : "\u{0046}",
-  tehta-i + "y" : "\u{0047}",
-  tehta-o + "y" : "\u{0048}",
-  tehta-u + "y" : "\u{004a}",
+  tehta-a + "y" : "\u{0045}",
+  tehta-e + "y" : "\u{0052}",
+  tehta-i + "y" : "\u{0054}",
+  tehta-o + "y" : "\u{0059}",
+  tehta-u + "y" : "\u{0055}",
   tehta-y + "y" : "\u{00cd}",
-  tehta-a + "d" : "\u{0044}",
+  tehta-a + "d" : "\u{0045}",
   tehta-e + "d" : "\u{0046}",
   tehta-i + "d" : "\u{0047}",
   tehta-o + "d" : "\u{0048}",
@@ -363,15 +368,24 @@
   tehta-y + "d" : "\u{00cd}",
 )
 
-
 #let undertilde = (
   "m"  : "\u{003a}",
   "O"  : "\u{00b0}",
   "n"  : "\u{003b}",
   "b"  : "\u{003b}",
   "y"  : "\u{003b}",
-  "bb" : "\u{003b}",
-  "yy" : "\u{003b}",
+  "bb" : "\u{003a}",
+  "yy" : "\u{003a}",
+)
+
+#let overtilde = (
+  "m"  : "\u{0050}",
+  "O"  : "\u{0050}",
+  "n"  : "\u{0070}",
+  "b"  : "\u{0070}",
+  "y"  : "\u{0070}",
+  "bb" : "\u{0050}",
+  "yy" : "\u{0050}",
 )
 
 #let quenya-s-hooks = (
@@ -469,7 +483,7 @@
                     m => quenya-numbers-unshift.at(m.captures.first()))
   
   // Replace aha by halla if followed by ore, romen, or lambe
-  txt = txt.replace(regex(aha + "(" + ore + "|" + romen + "|" + lambe + ")"), 
+  txt = txt.replace(regex(aha + "(" + ore + "|" + romen + "|" + lambe + "|" + lambe-alt + ")"), 
                     m => halla + m.captures.first())
 
   // Replace aha by hyarmen and add two dots below anna at start of word
@@ -486,8 +500,8 @@
                     count: 1)
 
   // If anna follows a consonant, replace it by two dots under the tengwa
-  txt = txt.replace(regex("(" + array-to-string-or(quenya-consonants) + ")" + anna),
-                    m => m.captures.first() + tehta-y)
+  txt = txt.replace(regex("(" + array-to-string-or(quenya-consonants) + ")" + "(\u{fffe}?)" + anna),
+                    m => m.captures.at(0) + m.captures.at(1) + tehta-y)
   
   // If órë is followed by a voyel or by anna and a voyel, replace it with rómen, and conversely
   txt = txt.replace(regex("([" + ore + romen + "])" + "(" + array-to-string-or(quenya-voyels) + ")"),
@@ -497,12 +511,12 @@
    
   // Use S-hooks if possible, and move the following tehtar if needed
   txt = txt.replace(regex("(" + array-to-string-or(quenya-consonants) + ")" 
-                          + silme
+                          + "(\u{fffe}?)" + silme
                           + "([" + array-to-string-or(quenya-tehtar) + "]?)"),
     m => if quenya-s-hooks.keys().contains(m.captures.at(0)) {
-      m.captures.at(0) + m.captures.at(1) + quenya-s-hooks.at(m.captures.at(0))
+      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + quenya-s-hooks.at(m.captures.at(0))
     } else {
-      m.captures.at(0) + sule + m.captures.at(1)
+      m.captures.at(0) + m.captures.at(1) + sule + m.captures.at(2)
     }
   )
 
@@ -517,28 +531,33 @@
                     m => essenuquerna-alt + m.captures.first())
 
   // If a tehta is not on a consonnant nor preceded by \u{ffff}, add a carrier (exclude theta-y)
-  txt = txt.replace(regex("(.?)(" + array-to-string-or(quenya-tehtar.slice(0,-1)) + ")"),
-    m => if (quenya-consonants + (carrier-i, carrier-j, tehta-y, "\u{ffff}")).contains(m.captures.at(0)) {
-      m.captures.at(0) + m.captures.at(1)
+  txt = txt.replace(regex("(.?)(\u{fffe}?)(\u{ffff}?)(" + array-to-string-or(quenya-tehtar.slice(0,-1)) + ")"),
+    m => if (quenya-consonants + (carrier-i, carrier-j, tehta-y)).contains(m.captures.at(0)) {
+      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + m.captures.at(3)
     } else {
-      m.captures.at(0) + carrier-i + m.captures.at(1)
+      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + carrier-i + m.captures.at(3)
     })
+
+  // Fix the tilde width
+  txt = txt.replace(regex("(" + array-to-string-or(quenya-consonants) + ")([" + array-to-string-or(quenya-voyels) + "]?)" + tilde),
+    m =>  m.captures.at(0) + m.captures.at(1) + overtilde.at(letter-shapes.at(m.captures.at(0))))
 
   // Adjust the positions of tehtars
   txt = txt.replace(
     regex("(" + array-to-string-or(quenya-consonants) 
-           + ")(\u{ffff}?)("
+           + ")(\u{fffe}?)"
+           + "(\u{ffff}?)("
            + tehta-y + "?)("
            + array-to-string-or(quenya-voyels) + ")"),
-    m => m.captures.at(0) + m.captures.at(1) + 
+    m => m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + 
       if (letter-shapes.keys().contains(m.captures.at(0))) {
         quenya-voyels-shifted.at(
-          m.captures.at(2) + letter-shapes.at(m.captures.at(0)),
-          default: m.captures.at(2)) + quenya-voyels-shifted.at(
           m.captures.at(3) + letter-shapes.at(m.captures.at(0)),
-          default: m.captures.at(3))
+          default: m.captures.at(3)) + quenya-voyels-shifted.at(
+          m.captures.at(4) + letter-shapes.at(m.captures.at(0)),
+          default: m.captures.at(4))
       } else {
-        m.captures.at(2) + m.captures.at(3)
+        m.captures.at(3) + m.captures.at(4)
       })
 
   // Combine repeated consonants
@@ -549,12 +568,15 @@
       m.captures.at(0) + m.captures.at(1)
     })
 
-  // Use alt font for tet between \u{ffff} and \u{fffe}
-  let re-alt-font = regex("\u{ffff}(.*)\u{fffe}")
+  // Use alt font for text between \u{ffff} and \u{fffe}
+  let re-alt-font = regex("\u{ffff}(.?)\u{fffe}")
   show re-alt-font : it => {
     let m = it.text.match(re-alt-font).captures.first()
     text(font: tengwar-font-alt, m)
   }
+
+  // Remove \u{fffd}
+  show "\u{fffd}": ""
 
   txt
 }

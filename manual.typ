@@ -101,36 +101,73 @@
 }
 
 // Code snippet
-#let tengwar-snippet(code) = context {
+#let tengwar-snippet(code, margin: 0pt) = context {
   let inset = 3pt
-  set text(bottom-edge: "baseline")
-  set text(top-edge: "bounds")
+  let radius = 5pt
+  set text(bottom-edge: "bounds", top-edge: "bounds")
   let y = eval("tengwar." + code, mode: "code", scope: (tengwar: tengwar))
-  let dy = calc.max(
-    measure([
-      #set text(bottom-edge: "bounds")
-      #y]).height - measure(box(y, clip: true)).height,
-    measure([
-      #set text(bottom-edge: "bounds")
-      #code]).height - measure(box(code, clip: true)).height)
   let code-block = raw(code, block: true, lang: "Typst")
-  let box-l = box(code-block, 
-                  inset: (bottom: dy+inset, top: inset, left: inset, right: inset))
-  let dy2 = measure([
-      #set text(bottom-edge: "bounds")
-      #box-l]).height - 2*inset - measure([
-      #set text(bottom-edge: "bounds")
-      #y]).height
-  if dy2 < 0pt { dy2 = 0pt }
-  let box-r = box(y, fill: white, radius: 5pt,
-                  inset: (bottom: dy+inset, top: dy2+inset, left: inset, right: inset - 1pt))
+  let height-l-t = measure([
+      #set text(top-edge: "bounds", bottom-edge: "baseline")
+      #box(code-block, inset: 0pt)]).height
+  let height-l-b = measure([
+      #set text(top-edge: "baseline", bottom-edge: "bounds")
+      #box(code-block, inset: 0pt)]).height
+  let height-r-t = measure([
+      #set text(top-edge: "bounds", bottom-edge: "baseline")
+      #box(y, inset: 0pt)]).height
+  let height-r-b = measure([
+      #set text(top-edge: "baseline", bottom-edge: "bounds")
+      #box(y, inset: 0pt)]).height
+  let box-l = box(code-block,
+                  inset: (top: inset + {if height-r-t > height-l-t {height-r-t - height-l-t} else {0pt}}, 
+                          bottom: inset + {if height-r-b > height-l-b {height-r-b - height-l-b} else {0pt}}, 
+                          left: inset, 
+                          right: inset))
+  let box-r = box(y, fill: white, radius: radius,
+                  inset: (top: inset + {if height-l-t > height-r-t {height-l-t - height-r-t} else {0pt}}, 
+                          bottom: inset + {if height-l-b > height-r-b {height-l-b - height-r-b} else {0pt}}, 
+                          left: inset + margin, 
+                          right: inset + margin - 1pt))
   box(box-l + box-r,
     inset: 0pt,
-    radius: 5pt, 
-    fill: rgb(200, 200, 200),
+    radius: radius, 
+    fill: luma(200),
     stroke: luma(200),
     baseline: 28%)
 }
+
+// // Code snippet
+// #let tengwar-snippet(code) = context {
+//   let inset = 3pt
+//   set text(bottom-edge: "baseline")
+//   set text(top-edge: "bounds")
+//   let y = eval("tengwar." + code, mode: "code", scope: (tengwar: tengwar))
+//   let dy = calc.max(
+//     measure([
+//       #set text(bottom-edge: "bounds")
+//       #y]).height - measure(box(y, clip: true)).height,
+//     measure([
+//       #set text(bottom-edge: "bounds")
+//       #code]).height - measure(box(code, clip: true)).height)
+//   let code-block = raw(code, block: true, lang: "Typst")
+//   let box-l = box(code-block, 
+//                   inset: (bottom: dy+inset, top: inset, left: inset, right: inset))
+//   let dy2 = measure([
+//       #set text(bottom-edge: "bounds")
+//       #box-l]).height - 2*inset - measure([
+//       #set text(bottom-edge: "bounds")
+//       #y]).height
+//   if dy2 < 0pt { dy2 = 0pt }
+//   let box-r = box(y, fill: white, radius: 5pt,
+//                   inset: (bottom: dy+inset, top: dy2+inset, left: inset, right: inset - 1pt))
+//   box(box-l + box-r,
+//     inset: 0pt,
+//     radius: 5pt, 
+//     fill: rgb(200, 200, 200),
+//     stroke: luma(200),
+//     baseline: 28%)
+// }
 
 
 #if (title != none) {
@@ -194,31 +231,36 @@ For instance, typing `n` produces the tengwa #tengwar.quenya[n] (_numen_) while 
 
 The implementation of the Quenya mode follows Reference @tengwar-eruantalince.
 
-=== Basic examples
+Here are a few basic examples: 
 
 #tengwar-snippet("quenya[aha]")
 
 #tengwar-snippet("quenya[namárië]")
 
-=== N mode
-
-=== H mode
-
-=== Y mode
-
-=== S mode
-
-=== L mode
+// === N mode
+// 
+// === H mode
+// 
+// === Y mode
+// 
+// === S mode
+// 
+// === L mode
 
 === Punctuation
 
-End-of-paragraph symbols can be obtained by combining commas and periods: \
+End-of-paragraph symbols can be obtained by combining commas and periods:
+
+#v(1em)
+
 #tengwar-snippet("quenya[.-]") #h(1em)
 #tengwar-snippet("quenya[.,]") #h(1em)
 #tengwar-snippet("quenya[..]") #h(1em)
 #tengwar-snippet("quenya[,.,]")
 
-*Note:* Generally, parentheses in Quenya are denoted by the single symbol #tengwar.quenya[/]—there is no distinction between opening and closing parentheses. 
+#v(1em)
+
+#h(-paragraph-indent) *Note:* Generally, parentheses in Quenya are denoted by the single symbol #tengwar.quenya[/]—there is no distinction between opening and closing parentheses. 
 We deviate from this convention by mabbing the symbol ‘(’ to #tengwar.quenya[(] and ‘)’ to #tengwar.quenya[)]. 
 The proper Tengwar parenthesis is mapped to ‘/’.
 
@@ -228,11 +270,16 @@ The proper Tengwar parenthesis is mapped to ‘/’.
 
 #v(1em)
 
-#tengwar-snippet("quenya[_»quenya«_]")
+#tengwar-snippet("quenya[»quenya«]", margin: 4pt)
 
 #v(1em)
 
-#h(-paragraph-indent) The symbol ‘:’ is used to prevent glyph combination: #tengwar-snippet("quenya[nn n:n]")
+#h(-paragraph-indent) The symbol ‘:’ can be used to prevent glyph combination: 
+
+#v(1em)
+
+#tengwar-snippet("quenya[nn n:n]") #h(1em)
+#tengwar-snippet("quenya[na n:a]")
 
 === Number system
 
@@ -308,11 +355,28 @@ Nai elyë hiruva. Namárië!
 
 == Black Speech
 
-*Not yet implemented*
-
 Although the Black Speech is not implemented yet, the One Ring inscription can be reproduced using the Quenya mode as follows:#footnote[This is obviously a bit of a hack, meant only to show how the limitations of hwving only one mode implemented can be circumvented. This example is not supposed to be stable and might render differently in a later version.]
 
-\*\*\*
+#v(0.5em)
+
+```
+quenya[
+  _»£Ka:nssangw:nd£rombta£lokwô, £Ka:nssangw:ngwmbe­talo« 
+  #linebreak()#v(0.7em) 
+  £Ka:nssangw:s£rquata£lokwô, £Ngwa:mb£rossmo£kii:qu£rpe­talo_
+]
+```
+
+#v(0.5em)
+
+Obviously, that's not quite how the ring inscription is supposed to sound.
+One reason is simply that the Quenya and Black Speech modes have different relations between symbols and sounds: to obtain the same written result, one has to ‘transcribe’ the phonetic description to how it would be read in the Quenya mode. 
+Another difference is that some of the tengwa forms used in the ring inscription are generally not used in Quenya; we thus use the symbol `£` to get variants. 
+We also use `£` to switch between #tengwar.quenya[r] and #tengwar.quenya[£r].
+Finally, words are separated with `:` to avoid repeated consonants being combined.
+Here is the result, with a color gradient in the background to mimic a golden surface:
+
+#v(1em)
 
 #[
 #set text(top-edge: "ascender", bottom-edge: "descender")
@@ -320,8 +384,16 @@ Although the Black Speech is not implemented yet, the One Ring inscription can b
   fill: gradient.linear(rgb(157,103,7), rgb(250,250,152), rgb(157,103,7), space: rgb, angle: 80deg),
   inset: (top: 0.5em, left: 1em, right: 0.5em, bottom: 1.5em),
   radius: 5pt,
-  tengwar.quenya[_»£kanssangwnd£rombta£lokwô, £kanssangw:ngwmbe­talo« #linebreak()#v(0.7em) £kanssangws£rquata£lokwô, £Ngwamb£rossmo£kiiqu£rpe­talo_]))
+  tengwar.quenya[
+    _»£Ka:nssangw:nd£rombta£lokwô, £Ka:nssangw:ngwmbe­talo« 
+    #linebreak()#v(0.7em) 
+    £Ka:nssangw:s£rquata£lokwô, £Ngwa:mb£rossmo£kii:qu£rpe­talo_
+  ]))
 ]
+
+#v(1em)
+
+*Not yet implemented*
 
 #pagebreak()
 

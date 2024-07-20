@@ -368,6 +368,10 @@
   tehta-y + "d" : "\u{00cd}",
 )
 
+#let quenya-voyels-shifted-it = (
+  tehta-o + "y" : "\u{0048}",
+)
+
 #let undertilde = (
   "m"  : "\u{003a}",
   "O"  : "\u{00b0}",
@@ -466,7 +470,7 @@
 }
 
 
-#let quenya-str(txt) = { 
+#let quenya-str(txt, style: "normal") = { 
   // Set the font to Tengwar Annatar
   set text(font: tengwar-font)
 
@@ -549,16 +553,27 @@
            + "(\u{ffff}?)("
            + tehta-y + "?)("
            + array-to-string-or(quenya-voyels) + ")"),
-    m => m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + 
-      if (letter-shapes.keys().contains(m.captures.at(0))) {
-        quenya-voyels-shifted.at(
-          m.captures.at(3) + letter-shapes.at(m.captures.at(0)),
-          default: m.captures.at(3)) + quenya-voyels-shifted.at(
-          m.captures.at(4) + letter-shapes.at(m.captures.at(0)),
-          default: m.captures.at(4))
+    m => {
+      let shifted-a = quenya-voyels-shifted.at(
+        m.captures.at(3) + letter-shapes.at(m.captures.at(0)),
+        default: m.captures.at(3)) 
+      let shifted-b = quenya-voyels-shifted.at(
+        m.captures.at(4) + letter-shapes.at(m.captures.at(0)),
+        default: m.captures.at(4))
+      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + if (letter-shapes.keys().contains(m.captures.at(0))) {
+        if style == "italic" {
+          quenya-voyels-shifted-it.at(
+            m.captures.at(3) + letter-shapes.at(m.captures.at(0)),
+            default: shifted-a) + quenya-voyels-shifted-it.at(
+            m.captures.at(4) + letter-shapes.at(m.captures.at(0)),
+            default: shifted-b)
+        } else {
+          shifted-a + shifted-b
+        }
       } else {
         m.captures.at(3) + m.captures.at(4)
-      })
+      }
+    })
 
   // Combine repeated consonants
   txt = txt.replace(regex("(" + array-to-string-or(quenya-consonants) + ")(" + array-to-string-or(quenya-consonants) + ")"),
@@ -588,14 +603,14 @@
   show re-esse-adjust: it => {
     let m = it.text.match(re-esse-adjust).captures.first()
     if (text.style == "italic") and ("n", "m", "o").contains(letter-shapes.at(m)) {
-      esse + h(-0.1em) + m
+      esse + h(-0.15em) + m
     } else {
       esse + m
     }
   }
 
   if it.has("text") {
-    text(quenya-str(it.text), style: style)
+    text(quenya-str(it.text, style: style), style: style)
   } else if it.has("body") {
     if (repr(it.func()) == "emph") {
       set text(style: "italic")

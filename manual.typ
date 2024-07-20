@@ -53,7 +53,7 @@
 #set par(
   justify: true,
   leading: 0.5em,
-  spacing: 0.67em,
+  spacing: 0.5em,
   first-line-indent: paragraph-indent)
 
 // Link format
@@ -227,6 +227,15 @@ For instance, typing `n` produces the tengwa #tengwar.quenya[n] (_numen_) while 
 #tengwar-snippet("quenya[sa]") #h(1em) #tengwar-snippet("quenya[£sa]") 
 #h(1em) #tengwar-snippet("quenya[ssa]") #h(1em) #tengwar-snippet("quenya[£ssa]") 
 
+#v(1em)
+
+#h(-paragraph-indent)For tengwar associated with a sound starting with ‘k’, the standard glyphs are obtained using the spelling ‘c’ for _calma_ (#tengwar.quenya[c]) or ‘q’ for _quessë_ (#tengwar.quenya[qu]), and the alternatives glyphs with a ‘k’: 
+
+#v(1em)
+
+#tengwar-snippet("quenya[c]") #h(1em) #tengwar-snippet("quenya[k]") #h(1em)
+#tengwar-snippet("quenya[qu]") #h(1em) #tengwar-snippet("quenya[kw]") 
+
 == Quenya
 
 The implementation of the Quenya mode follows Reference @tengwar-eruantalince.
@@ -361,9 +370,9 @@ Although the Black Speech is not implemented yet, the One Ring inscription can b
 
 ```
 quenya[
-  _»£Ka:nssangw:nd£rombta£lokwô, £Ka:nssangw:ngwmbe­talo« 
+  _»Ka:nssangw:nd£rombta£lokwô, Ka:nssangw:ngwmbe­talo« 
   #linebreak()#v(0.7em) 
-  £Ka:nssangw:s£rquata£lokwô, £Ngwa:mb£rossmo£kii:qu£rpe­talo_
+  Ka:nssangw:s£rquata£lokwô, £Ngwa:mb£rossmokii:qu£rpe­talo_
 ]
 ```
 
@@ -385,9 +394,9 @@ Here is the result, with a color gradient in the background to mimic a golden su
   inset: (top: 0.5em, left: 1em, right: 0.5em, bottom: 1.5em),
   radius: 5pt,
   tengwar.quenya[
-    _»£Ka:nssangw:nd£rombta£lokwô, £Ka:nssangw:ngwmbe­talo« 
+    _»Ka:nssangw:nd£rombta£lokwô, Ka:nssangw:ngwmbe­talo« 
     #linebreak()#v(0.7em) 
-    £Ka:nssangw:s£rquata£lokwô, £Ngwa:mb£rossmo£kii:qu£rpe­talo_
+    Ka:nssangw:s£rquata£lokwô, £Ngwa:mb£rossmokii:qu£rpe­talo_
   ]))
 ]
 

@@ -35,6 +35,13 @@
     inside: 2cm,
     outside: 2cm),
   numbering: "1")
+
+// Table format
+#show table: set text(top-edge: "ascender", bottom-edge: "descender")
+#set table(
+  inset: 5pt, 
+  align: center + horizon, 
+  stroke: 0.5pt)
   
 // Main font
 #set text (
@@ -101,6 +108,7 @@
 }
  
 // List format
+#let text-list-sep = 0.5em
 #set list(
   tight: false,
   marker: ([•], [‣], [–]),
@@ -318,7 +326,7 @@ For instance, a centered 16-points italic version of the Quenya word ‘tengwar�
 
 == Quenya (#quenya[Quenya])
 
-=== Generalities
+=== Generalities<sec-quenya-gen>
 
 The implementation of the Quenya mode follows Reference @tengwar-eruantalince, summarizing information available in Appendix E of @lotr and examples provided in other parts of the book. 
 Here are a few basic examples: 
@@ -341,9 +349,6 @@ Here are a few basic examples:
 
 #h(-paragraph-indent)#box(table(
   columns: (auto, auto),
-  inset: 5pt, 
-  align: center, 
-  stroke: 0.5pt,
   table.header(
     [*consonant*], [*tengwa*]
   ),
@@ -356,9 +361,6 @@ Here are a few basic examples:
 ))
 #box(table(
   columns: (auto, auto),
-  inset: 5pt, 
-  align: center, 
-  stroke: 0.5pt,
   table.header(
     [*consonant*], [*tengwa*]
   ),
@@ -371,9 +373,6 @@ Here are a few basic examples:
 ))
 #box(table(
   columns: (auto, auto),
-  inset: 5pt, 
-  align: center, 
-  stroke: 0.5pt,
   table.header(
     [*consonant*], [*tengwa*]
   ),
@@ -386,9 +385,6 @@ Here are a few basic examples:
 ))
 #box(table(
   columns: (auto, auto),
-  inset: 5pt, 
-  align: center, 
-  stroke: 0.5pt,
   table.header(
     [*consonant*], [*tengwa*]
   ),
@@ -401,9 +397,6 @@ Here are a few basic examples:
 ))
 #box(table(
   columns: (auto, auto),
-  inset: 5pt, 
-  align: center, 
-  stroke: 0.5pt,
   table.header(
     [*consonant*], [*tengwa*]
   ),
@@ -416,16 +409,13 @@ Here are a few basic examples:
 #v(paragraph-skip-b)
 
 #h(-paragraph-indent)
-Different tengwar are used for the same sounds in different situations; see Section @sec-subst-rules.
+Different tengwar are used for the same sounds in different situations; see Section~@sec-quenya-subst-rules.
 Voyel sounds are generally represented by a _tetha_, placed either on the previous consonant or a short carrier for a short voyel, or a long carrier for a long voyel#footnote[We use an acute accent to denote long voyels. For instance, `a` is rendered as #quenya[a] and `à` as #quenya[á].]:
 
 #v(paragraph-skip-b)
 
 #table(
   columns: (auto, auto, auto),
-  inset: 5pt, 
-  align: center, 
-  stroke: 0.5pt,
   table.header(
     [*voyel*], [*short version*], [*long version*]
   ),
@@ -438,24 +428,30 @@ Voyel sounds are generally represented by a _tetha_, placed either on the previo
 
 #v(paragraph-skip-b)
 
-#h(-paragraph-indent) Diphtongues of the form _-i_ and _-u_ are obtained by adding a theta to an ‘i-glide’ or ‘u-glide’ symbol: 
+Diphtongues of the form _-i_ and _-u_ are obtained by adding a theta to an ‘i-glide’ or ‘u-glide’ symbol: 
 
 #v(paragraph-skip-b)
 
 #table(
-  columns: (auto, auto),
-  inset: 5pt, 
-  align: center, 
-  stroke: 0.5pt,
-  "ai", quenya[ai], 
-  "oi", quenya[oi], 
-  "ui", quenya[ui], 
-  "au", quenya[au], 
-  "eu", quenya[eu], 
-  "iu", quenya[iu], 
+  columns: (auto, ) * 6,
+  "ai", "oi", "ui", "au", "eu", "iu",  
+  quenya[ai], quenya[oi], quenya[ui], 
+  quenya[au], quenya[eu], quenya[iu], 
 )
 
-=== Substitition rules<sec-subst-rules>
+=== Substitition rules<sec-quenya-subst-rules>
+
+The equivalences mentioned in Section~@sec-quenya-gen should give a correct phonetic transcription from the Latin alphabet to tengwar in the Quenya mode. 
+This does not mean, however, that the spelling is correct. 
+Further substitution rules are required for that.
+
+#v(text-list-sep)
+
+- As briefly mentioned above, a short voyel sound following a consonant sound is written as a tehta on the latter. For instance, _númen_ (_west_) is written #quenya[númen], with #quenya[me] replacing #quenya[m:e]. This does not apply to long voyels, the second consecutive voyel after a consonant, or (obviously) to a voyel sound at the start of a word.
+
+- \*\*\* change of tengwa (multiple ones)
+
+- Two successive identical tengwar with no tehta on the first one are replaced by a single tengwa with a bar under it. For instance, the word _anna_ (_gift_) is written #quenya[anna], with #quenya[nn] replacing two #quenya[n]s. Similarly, in #quenya[quetta] (_quetta_), #quenya[tt] replaces two #quenya[t]s.
 
 === Capital letters
 
@@ -468,6 +464,24 @@ One possible option is to use bold to denote a capital letter:
 
 === Punctuation
 
+The module provides the following punctuation symbols: 
+
+#v(paragraph-skip-b)
+
+#box(table(
+  columns: (auto, ) * 10,
+  strong("input"), ",", ".", "-", "—", "!", "?", "(", ")", "/",
+  strong("output"), quenya[,], quenya[.], quenya[-], quenya[—], quenya[!], quenya[?], quenya[(], quenya[)], quenya[/]
+))
+
+#v(paragraph-skip-b)
+
+#h(-paragraph-indent) *Note:* Generally, parentheses in Quenya are denoted by the single symbol #quenya[/]—there is no distinction between opening and closing parentheses. 
+We deviate from this convention by mabbing the symbol ‘(’ to #quenya[(] and ‘)’ to #quenya[)]. 
+The proper Tengwar parenthesis is mapped to ‘/’.
+
+#v(paragraph-skip-b)
+
 End-of-paragraph symbols can be obtained by combining commas and periods:
 
 #v(paragraph-skip-b)
@@ -476,12 +490,6 @@ End-of-paragraph symbols can be obtained by combining commas and periods:
 #tengwar-snippet("quenya[.,]") #h(1em)
 #tengwar-snippet("quenya[..]") #h(1em)
 #tengwar-snippet("quenya[,.,]")
-
-#v(paragraph-skip-b)
-
-#h(-paragraph-indent) *Note:* Generally, parentheses in Quenya are denoted by the single symbol #quenya[/]—there is no distinction between opening and closing parentheses. 
-We deviate from this convention by mabbing the symbol ‘(’ to #quenya[(] and ‘)’ to #quenya[)]. 
-The proper Tengwar parenthesis is mapped to ‘/’.
 
 #v(paragraph-skip-b)
 
@@ -508,9 +516,7 @@ Quenya uses a base-12 system, with 12 digits listed in the following table:
 
 #box(table(
   columns: (auto,) * 12,
-  inset: 5pt, 
-  align: center, 
-  stroke: 0.5pt,
+  rows: (auto,) * 2,
   "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", 
   quenya[0], quenya[1], quenya[2], quenya[3], quenya[4], quenya[5],
   quenya[6], quenya[7], quenya[8], quenya[9], quenya[10], quenya[11],
@@ -676,7 +682,7 @@ Writing math-heavy content in tengwar would probably require a specific module, 
 
 Any kind of contribution is warmly welcome! Here are a few ways you can help: 
 
-#v(0.5em)
+#v(text-list-sep)
 
 - *Bug reports:* Some text rendering incorrectly in Tengwar? Unexpected formatting? Any other issue with the code or documentation? Please report it! This module was only tested on a very small corpus so far, and identifying any corner case where it does not work as intended is very useful!
 

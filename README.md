@@ -9,7 +9,7 @@ A simple module to write [tengwar](https://en.wikipedia.org/wiki/Tengwar) in [Ty
 
 The main functionality of this module is provided by the function `quenya` taking content and converting all text in Quenya. The original text is used as a phonetic transcription. (This module does not translate English into Quenya.) In general, the base text should have no capital letters. Accented voyels (with `'`) represent long voyels.
 
-The following line may be used to convert the whole document below to Tengwar in Quanya mode (other `show` rules might interfere with it):
+The following line may be used to convert the whole document below to Tengwar in Quenya mode (other `show` rules might interfere with it):
 ```
 #show: quenya
 ```

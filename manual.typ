@@ -1,4 +1,4 @@
-#import "quetta.typ": *
+#import "src/quetta.typ": *
 
 // Define the fonts
 #let font-serif = "New Computer Modern"
@@ -164,7 +164,7 @@
 
 
 // Code block
-#set raw(theme: "blue.tmTheme")
+#set raw(theme: "manual_files/blue.tmTheme")
 #show raw.where(lang: "typst-q"): it => [
     #show regex("(#\w+)") : keyword => text(fill: blue, weight: "bold", keyword)
     #show regex("([0-9])") : keyword => text(fill: purple, keyword)
@@ -697,4 +697,4 @@ Any kind of contribution is warmly welcome! Here are a few ways you can help:
 
 #block(breakable: false, width: 100%, height: paragraph-skip-b + text-list-sep, align(right)[#quenya[Hantanyel!]])
 
-#bibliography("biblio.yml")
+#bibliography("manual_files/biblio.yml")

@@ -17,8 +17,8 @@ The following line may be used to convert the whole document below to Tengwar in
 ## Roadmap
 
 * Number conversion: done
-* Support for Quenya: in progress
-* Support for Sindarin: backlog
+* Support for the Quenya mode: in progress
+* Support for the mode of Gondor: backlog
 * Support for the mode of Beleriand: backlog
 * Support for the Black Speech: backlog
 

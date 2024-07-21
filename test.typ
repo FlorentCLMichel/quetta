@@ -1,4 +1,4 @@
-#import "tengwar_proto.typ": *
+#import "quetta.typ": *
 
 #show: rest => columns(2, rest)
 
@@ -20,28 +20,28 @@ aksa
 
 #v(1em)
 
-*namárië*
+*Namárië*
 
-ai! laurië lantar lassi súrinen, \
+Ai! laurië lantar lassi súrinen, \
 yéni únótimë ve rámar aldaron! \
 Yéni ve lintë yuldar avánier \
 mi oromardi lisse-miruvóreva \
-andúnë pella, vardo tellumar \
+Andúnë pella, Vardo tellumar \
 nu luini yassen tintilar i eleni \
-ómaryo airetári-lírinen. \
+ómaryo airetári-lírinen.
 
-sí man i yulma nin enquantuva?
+Sí man i yulma nin enquantuva?
 
-an sí tintallë Varda oiolossëo \
-ve fanyar máryat elentári ortanë, \
+An sí Tintallë Varda Oiolossëo \
+ve fanyar máryat Elentári ortanë, \
 ar ilyë tier undulávë lumbulë, \
 ar sindanóriello caita mornië \
 i falmalinnar imbë met, ar hísië \
 untúpa Calaciryo míri oialë. \
-sí vanwa ná, rómello vanwa, valimar! \
+Sí vanwa ná, Rómello vanwa, Valimar!
 
-namárië! nai hiruvalyë valimar. \
-nai elyë hiruva. namárië!
+Namárië! Nai hiruvalyë Valimar. \
+Nai elyë hiruva. Namárië!
 
 #colbreak()
 
@@ -64,27 +64,25 @@ aksa
 
 #v(1em)
 
-*namárië*
+*Namárië*
 
-ai! laurië lantar lassi súrinen, \
+Ai! laurië lantar lassi súrinen, \
 yéni únótimë ve rámar aldaron! \
 Yéni ve lintë yuldar avánier \
 mi oromardi lisse-miruvóreva \
-andúnë pella, vardo tellumar \
+Andúnë pella, Vardo tellumar \
 nu luini yassen tintilar i eleni \
-ómaryo airetári-lírinen. \
+ómaryo airetári-lírinen.
 
-sí man i yulma nin enquantuva?
+Sí man i yulma nin enquantuva?
 
-an sí tintallë Varda oiolossëo \
-ve fanyar máryat elentári ortanë, \
+An sí Tintallë Varda Oiolossëo \
+ve fanyar máryat Elentári ortanë, \
 ar ilyë tier undulávë lumbulë, \
 ar sindanóriello caita mornië \
 i falmalinnar imbë met, ar hísië \
 untúpa Calaciryo míri oialë. \
-sí vanwa ná, rómello vanwa, valimar! \
+Sí vanwa ná, Rómello vanwa, Valimar!
 
-namárië! nai hiruvalyë valimar. \
-nai elyë hiruva. namárië!
-
-h hl
+Namárië! Nai hiruvalyë Valimar. \
+Nai elyë hiruva. Namárië!

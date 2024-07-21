@@ -11,4 +11,4 @@ categories = [ "languages" ]
 license = "MIT"
 description = "Easily write in Tengwar with Typst."
 keywords = [ "typography", "tengwar", "fantasy" ]
-exclude = [ "manual.pdf", "manual.typ", "manual_files", "logo" ]
+exclude = [ "manual.pdf", "manual.typ", "manual_files", "logo.typ", "logo.svg", "Makefile" ]

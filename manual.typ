@@ -327,6 +327,10 @@ Here are a few basic examples:
 
 #tengwar-snippet("quenya[quenya]")
 
+#tengwar-snippet("quenya[quetta]")
+
+#tengwar-snippet("quenya[tengwar]")
+
 #tengwar-snippet("quenya[namárië]")
 
 #v(paragraph-skip-b)
@@ -373,10 +377,10 @@ Here are a few basic examples:
   table.header(
     [*consonant*], [*tengwa*]
   ),
-  "k", quenya[k],
+  "c", quenya[c],
   "ng", quenya[ng],
   "h", quenya[h],
-  "nk", quenya[nk],
+  "nc", quenya[nc],
   "n", quenya[n],
   "y", quenya[y],
 ))
@@ -388,10 +392,10 @@ Here are a few basic examples:
   table.header(
     [*consonant*], [*tengwa*]
   ),
-  "kw", quenya[kw],
+  "cw", quenya[cw],
   "ngw", quenya[ngw],
   "hw", quenya[hw],
-  "nkw", quenya[nkw],
+  "ncw", quenya[ncw],
   "nw", quenya[nw],
   "w", quenya[w],
 ))
@@ -413,7 +417,7 @@ Here are a few basic examples:
 
 #h(-paragraph-indent)
 Different tengwar are used for the same sounds in different situations; see Section @sec-subst-rules.
-Voyel sounds are generally represented by a _tetha_, placed either on the previous consonant or a short carrier for a short voyel, or a long carrier for a long voyel:
+Voyel sounds are generally represented by a _tetha_, placed either on the previous consonant or a short carrier for a short voyel, or a long carrier for a long voyel#footnote[We use an acute accent to denote long voyels. For instance, `a` is rendered as #quenya[a] and `à` as #quenya[á].]:
 
 #v(paragraph-skip-b)
 

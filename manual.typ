@@ -62,6 +62,22 @@
   link-color,
   stroke: font-stroke-width + link-color)
 
+// Reference format
+#show ref: set text(
+  link-color,
+  stroke: font-stroke-width + link-color)
+#let numbering-section(x, depth) = x.slice(0, depth).map(str).join(".")
+#show ref: it => {
+  let el = it.element
+  if el != none and it.func() == ref {
+      link(
+        el.location(),
+        text(link-color, numbering-section(counter(heading).at(el.location()), el.depth)))
+  } else {
+    it
+  }
+}
+
 // Headings format
 #set heading(numbering: "1.")
 #show heading: set text(font: font-sans)
@@ -300,25 +316,151 @@ For instance, a centered 16-points italic version of the Quenya word ‘tengwar�
      )[#box(quenya[_tengwar_])]
 ]
 
-== Quenya
+== Quenya (#quenya[Quenya])
 
-The implementation of the Quenya mode follows Reference @tengwar-eruantalince.
+=== Generalities
 
+The implementation of the Quenya mode follows Reference @tengwar-eruantalince, summarizing information available in Appendix E of @lotr and examples provided in other parts of the book. 
 Here are a few basic examples: 
 
-#tengwar-snippet("quenya[aha]")
+#v(paragraph-skip-b)
+
+#tengwar-snippet("quenya[quenya]")
 
 #tengwar-snippet("quenya[namárië]")
 
-// === N mode
-// 
-// === H mode
-// 
-// === Y mode
-// 
-// === S mode
-// 
-// === L mode
+#v(paragraph-skip-b)
+
+#h(-paragraph-indent)A full description of the Quenya mode is beyond the scope of this document. As a first approximation, consonant sounds are represented by _tengwar_ as follows:
+
+#v(paragraph-skip-b)
+
+#h(-paragraph-indent)#box(table(
+  columns: (auto, auto),
+  inset: 5pt, 
+  align: center, 
+  stroke: 0.5pt,
+  table.header(
+    [*consonant*], [*tengwa*]
+  ),
+  "t", quenya[t],
+  "nd", quenya[nd],
+  "s", quenya[s],
+  "nt", quenya[nt],
+  "n", quenya[n],
+  "r", quenya[r],
+))
+#box(table(
+  columns: (auto, auto),
+  inset: 5pt, 
+  align: center, 
+  stroke: 0.5pt,
+  table.header(
+    [*consonant*], [*tengwa*]
+  ),
+  "p", quenya[p],
+  "mb", quenya[mb],
+  "f", quenya[f],
+  "mp", quenya[mp],
+  "m", quenya[m],
+  "v", quenya[v],
+))
+#box(table(
+  columns: (auto, auto),
+  inset: 5pt, 
+  align: center, 
+  stroke: 0.5pt,
+  table.header(
+    [*consonant*], [*tengwa*]
+  ),
+  "k", quenya[k],
+  "ng", quenya[ng],
+  "h", quenya[h],
+  "nk", quenya[nk],
+  "n", quenya[n],
+  "y", quenya[y],
+))
+#box(table(
+  columns: (auto, auto),
+  inset: 5pt, 
+  align: center, 
+  stroke: 0.5pt,
+  table.header(
+    [*consonant*], [*tengwa*]
+  ),
+  "kw", quenya[kw],
+  "ngw", quenya[ngw],
+  "hw", quenya[hw],
+  "nkw", quenya[nkw],
+  "nw", quenya[nw],
+  "w", quenya[w],
+))
+#box(table(
+  columns: (auto, auto),
+  inset: 5pt, 
+  align: center, 
+  stroke: 0.5pt,
+  table.header(
+    [*consonant*], [*tengwa*]
+  ),
+  "rd", quenya[rd],
+  "l", quenya[l],
+  "ld", quenya[ld],
+  "ss", quenya[ss],
+))
+
+#v(paragraph-skip-b)
+
+#h(-paragraph-indent)
+Different tengwar are used for the same sounds in different situations; see Section @sec-subst-rules.
+Voyel sounds are generally represented by a _tetha_, placed either on the previous consonant or a short carrier for a short voyel, or a long carrier for a long voyel:
+
+#v(paragraph-skip-b)
+
+#table(
+  columns: (auto, auto, auto),
+  inset: 5pt, 
+  align: center, 
+  stroke: 0.5pt,
+  table.header(
+    [*voyel*], [*short version*], [*long version*]
+  ),
+  "a", quenya[a], quenya[á], 
+  "e", quenya[e], quenya[é], 
+  "i", quenya[i], quenya[í], 
+  "o", quenya[o], quenya[ó], 
+  "u", quenya[u], quenya[ú], 
+)
+
+#v(paragraph-skip-b)
+
+#h(-paragraph-indent) Diphtongues of the form _-i_ and _-u_ are obtained by adding a theta to an ‘i-glide’ or ‘u-glide’ symbol: 
+
+#v(paragraph-skip-b)
+
+#table(
+  columns: (auto, auto),
+  inset: 5pt, 
+  align: center, 
+  stroke: 0.5pt,
+  "ai", quenya[ai], 
+  "oi", quenya[oi], 
+  "ui", quenya[ui], 
+  "au", quenya[au], 
+  "eu", quenya[eu], 
+  "iu", quenya[iu], 
+)
+
+=== Substitition rules<sec-subst-rules>
+
+=== Capital letters
+
+There is, as far as I am aware, no standard way to write capital letters in Tengwar. 
+One possible option is to use bold to denote a capital letter: 
+
+#v(paragraph-skip-b)
+
+#tengwar-snippet("quenya[#strong[Va]limar]")
 
 === Punctuation
 

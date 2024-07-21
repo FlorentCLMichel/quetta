@@ -13,9 +13,16 @@
   th     : sule,                 Th     : sule,
   nt     : anto,                 Nt     : anto,
   "£ngw" : ungwe-alt,            "£Ngw" : ungwe-alt,
-  "£n"   : noldo,                "£N"   : noldo,
   nqu    : unque,                Nqu    : unque,
   ngw    : ungwe,                Ngw    : ungwe,
+  nkw    : unque,                Nkw    : unque,
+  nw     : nwalme,               Nw     : nwalme,
+  "£ng"  : anga-alt,             "£Ng"  : anga-alt, 
+  ng     : anga,                 Ng     : anga, 
+  nc     : anca,                 Nc     : anca,
+  nq     : anca,                 Nq     : anca,
+  nk     : anca,                 Nk     : anca,
+  "£n"   : noldo,                "£N"   : noldo,
   n      : numen,                N      : numen,
   rd     : arda,                 Rd     : arda,
   "£r"   : romen,                "£R"   : romen,
@@ -36,17 +43,12 @@
   k      : calma-alt,            K      : calma-alt,
   "£c"   : calma-alt,            "£C"   : calma-alt,
   c      : calma,                C      : calma,
-  "£ng"  : anga-alt,             "£Ng"  : anga-alt, 
-  ng     : anga,                 Ng     : anga, 
+  hw     : hwesta,               Hw     : hwesta,
   h      : aha,                  H      : aha,
-  nc     : anca,                 Nc     : anca,
-  nq     : anca,                 Nq     : anca,
-  nk     : anca,                 Nk     : anca,
   y      : anna,                 Y      : anna,
   ld     : alda,                 Ld     : alda,
   "£l"   : lambe-alt,            "£L"   : lambe-alt,
   l      : lambe,                L      : lambe,
-  hw     : hwesta,               Hw     : hwesta,
   w      : wilya,                W      : wilya,
   ai     : iglide + tehta-a,     Ai     : iglide + tehta-a,
   ei     : iglide + tehta-e,     Ei     : iglide + tehta-e,
@@ -240,7 +242,6 @@
   } else if it.has("children") {
     it.children.map(it => quenya(it, style: style)).join()
   } else if it.has("child") {
-    set text(fill: text.fill)
     quenya(it.child, style: style)
   } else {
     it

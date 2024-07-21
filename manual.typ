@@ -502,10 +502,41 @@ The proper Tengwar parenthesis is mapped to ‘/’.
 
 === Number system
 
-*Example:*
-#tengwar-snippet("quenya[123]") 
+Quenya uses a base-12 system, with 12 digits listed in the following table: 
 
-#pagebreak()
+#v(paragraph-skip-b)
+
+#box(table(
+  columns: (auto,) * 12,
+  inset: 5pt, 
+  align: center, 
+  stroke: 0.5pt,
+  "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", 
+  quenya[0], quenya[1], quenya[2], quenya[3], quenya[4], quenya[5],
+  quenya[6], quenya[7], quenya[8], quenya[9], quenya[10], quenya[11],
+))
+
+#v(paragraph-skip-b)
+
+#h(-paragraph-indent)In contrast with the usual system, multi-digit numbers are written (from left to right) from least to most significant digit. 
+
+#v(paragraph-skip-b)
+
+#h(-paragraph-indent)
+*Examples:*
+
+#v(paragraph-skip-b)
+
+#tengwar-snippet("quenya[1]") #h(1em)
+#tengwar-snippet("quenya[11]") #h(1em)
+#tengwar-snippet("quenya[12]") #h(1em)
+#tengwar-snippet("quenya[100]") #h(1em)
+#tengwar-snippet("quenya[123]") #h(1em)
+#tengwar-snippet("quenya[144]") #h(1em)
+#tengwar-snippet("quenya[1000]") #h(1em)
+#tengwar-snippet("quenya[10000]") #h(1em)
+#tengwar-snippet("quenya[65537]") #h(1em)
+
 
 === Example: Namárië
 

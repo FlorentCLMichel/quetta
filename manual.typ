@@ -141,7 +141,7 @@
 // Code block
 #let code-block(it) = {
   set text(top-edge: "bounds", bottom-edge: "bounds")
-  block(fill: luma(200), inset: 3pt, breakable: false, raw(it))
+  block(fill: luma(220), inset: 3pt, breakable: false, raw(it))
 }
 
 
@@ -421,9 +421,9 @@ Although the Black Speech is not implemented yet, the One Ring inscription can b
 #v(0.5em)
 
 #code-block("quenya[
-  _»Ka:nssangw:nd£rombta£lokwô, Ka:nssangw:ngwmbe­talo« 
+  _»Ka:nssangw:nd£rombta£lo£kwô, Ka:nssangw:ngwmbe­talo« 
   #linebreak()#v(0.7em) 
-  Ka:nssangw:s£rquata£lokwô, £Ngwa:mb£rossmokii:qu£rpe­talo_
+  Ka:nssangw:s£rquata£lo£kwô, £Ngwa:mb£rossmokii:qu£rpe­talo_
 ]")
 
 #v(0.5em)
@@ -433,20 +433,21 @@ One reason is simply that the Quenya and Black Speech modes have different relat
 Another difference is that some of the tengwa forms used in the ring inscription are generally not used in Quenya; we thus use the symbol `£` to get variants. 
 We also use `£` to switch between #quenya[r] and #quenya[£r].
 Finally, words are separated with `:` to avoid repeated consonants being combined.
-Here is the result, with a color gradient in the background to mimic a golden surface:
+Here is the result, with a color gradient in the background to mimic a golden surface and on the text to represent incandescence:
 
 #v(1em)
 
 #[
-#set text(top-edge: "ascender", bottom-edge: "descender")
+#set text(top-edge: "ascender", bottom-edge: "descender", 
+          fill: gradient.linear(rgb(150,0,0), rgb(100,20,0), rgb(255,0,0), space: rgb, angle: 20deg))
 #align(center, block(
   fill: gradient.linear(rgb(157,103,7), rgb(250,250,152), rgb(157,103,7), space: rgb, angle: 80deg),
-  inset: (top: 0.5em, left: 1em, right: 0.5em, bottom: 1.5em),
+  inset: (top: 1em, left: 1em, right: 1em, bottom: 1.5em),
   radius: 5pt,
   quenya[
-    _»Ka:nssangw:nd£rombta£lokwô, Ka:nssangw:ngwmbe­talo« 
+    _»Ka:nssangw:nd£rombta£lo£kwô, Ka:nssangw:ngwmbe­talo« 
     #linebreak()#v(0.7em) 
-    Ka:nssangw:s£rquata£lokwô, £Ngwa:mb£rossmokii:qu£rpe­talo_
+    Ka:nssangw:s£rquata£lo£kwô, £Ngwa:mb£rossmokii:qu£rpe­talo_
   ]))
 ]
 

@@ -9,6 +9,7 @@
 // Other useful definitions
 #let font-stroke-width = 0pt
 #let paragraph-indent = 1em
+#let paragraph-skip-b = 1em
 #let subsec-skip-1 = 0.5em
 #let subsec-skip-2 = 0.5em
 #let link-color = color.rgb(0, 100, 200)
@@ -150,6 +151,13 @@
   set text(top-edge: "bounds", bottom-edge: "bounds")
   block(fill: luma(220), inset: 3pt, breakable: false, width: 100%, raw(it, lang: "typst-q"))
 }
+#let show-code(code) = {
+  v(paragraph-skip-b)
+  code-block(code)
+  v(paragraph-skip-b)
+  eval(code, mode: "markup", scope: (quenya: quenya))
+  v(paragraph-skip-b)
+}
 
 
 #if (title != none) {
@@ -188,13 +196,13 @@ Support for the other modes described by Tolkien is planned for a future version
 
 To import the module, simply add
 
-#v(1em)
+#v(paragraph-skip-b)
 
 ```typst
 #import "<path>/quetta.typ": *
 ```
 
-#v(1em)
+#v(paragraph-skip-b)
 
 at the top of your `.typ` file, where `<path>` is the path to the quetta module.
 
@@ -227,44 +235,44 @@ This command takes text (possibly including formatting) as input and performs th
 Alternative glyphs, when available, can be obtained with the symbol `£`.
 For instance, typing `n` produces the tengwa #quenya[n] (_numen_) while typing `£n` produces #quenya[£n] (_noldo_): 
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #tengwar-snippet("quenya[n]") #h(1em) #tengwar-snippet("quenya[£n]") 
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #tengwar-snippet("quenya[s]") #h(1em) #tengwar-snippet("quenya[£s]") 
 #h(1em) #tengwar-snippet("quenya[ss]") #h(1em) #tengwar-snippet("quenya[£ss]") 
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #tengwar-snippet("quenya[sa]") #h(1em) #tengwar-snippet("quenya[£sa]") 
 #h(1em) #tengwar-snippet("quenya[ssa]") #h(1em) #tengwar-snippet("quenya[£ssa]") 
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #h(-paragraph-indent)For tengwar associated with a sound starting with ‘k’, the standard glyphs are obtained using the spelling ‘c’ for _calma_ (#quenya[c]) or ‘q’ for _quessë_ (#quenya[qu]), and the alternatives glyphs with a ‘k’: 
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #tengwar-snippet("quenya[c]") #h(1em) #tengwar-snippet("quenya[k]") #h(1em)
 #tengwar-snippet("quenya[qu]") #h(1em) #tengwar-snippet("quenya[kw]") 
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #h(-paragraph-indent)Formatted text is supported, although it is still somewhat experimental: 
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #tengwar-snippet("quenya[quetta *quetta* _quetta_ _*quetta*_]")
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #h(-paragraph-indent)For a larger amout of text or more invoved formatting, it can be easier to use a `show` rule as follows: 
 
-#v(1em)
+#v(paragraph-skip-b)
 
-#code-block("#[#show: quenya
+#show-code("#[#show: quenya
 
   quenya
 
@@ -273,27 +281,10 @@ For instance, typing `n` produces the tengwa #quenya[n] (_numen_) while typing `
   #h(2em) _quenya_
 ]")
 
-#v(1em)
-
-giving
-
-#v(1em)
-
-#[#show: quenya
-
-  quenya
-
-  #h(1em) *quenya*
-
-  #h(2em) _quenya_
-]
-
-#v(1em)
-
 #h(-paragraph-indent)One limitation of the current implementation is that functions changing other style properties such as text color must be called _after_ the conversion function. 
 For instance, a centered 16-points italic version of the Quenya word ‘tengwar’ with a blue-green linear gradient may be obtained as follows:
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #code-block("#set align(center)
 #text(size: 16pt, 
@@ -301,7 +292,7 @@ For instance, a centered 16-points italic version of the Quenya word ‘tengwar�
      )[#box(quenya[_tengwar_])]
 ]")
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #[#set align(center)
 #text(size: 16pt, 
@@ -333,32 +324,32 @@ Here are a few basic examples:
 
 End-of-paragraph symbols can be obtained by combining commas and periods:
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #tengwar-snippet("quenya[.-]") #h(1em)
 #tengwar-snippet("quenya[.,]") #h(1em)
 #tengwar-snippet("quenya[..]") #h(1em)
 #tengwar-snippet("quenya[,.,]")
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #h(-paragraph-indent) *Note:* Generally, parentheses in Quenya are denoted by the single symbol #quenya[/]—there is no distinction between opening and closing parentheses. 
 We deviate from this convention by mabbing the symbol ‘(’ to #quenya[(] and ‘)’ to #quenya[)]. 
 The proper Tengwar parenthesis is mapped to ‘/’.
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #h(-paragraph-indent) The decorations #h(0.5em)#quenya[»] and #quenya[«]#h(0.5em) are obtained using the French quotation marks ‘»’ and ‘«’:
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #tengwar-snippet("quenya[»quenya«]", margin: 4pt)
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #h(-paragraph-indent) The symbol ‘:’ can be used to prevent glyph combination: 
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #tengwar-snippet("quenya[nn n:n]") #h(1em)
 #tengwar-snippet("quenya[na n:a]")
@@ -376,7 +367,7 @@ One of the most famous texts written in Quenya is the poem _Namárië_ (#quenya[
 Below we show the same text without (left) and with (right) the `#show: quenya` command.
 We use a spacing between line of 0.7em to clearly separate them (some tengwar have a relatively large vertical extension).
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #[
 #show: rest => columns(2, rest)
@@ -456,7 +447,7 @@ We also use `£` to switch between #quenya[r] and #quenya[£r].
 Finally, words are separated with `:` to avoid repeated consonants being combined.
 Here is the result, with a color gradient in the background to mimic a golden surface and on the text to represent incandescence:
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #[
 #set text(top-edge: "ascender", bottom-edge: "descender", 
@@ -472,11 +463,37 @@ Here is the result, with a color gradient in the background to mimic a golden su
   ]))
 ]
 
-#v(1em)
+#v(paragraph-skip-b)
 
 *Not yet implemented*
 
 #pagebreak()
+
+= Math mode? 
+
+Use of tengwar in math mode is not supported, although it should partially work. 
+In math mode, you'll need to apply the cnversion function to each part of a formula you want to write in Tengwar, which can be made slightly less cumbersome by redefining it to a shorter command:
+
+#show-code("#let q = quenya 
+$
+  integral_#q[0]^#q[2] #q[t]^#q[3] upright(d)#q[t]
+  = [ #q[t]^#q[4] / #q[4] ]_#q[0]^#q[2]
+  = #q[2]^#q[4] / #q[4]
+  = #q[16] / #q[4]
+  = #q[4]
+$
+#v(1em)
+$
+  #q[t] :
+    mat(delim: \"(\",
+      RR & -> RR ;
+      #q[a] & |-> #q[a]^#q[123])
+  => 
+  (upright(d)#q[t]lr((#q[a]))) / (upright(d)#q[a]) = #q[123 a]^#q[122] 
+$
+")
+
+Writing math-heavy content in tengwar would probably require a specific module, though, as well as a different tengwar font designed for this purpose.
 
 = How to contribute
 
@@ -494,7 +511,7 @@ Any kind of contribution is warmly welcome! Here are a few ways you can help:
 
 - *Feature requests:* Any feature request is welcome. I can't promise I'll have the time and knowledge to implement everything that would be nice to have; but if you'd like to see something implemented please let me know—or submit a pull request if you've already implemented it!
 
-#v(1em)
+#v(paragraph-skip-b)
 
 #align(right)[#quenya[Hantanyel!]]
 

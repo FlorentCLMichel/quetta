@@ -139,9 +139,16 @@
 
 
 // Code block
+#set raw(theme: "blue.tmTheme")
+#show raw.where(lang: "typst-q"): it => [
+    #show regex("(#\w+)") : keyword => text(fill: blue, weight: "bold", keyword)
+    #show regex("([0-9])") : keyword => text(fill: purple, keyword)
+    #show regex("\b(em|pt)\b") : keyword => text(fill: purple, keyword)
+    #it
+]
 #let code-block(it) = {
   set text(top-edge: "bounds", bottom-edge: "bounds")
-  block(fill: luma(220), inset: 3pt, breakable: false, raw(it))
+  block(fill: luma(220), inset: 3pt, breakable: false, width: 100%, raw(it, lang: "typst-q"))
 }
 
 
@@ -178,6 +185,18 @@ This module primarily focuses on the Quenya (#quenya[Quenya]), or â€˜classicalâ€
 Support for the other modes described by Tolkien is planned for a future version.
 
 = How to use
+
+To import the module, simply add
+
+#v(1em)
+
+```typst
+#import "<path>/quetta.typ": *
+```
+
+#v(1em)
+
+at the top of your `.typ` file, where `<path>` is the path to the quetta module.
 
 == Requirements
 
@@ -246,6 +265,7 @@ For instance, typing `n` produces the tengwa #quenya[n] (_numen_) while typing `
 #v(1em)
 
 #code-block("#[#show: quenya
+
   quenya
 
   #h(1em) *quenya*
@@ -260,6 +280,7 @@ giving
 #v(1em)
 
 #[#show: quenya
+
   quenya
 
   #h(1em) *quenya*

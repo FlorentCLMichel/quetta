@@ -27,5 +27,6 @@ The following line may be used to convert the whole document below to Tengwar in
 I (the original author) is definitely not en expert in either Typst nor Tengwar. I could thus use some help in every area. I would especially welcome contributions or suggestions on the following: 
 
 * Identify and resolve inefficiencies in the Typst code.
-* Cases where the result differs from the expected one. (In particular, there are probably rules for writing in Tengwar that I either am not aware of or have not properly understood. Any advice on that is warmly welcome!)
+* Identify cases where the result differs from the expected one. (In particular, there are probably rules for writing in Tengwar that I either am not aware of or have not properly understood. Any advice on that is warmly welcome!)
+* References on Tengar, Quenya, and Sidarin.
 * Support for other Tengwar fonts. 

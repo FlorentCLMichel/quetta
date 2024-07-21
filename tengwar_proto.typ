@@ -477,7 +477,7 @@
 
 #let quenya-str(txt, style: "normal") = { 
   // Set the font to Tengwar Annatar
-  set text(font: tengwar-font)
+  set text(font: tengwar-font, fallback: false)
 
   // Extract numbers, convert them to quenya, and shift the glyphs to avoid conflicts
   txt = txt.replace(regex("([0-9]+)"),
@@ -592,7 +592,7 @@
   let re-alt-font = regex("\u{ffff}(.?)\u{fffe}")
   show re-alt-font : it => {
     let m = it.text.match(re-alt-font).captures.first()
-    text(font: tengwar-font-alt, m)
+    text(font: tengwar-font-alt, fallback: false, m)
   }
 
   // Remove \u{fffd}
@@ -625,6 +625,9 @@
     }
   } else if it.has("children") {
     it.children.map(it => quenya(it, style: style)).join()
+  } else if it.has("child") {
+    set text(fill: text.fill)
+    quenya(it.child, style: style)
   } else {
     it
   }

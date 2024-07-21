@@ -106,7 +106,7 @@
   let radius = 5pt
   set text(bottom-edge: "bounds", top-edge: "bounds")
   let y = eval("tengwar." + code, mode: "code", scope: (tengwar: tengwar))
-  let code-block = raw(code, block: true, lang: "Typst")
+  let code-block = raw(code, block: true, lang: none)
   let height-l-t = measure([
       #set text(top-edge: "bounds", bottom-edge: "baseline")
       #box(code-block, inset: 0pt)]).height
@@ -137,37 +137,12 @@
     baseline: 28%)
 }
 
-// // Code snippet
-// #let tengwar-snippet(code) = context {
-//   let inset = 3pt
-//   set text(bottom-edge: "baseline")
-//   set text(top-edge: "bounds")
-//   let y = eval("tengwar." + code, mode: "code", scope: (tengwar: tengwar))
-//   let dy = calc.max(
-//     measure([
-//       #set text(bottom-edge: "bounds")
-//       #y]).height - measure(box(y, clip: true)).height,
-//     measure([
-//       #set text(bottom-edge: "bounds")
-//       #code]).height - measure(box(code, clip: true)).height)
-//   let code-block = raw(code, block: true, lang: "Typst")
-//   let box-l = box(code-block, 
-//                   inset: (bottom: dy+inset, top: inset, left: inset, right: inset))
-//   let dy2 = measure([
-//       #set text(bottom-edge: "bounds")
-//       #box-l]).height - 2*inset - measure([
-//       #set text(bottom-edge: "bounds")
-//       #y]).height
-//   if dy2 < 0pt { dy2 = 0pt }
-//   let box-r = box(y, fill: white, radius: 5pt,
-//                   inset: (bottom: dy+inset, top: dy2+inset, left: inset, right: inset - 1pt))
-//   box(box-l + box-r,
-//     inset: 0pt,
-//     radius: 5pt, 
-//     fill: rgb(200, 200, 200),
-//     stroke: luma(200),
-//     baseline: 28%)
-// }
+
+// Code block
+#let code-block(it) = {
+  set text(top-edge: "bounds", bottom-edge: "bounds")
+  block(fill: luma(200), inset: 3pt, breakable: false, raw(it))
+}
 
 
 #if (title != none) {
@@ -204,13 +179,33 @@ Support for the other modes described by Tolkien is planned for a future version
 
 = How to use
 
+== Requirements
+
+- #link("https://github.com/typst/typst")[Typst] version 1.11.1 or up
+
+- The #link("https://www.fontspace.com/tengwar-annatar-font-f2244")[Tengwar Annatar] fonts version 1.20
+
+Support for other Tengwar fonts is not currently planned. 
+
+
 == Design principles
 
-The module provides one main command for each supported mode (in the curr).
+This module provides one main command for each supported mode—at the moment, only `quenya` is implemented. 
+This command takes text (possibly including formatting) as input and performs the following sequence of operations (not necessarily in this order): 
 
-\*\*\*
++ Phonetic translation into tengar and tehtar—for instance, converting `quenya` to #tengwar.quenya[quen:ya].
 
-Alternative glyphs, when they exist, can be obtained with the symbol `£`.
++ Application of spelling rules—for instance, converting #tengwar.quenya[quen:ya] to #tengwar.quenya[quenya].
+
++ Conversion of numbers in base 12 and conversion to the tengwar number system (see below)—for instance, `144` becomes #tengwar.quenya[144].
+
++ Conversion of puntctuation symbols—for instance, `?` becomes #tengwar.quenya[?].
+
++ Adjustments to the position of tehtar and to the kerning between some symbols.
+
+#v(0.5em)
+
+Alternative glyphs, when available, can be obtained with the symbol `£`.
 For instance, typing `n` produces the tengwa #tengwar.quenya[n] (_numen_) while typing `£n` produces #tengwar.quenya[£n] (_noldo_): 
 
 #v(1em)
@@ -235,6 +230,63 @@ For instance, typing `n` produces the tengwa #tengwar.quenya[n] (_numen_) while 
 
 #tengwar-snippet("quenya[c]") #h(1em) #tengwar-snippet("quenya[k]") #h(1em)
 #tengwar-snippet("quenya[qu]") #h(1em) #tengwar-snippet("quenya[kw]") 
+
+#v(1em)
+
+#h(-paragraph-indent)Formatted text is supported, although it is still somewhat experimental: 
+
+#v(1em)
+
+#tengwar-snippet("quenya[quetta *quetta* _quetta_ _*quetta*_]")
+
+#v(1em)
+
+#h(-paragraph-indent)For a larger amout of text or more invoved formatting, it can be easier to use a `show` rule as follows: 
+
+#v(1em)
+
+#code-block("#[#show: quenya
+  quenya
+
+  #h(1em) *quenya*
+
+  #h(2em) _quenya_
+]")
+
+#v(1em)
+
+giving
+
+#v(1em)
+
+#[#show: tengwar.quenya
+  quenya
+
+  #h(1em) *quenya*
+
+  #h(2em) _quenya_
+]
+
+#v(1em)
+
+#h(-paragraph-indent)One limitation of the current implementation is that functions changing other style properties such as text color must be called _after_ the conversion function. 
+For instance, a centered 16-points italic version of the Quenya word ‘tengwar’ with a blue-green linear gradient may be obtained as follows:
+
+#v(1em)
+
+#code-block("#set align(center)
+#text(size: 16pt, 
+      fill: gradient.linear(blue, green)
+     )[#box(tengwar.quenya[_tengwar_])]
+]")
+
+#v(1em)
+
+#[#set align(center)
+#text(size: 16pt, 
+      fill: gradient.linear(blue, green)
+     )[#box(tengwar.quenya[_tengwar_])]
+]
 
 == Quenya
 
@@ -368,13 +420,11 @@ Although the Black Speech is not implemented yet, the One Ring inscription can b
 
 #v(0.5em)
 
-```
-quenya[
+#code-block("quenya[
   _»Ka:nssangw:nd£rombta£lokwô, Ka:nssangw:ngwmbe­talo« 
   #linebreak()#v(0.7em) 
   Ka:nssangw:s£rquata£lokwô, £Ngwa:mb£rossmokii:qu£rpe­talo_
-]
-```
+]")
 
 #v(0.5em)
 

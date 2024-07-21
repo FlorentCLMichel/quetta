@@ -543,6 +543,7 @@ Quenya uses a base-12 system, with 12 digits listed in the following table:
 #tengwar-snippet("quenya[10000]") #h(1em)
 #tengwar-snippet("quenya[65537]") #h(1em)
 
+#pagebreak()
 
 === Example: Namárië
 
@@ -676,7 +677,7 @@ $
 $
 ")
 
-Writing math-heavy content in tengwar would probably require a specific module, though, as well as a different tengwar font designed for this purpose.
+Writing math-heavy content in tengwar would probably require a specific module, though, as well as a different tengwar font designed for this purpose (or a math font design to work well with a tengwar font).
 
 = How to contribute
 
@@ -694,8 +695,6 @@ Any kind of contribution is warmly welcome! Here are a few ways you can help:
 
 - *Feature requests:* Any feature request is welcome. I can't promise I'll have the time and knowledge to implement everything that would be nice to have; but if you'd like to see something implemented please let me know—or submit a pull request if you've already implemented it!
 
-#v(paragraph-skip-b)
-
-#align(right)[#quenya[Hantanyel!]]
+#block(breakable: false, width: 100%, height: paragraph-skip-b + text-list-sep, align(right)[#quenya[Hantanyel!]])
 
 #bibliography("biblio.yml")

@@ -23,6 +23,7 @@
   nq     : anca,                 Nq     : anca,
   nk     : anca,                 Nk     : anca,
   "£n"   : noldo,                "£N"   : noldo,
+  ñ      : noldo,                Ñ      : noldo,
   n      : numen,                N      : numen,
   rd     : arda,                 Rd     : arda,
   "£r"   : romen,                "£R"   : romen,
@@ -44,12 +45,14 @@
   "£c"   : calma-alt,            "£C"   : calma-alt,
   c      : calma,                C      : calma,
   hw     : hwesta,               Hw     : hwesta,
+  "£h"   : hyarmen,              "£H"   : hyarmen,
   h      : aha,                  H      : aha,
   y      : anna,                 Y      : anna,
   ld     : alda,                 Ld     : alda,
   "£l"   : lambe-alt,            "£L"   : lambe-alt,
   l      : lambe,                L      : lambe,
   w      : wilya,                W      : wilya,
+  x      : calma + silme,        X      : calma + silme,
   ai     : iglide + tehta-a,     Ai     : iglide + tehta-a,
   ei     : iglide + tehta-e,     Ei     : iglide + tehta-e,
   oi     : iglide + tehta-o,     Oi     : iglide + tehta-o,
@@ -111,12 +114,15 @@
   txt = txt.replace(regex(aha + "(" + ore + "|" + romen + "|" + lambe + "|" + lambe-alt + ")"), 
                     m => halla + m.captures.first())
 
-  // Replace aha by hyarmen and add two dots below anna at start of word
-  txt = txt.replace(regex("(\ +)" + aha), m => m.captures.first() + hyarmen)
+  // Exchange aha and hyarmen and add two dots below anna at start of word
+  txt = txt.replace(regex("(\ +)(" + aha + "|" + hyarmen + ")"), 
+    m => m.captures.at(0) + if m.captures.at(1) == aha {hyarmen} else {aha})
   txt = txt.replace(regex("(\ +)" + anna), m => m.captures.first() + anna + tehta-y)
   txt = txt.replace(regex("(.)"), 
                     m => if m.captures.first() == aha { 
                       hyarmen 
+                    } else if m.captures.first() == hyarmen {
+                      aha
                     } else if m.captures.first() == anna {
                       anna + tehta-y
                     } else { 

@@ -343,6 +343,7 @@
   str(unque)      : "\u{007c}",
   str(nwalme)     : "\u{007c}",
   str(wilya)      : "\u{007c}",
+  str(lambe)      : "\u{00a5}",
 )
 
 #let numbers-shifted = (

@@ -257,7 +257,7 @@ This command takes text (possibly including formatting) as input and performs th
 #v(0.5em)
 
 Alternative glyphs, when available, can be obtained with the symbol `£`.
-For instance, typing `n` produces the tengwa #quenya[n] (_numen_) while typing `£n` produces #quenya[£n] (_noldo_): 
+For instance, typing `n` produces the tengwa #quenya[n] (_númen_) while typing `£n` (or, in this particular case, `ñ`) produces #quenya[£n] (_noldo_): 
 
 #v(paragraph-skip-b)
 
@@ -443,15 +443,27 @@ Diphthongs of the form _-i_ and _-u_ are obtained by adding a theta to an ‘i-g
 
 The equivalences mentioned in Section~@sec-quenya-gen should give a correct phonetic transcription from the Latin alphabet to tengwar in the Quenya mode. 
 This does not mean, however, that the spelling is correct. 
-Further substitution rules are required for that.
+Further substitution rules are required for that; see for instance Reference @tengwar-eruantalince.
 
 #v(text-list-sep)
 
 - As briefly mentioned above, a short vowel sound following a consonant sound is written as a tehta on the latter. For instance, _númen_ (_west_) is written #quenya[númen], with #quenya[me] replacing #quenya[m:e]. This does not apply to long vowels, the second consecutive vowel after a consonant, or (obviously) to a vowel sound at the start of a word.
 
-- \*\*\* change of tengwa (multiple ones)
+- If #quenya[r] is followed by a vowel or _y_ and a vowel, it is replaced by #quenya[£r].
 
-- Two successive identical tengwar with no tehta on the first one are replaced by a single tengwa with a bar under it. For instance, the word _anna_ (_gift_) is written #quenya[anna], with #quenya[nn] replacing two #quenya[n]s. Similarly, in #quenya[quetta] (_quetta_), #quenya[tt] replaces two #quenya[t]s.
+- If #quenya[y] follows a consonant, it is replaced by two dots under the corresponding tengwa.
+
+- If a single #quenya[s] follows a consonant, it is replaced by an ‘s-hook’: for instance, #quenya[t:s] → #quenya[ts].
+
+- If #quenya[s] is followed by a short vowel, it is reversed: #quenya[s:a] → #quenya[sa].
+
+- If #quenya[ss] is followed by a short vowel, it is reversed: #quenya[ss:a] → #quenya[ssa].
+
+- If #quenya[h] is part of the consonant cluster _hl_ or _hr_, it is written with a vertical bar as in _hrívë_ (_winter_): #quenya[hrívë].
+
+- If #quenya[h] is not part of the consonant cluster _hl_ or _hr_, nor at the start of a word, it is replaced by #quenya[£h].
+
+- Two successive identical tengwar with no tehta on the first one are replaced by a single tengwa with a wavy line under it. For instance, the word _anna_ (_gift_) is written #quenya[anna], with #quenya[nn] replacing two #quenya[n]s. Similarly, in #quenya[quetta] (_quetta_), #quenya[tt] replaces two #quenya[t]s.
 
 === Capital letters
 

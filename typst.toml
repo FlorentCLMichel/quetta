@@ -3,7 +3,7 @@ name = "quetta"
 version = "0.0.1"
 compiler = "0.11.1"
 repository = "https://github.com/FlorentCLMichel/quetta"
-entrypoint = "quetta.typ"
+entrypoint = "src/quetta.typ"
 authors = [
   "Florent Michel <https://github.com/FlorentCLMichel>",
 ]
@@ -11,4 +11,4 @@ categories = [ "languages" ]
 license = "MIT"
 description = "Easily write in Tengwar with Typst."
 keywords = [ "typography", "tengwar", "fantasy" ]
-exclude = [ "manual.pdf", "manual.typ", "manual_files", "logo.typ", "logo.svg", "Makefile" ]
+exclude = [ "manual.pdf", "manual.typ", "/manual_files/", "logo.typ", "logo.svg", "Makefile" ]

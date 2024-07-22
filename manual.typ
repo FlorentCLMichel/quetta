@@ -18,7 +18,7 @@
 #let title = "Manual for the quetta (" + quenya[Quetta] + ") module"
 #let author = "Florent Michel"
 #let keywords = ("Tengwar", "Typst")
-#let version = "0.0.1"
+#let version = "0.1.0"
 #set document(
   title: title,
   author: author,
@@ -202,14 +202,14 @@
 _‘Quetta’_ (#quenya[Quetta]) means ‘word’ in Quenya @elfdict, one of the fictional languages invented by British writer and philologist J. R. R. Tolkien. 
 It thus seemed fitting for a module aimed at making the process of typing these languages easier. 
 
-Words are also, loosely speaking, the base units this module works on, as we shall see in more detailes below. 
+Words are also, loosely speaking, the base units this module works on, as we shall see in more details below. 
 While its general philosophy is to map each symbol used in Tolkien's elvish languages to letters from the Latin alphabet, a few word-wise substitution rules were implemented so that, in _most_ (but probably not all) cases the correct spelling can be obtained by typing the word phonetically. 
 For the same reason, the mapping generally works on groups of letters when there is no natural one-to-one mapping between individual symbols.
 
 == The Tengwar script
 
 A proper introduction to Tengwar is way beyond the scope of this document. 
-We refer interested readers to Appendix E of Reference @lotr and online references such as #link("https://en.wikipedia.org/wiki/Tengwar")[wikipedia] #link("https://tolkiengateway.net/wiki/Tengwar")[tolkiengateway.net], #link("https://www.omniglot.com/conscripts/tengwar.htm")[omniglot.com], or #link("https://www.tecendil.com/tengwar-handbook/")[tecendil.com].
+We refer interested readers to Appendix E of Reference @lotr and online references such as #link("https://en.wikipedia.org/wiki/Tengwar")[Wikipedia] #link("https://tolkiengateway.net/wiki/Tengwar")[tolkiengateway.net], #link("https://www.omniglot.com/conscripts/tengwar.htm")[omniglot.com], or #link("https://www.tecendil.com/tengwar-handbook/")[tecendil.com].
 
 In short, Tengwar (#quenya[tengwar] in Quenya mode) is one of the scripts invented by Tolkien, primarily consisting of 36 letters (called _tengwar_; singular: _tengwa_ (#quenya[tengwa])) and diacritics (_tehtar_ (#quenya[tehtar]; singular: _tehta_ (#quenya[tehta]))). 
 There are several ways to relate tengwar to sounds, called _modes_.
@@ -244,13 +244,13 @@ Support for other Tengwar fonts is not currently planned.
 This module provides one main command for each supported mode—at the moment, only `quenya` is implemented. 
 This command takes text (possibly including formatting) as input and performs the following sequence of operations (not necessarily in this order): 
 
-+ Phonetic translation into tengar and tehtar—for instance, converting `quenya` to #quenya[quen:ya].
++ Phonetic translation into tengwar and tehtar—for instance, converting `quenya` to #quenya[quen:ya].
 
 + Application of spelling rules—for instance, converting #quenya[quen:ya] to #quenya[quenya].
 
 + Conversion of numbers in base 12 and conversion to the tengwar number system (see below)—for instance, `144` becomes #quenya[144].
 
-+ Conversion of puntctuation symbols—for instance, `?` becomes #quenya[?].
++ Conversion of punctuation symbols—for instance, `?` becomes #quenya[?].
 
 + Adjustments to the position of tehtar and to the kerning between some symbols.
 
@@ -292,7 +292,7 @@ For instance, typing `n` produces the tengwa #quenya[n] (_numen_) while typing `
 
 #v(paragraph-skip-b)
 
-#h(-paragraph-indent)For a larger amout of text or more invoved formatting, it can be easier to use a `show` rule as follows: 
+#h(-paragraph-indent)For a larger amount of text or more involved formatting, it can be easier to use a `show` rule as follows: 
 
 #v(paragraph-skip-b)
 
@@ -306,7 +306,7 @@ For instance, typing `n` produces the tengwa #quenya[n] (_numen_) while typing `
 ]")
 
 #h(-paragraph-indent)One limitation of the current implementation is that functions changing other style properties such as text color must be called _after_ the conversion function. 
-For instance, a centered 16-points italic version of the Quenya word ‘tengwar’ with a blue-green linear gradient may be obtained as follows:
+For instance, a centred 16-points italic version of the Quenya word ‘tengwar’ with a blue-green linear gradient may be obtained as follows:
 
 #v(paragraph-skip-b)
 
@@ -410,14 +410,14 @@ Here are a few basic examples:
 
 #h(-paragraph-indent)
 Different tengwar are used for the same sounds in different situations; see Section~@sec-quenya-subst-rules.
-Voyel sounds are generally represented by a _tetha_, placed either on the previous consonant or a short carrier for a short voyel, or a long carrier for a long voyel#footnote[We use an acute accent to denote long voyels. For instance, `a` is rendered as #quenya[a] and `à` as #quenya[á].]:
+Vowel sounds are generally represented by a _tehta_, placed either on the previous consonant or a short carrier for a short vowel, or a long carrier for a long vowel#footnote[We use an acute accent to denote long vowels. For instance, `a` is rendered as #quenya[a] and `à` as #quenya[á].]:
 
 #v(paragraph-skip-b)
 
 #table(
   columns: (auto, auto, auto),
   table.header(
-    [*voyel*], [*short version*], [*long version*]
+    [*vowel*], [*short version*], [*long version*]
   ),
   "a", quenya[a], quenya[á], 
   "e", quenya[e], quenya[é], 
@@ -428,7 +428,7 @@ Voyel sounds are generally represented by a _tetha_, placed either on the previo
 
 #v(paragraph-skip-b)
 
-Diphtongues of the form _-i_ and _-u_ are obtained by adding a theta to an ‘i-glide’ or ‘u-glide’ symbol: 
+Diphthongs of the form _-i_ and _-u_ are obtained by adding a theta to an ‘i-glide’ or ‘u-glide’ symbol: 
 
 #v(paragraph-skip-b)
 
@@ -439,7 +439,7 @@ Diphtongues of the form _-i_ and _-u_ are obtained by adding a theta to an ‘i-
   quenya[au], quenya[eu], quenya[iu], 
 )
 
-=== Substitition rules<sec-quenya-subst-rules>
+=== Substitution rules<sec-quenya-subst-rules>
 
 The equivalences mentioned in Section~@sec-quenya-gen should give a correct phonetic transcription from the Latin alphabet to tengwar in the Quenya mode. 
 This does not mean, however, that the spelling is correct. 
@@ -447,7 +447,7 @@ Further substitution rules are required for that.
 
 #v(text-list-sep)
 
-- As briefly mentioned above, a short voyel sound following a consonant sound is written as a tehta on the latter. For instance, _númen_ (_west_) is written #quenya[númen], with #quenya[me] replacing #quenya[m:e]. This does not apply to long voyels, the second consecutive voyel after a consonant, or (obviously) to a voyel sound at the start of a word.
+- As briefly mentioned above, a short vowel sound following a consonant sound is written as a tehta on the latter. For instance, _númen_ (_west_) is written #quenya[númen], with #quenya[me] replacing #quenya[m:e]. This does not apply to long vowels, the second consecutive vowel after a consonant, or (obviously) to a vowel sound at the start of a word.
 
 - \*\*\* change of tengwa (multiple ones)
 
@@ -477,7 +477,7 @@ The module provides the following punctuation symbols:
 #v(paragraph-skip-b)
 
 #h(-paragraph-indent) *Note:* Generally, parentheses in Quenya are denoted by the single symbol #quenya[/]—there is no distinction between opening and closing parentheses. 
-We deviate from this convention by mabbing the symbol ‘(’ to #quenya[(] and ‘)’ to #quenya[)]. 
+We deviate from this convention by mapping the symbol ‘(’ to #quenya[(] and ‘)’ to #quenya[)]. 
 The proper Tengwar parenthesis is mapped to ‘/’.
 
 #v(paragraph-skip-b)
@@ -612,7 +612,7 @@ Nai elyë hiruva. Namárië!
 
 == Black Speech
 
-Although the Black Speech is not implemented yet, the One Ring inscription can be reproduced using the Quenya mode as follows:#footnote[This is obviously a bit of a hack, meant only to show how the limitations of hwving only one mode implemented can be circumvented. This example is not supposed to be stable and might render differently in a later version.]
+Although the Black Speech is not implemented yet, the One Ring inscription can be reproduced using the Quenya mode as follows:#footnote[This is obviously a bit of a hack, meant only to show how the limitations of having only one mode implemented can be circumvented. This example is not supposed to be stable and might render differently in a later version.]
 
 #v(0.5em)
 
@@ -629,7 +629,7 @@ One reason is simply that the Quenya and Black Speech modes have different relat
 Another difference is that some of the tengwa forms used in the ring inscription are generally not used in Quenya; we thus use the symbol `£` to get variants. 
 We also use `£` to switch between #quenya[r] and #quenya[£r].
 Finally, words are separated with `:` to avoid repeated consonants being combined.
-Here is the result, with a color gradient in the background to mimic a golden surface and on the text to represent incandescence:
+Here is the result, with a colour gradient in the background to mimic a golden surface and on the text to represent incandescence:
 
 #v(paragraph-skip-b)
 
@@ -656,7 +656,7 @@ Here is the result, with a color gradient in the background to mimic a golden su
 = Math mode? 
 
 Use of tengwar in math mode is not supported, although it should partially work. 
-In math mode, you'll need to apply the cnversion function to each part of a formula you want to write in Tengwar, which can be made slightly less cumbersome by redefining it to a shorter command:
+In math mode, you'll need to apply the conversion function to each part of a formula you want to write in Tengwar, which can be made slightly less cumbersome by redefining it to a shorter command:
 
 #show-code("#let q = quenya 
 $

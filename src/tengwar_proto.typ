@@ -1,5 +1,7 @@
 #let tengwar-font = "Tengwar Annatar";
+#let tengwar-font-fallback = "tngan";
 #let tengwar-font-alt = "Tengwar Annatar Alt";
+#let tengwar-font-alt-fallback = "tngana";
 
 #let to-string(content) = {
   if content.has("text") {

@@ -10,8 +10,8 @@
 #let font-stroke-width = 0pt
 #let paragraph-indent = 1em
 #let paragraph-skip-b = 1em
-#let subsec-skip-1 = 0.5em
-#let subsec-skip-2 = 0.5em
+#let subsec-skip-1 = 0em
+#let subsec-skip-2 = 0.25em
 #let link-color = color.rgb(0, 100, 200)
 
 // Document metadata
@@ -121,6 +121,8 @@
 
 // Citation format
 #show cite: it => {
+  set text(fill: black)
+  //show regex("\[|\]"): ""
   show regex("\d+"): set text(fill: link-color)
   it
 }
@@ -218,6 +220,14 @@ Support for the other modes described by Tolkien is planned for a future version
 
 = How to use
 
+== Requirements
+
+- #link("https://github.com/typst/typst")[Typst] version 1.11.1 or up
+
+- The #link("https://www.fontspace.com/tengwar-annatar-font-f2244")[Tengwar Annatar] fonts version 1.20 (support for other Tengwar fonts is not currently planned.)
+
+== Importing the module
+
 To import the module, simply add
 
 #v(paragraph-skip-b)
@@ -225,19 +235,9 @@ To import the module, simply add
 ```typst
 #import "<path>/quetta.typ": *
 ```
-
 #v(paragraph-skip-b)
 
 at the top of your `.typ` file, where `<path>` is the path to the quetta module.
-
-== Requirements
-
-- #link("https://github.com/typst/typst")[Typst] version 1.11.1 or up
-
-- The #link("https://www.fontspace.com/tengwar-annatar-font-f2244")[Tengwar Annatar] fonts version 1.20
-
-Support for other Tengwar fonts is not currently planned. 
-
 
 == Design principles
 
@@ -559,7 +559,7 @@ Quenya uses a base-12 system, with 12 digits listed in the following table:
 
 === Example: Namárië
 
-One of the most famous texts written in Quenya is the poem _Namárië_ (#quenya[Namárië]), originally written in @lotr #footnote[Book 2, ch. 8 "Farewell to Lórien"] and available for instance in Reference @namarie.
+One of the most famous texts written in Quenya is the poem _Namárië_ (#quenya[Namárië]), originally written in Reference~@lotr #footnote[Book 2, ch. 8 "Farewell to Lórien"] and available for instance in Reference~@namarie.
 Below we show the same text without (left) and with (right) the `#show: quenya` command.
 We use a spacing between line of 0.7em to clearly separate them (some tengwar have a relatively large vertical extension).
 
@@ -612,29 +612,37 @@ Nai elyë hiruva. Namárië!
 
 ]
 
-== Sindarin—Mode of Gondor
-
-*Not yet implemented*
-
-== Sindarin—Mode of Beleriand
-
-*Not yet implemented*
-
 #pagebreak()
 
-== Black Speech
+// == Sindarin—Mode of Gondor
+// 
+// *Not yet implemented*
+// 
+// == Sindarin—Mode of Beleriand
+// 
+// *Not yet implemented*
+// 
+// == Black Speech
+// 
+// *Not yet implemented*
+// 
+// #pagebreak()
+
+== The One Ring inscription
 
 Although the Black Speech is not implemented yet, the One Ring inscription can be reproduced using the Quenya mode as follows:#footnote[This is obviously a bit of a hack, meant only to show how the limitations of having only one mode implemented can be circumvented. This example is not supposed to be stable and might render differently in a later version.]
 
-#v(0.5em)
+#v(paragraph-skip-b)
 
-#code-block("quenya[
+#let ring-inscr-quenya = "
   _»Ka:nssangw:nd£rombta£lo£kwô, Ka:nssangw:ngwmbe­talo« 
   #linebreak()#v(0.7em) 
   Ka:nssangw:s£rquata£lo£kwô, £Ngwa:mb£rossmokii:qu£rpe­talo_
-]")
+"
 
-#v(0.5em)
+#code-block("quenya[" + ring-inscr-quenya + "]")
+
+#v(paragraph-skip-b)
 
 Obviously, that's not quite how the ring inscription is supposed to sound.
 One reason is simply that the Quenya and Black Speech modes have different relations between symbols and sounds: to obtain the same written result, one has to ‘transcribe’ the phonetic description to how it would be read in the Quenya mode. 
@@ -645,29 +653,31 @@ Here is the result, with a colour gradient in the background to mimic a golden s
 
 #v(paragraph-skip-b)
 
-#[
-#set text(top-edge: "ascender", bottom-edge: "descender", 
+#let code-ring-inscription-quenya = "#set text(top-edge: \"ascender\", bottom-edge: \"descender\", 
           fill: gradient.linear(rgb(150,0,0), rgb(100,20,0), rgb(255,0,0), space: rgb, angle: 20deg))
 #align(center, block(
   fill: gradient.linear(rgb(157,103,7), rgb(250,250,152), rgb(157,103,7), space: rgb, angle: 80deg),
   inset: (top: 1em, left: 1em, right: 1em, bottom: 1.5em),
   radius: 5pt,
-  quenya[
-    _»Ka:nssangw:nd£rombta£lo£kwô, Ka:nssangw:ngwmbe­talo« 
-    #linebreak()#v(0.7em) 
-    Ka:nssangw:s£rquata£lo£kwô, £Ngwa:mb£rossmokii:qu£rpe­talo_
-  ]))
-]
+  quenya(eval(ring-inscr-quenya, mode: \"markup\"))))"
+
+#eval(code-ring-inscription-quenya, mode: "markup", scope: (quenya: quenya, ring-inscr-quenya: ring-inscr-quenya))
 
 #v(paragraph-skip-b)
 
-*Not yet implemented*
+The full code for the above example is: 
+
+#v(paragraph-skip-b)
+
+#code-block("#let ring-inscr-quenya = \"" + ring-inscr-quenya + "\"\n" + code-ring-inscription-quenya)
+
+#v(paragraph-skip-b)
 
 #pagebreak()
 
 = Math mode? 
 
-Use of tengwar in math mode is not supported, although it should partially work. 
+Use of tengwar in math mode is not fully supported, although it should work in simple cases. 
 In math mode, you'll need to apply the conversion function to each part of a formula you want to write in Tengwar, which can be made slightly less cumbersome by redefining it to a shorter command:
 
 #show-code("#let q = quenya 
@@ -689,7 +699,7 @@ $
 $
 ")
 
-Writing math-heavy content in tengwar would probably require a specific module, though, as well as a different tengwar font designed for this purpose (or a math font design to work well with a tengwar font).
+Writing math-heavy content in tengwar would probably require a specific module, though, as well as a different tengwar font designed for this purpose (or a math font designed to work well with a tengwar font).
 
 = How to contribute
 

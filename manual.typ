@@ -201,19 +201,19 @@
 
 == ‘Quetta’?
 
-_‘Quetta’_ (#quenya[Quetta]) means ‘word’ in Quenya @elfdict, one of the fictional languages invented by British writer and philologist J. R. R. Tolkien. 
+_‘Quetta’_ (#quenya[Quetta]) means ‘word’ in Quenya @elfdict#footnote[https://www.elfdict.com/w/quetta], one of the fictional languages invented by British writer and philologist J. R. R. Tolkien. 
 It thus seemed fitting for a module aimed at making the process of typing these languages easier. 
 
 Words are also, loosely speaking, the base units this module works on, as we shall see in more details below. 
 While its general philosophy is to map each symbol used in Tolkien's elvish languages to letters from the Latin alphabet, a few word-wise substitution rules were implemented so that, in _most_ (but probably not all) cases the correct spelling can be obtained by typing the word phonetically. 
-For the same reason, the mapping generally works on groups of letters when there is no natural one-to-one mapping between individual symbols.
+For the same reason, the mapping generally works on groups of letters rather than individual ones, at least when there is no natural one-to-one mapping between individual symbols.
 
 == The Tengwar script
 
 A proper introduction to Tengwar is way beyond the scope of this document. 
-We refer interested readers to Appendix E of Reference @lotr and online references such as #link("https://en.wikipedia.org/wiki/Tengwar")[Wikipedia] #link("https://tolkiengateway.net/wiki/Tengwar")[tolkiengateway.net], #link("https://www.omniglot.com/conscripts/tengwar.htm")[omniglot.com], or #link("https://www.tecendil.com/tengwar-handbook/")[tecendil.com].
+We refer interested readers to Appendix E of the book @lotr and online references such as #link("https://en.wikipedia.org/wiki/Tengwar")[Wikipedia], #link("https://tolkiengateway.net/wiki/Tengwar")[tolkiengateway.net], #link("https://www.omniglot.com/conscripts/tengwar.htm")[omniglot.com], or #link("https://www.tecendil.com/tengwar-handbook/")[tecendil.com].
 
-In short, Tengwar (#quenya[tengwar] in Quenya mode) is one of the scripts invented by Tolkien, primarily consisting of 36 letters (called _tengwar_; singular: _tengwa_ (#quenya[tengwa])) and diacritics (_tehtar_ (#quenya[tehtar]; singular: _tehta_ (#quenya[tehta]))). 
+In short, Tengwar (#quenya[tengwar] in Quenya mode) is one of the scripts invented by Tolkien, primarily consisting of 36 letters (called _tengwar_; singular: _tengwa_ (#quenya[tengwa])) and diacritics (_tehtar_ (#quenya[tehtar] ; singular: _tehta_ (#quenya[tehta]))). 
 There are several ways to relate tengwar to sounds, called _modes_.
 This module primarily focuses on the Quenya (#quenya[Quenya]), or ‘classical’, mode, in universe the original way to write tengwar.
 Support for the other modes described by Tolkien is planned for a future version.
@@ -222,9 +222,9 @@ Support for the other modes described by Tolkien is planned for a future version
 
 == Requirements
 
-- #link("https://github.com/typst/typst")[Typst] version 1.11.1 or up
+- #link("https://github.com/typst/typst")[Typst] version 1.11.0 or up
 
-- The #link("https://www.fontspace.com/tengwar-annatar-font-f2244")[Tengwar Annatar] fonts version 1.20 (support for other Tengwar fonts is not currently planned.)
+- The #link("https://www.fontspace.com/tengwar-annatar-font-f2244")[Tengwar Annatar] fonts version 1.20 (support for other Tengwar fonts is not currently planned).
 
 == Importing the module
 
@@ -237,7 +237,7 @@ To import the module, simply add
 ```
 #v(paragraph-skip-b)
 
-at the top of your `.typ` file, where `<path>` is the path to the quetta module.
+at the top of your `.typ` file, where `<path>` is the path to the quetta module. 
 
 == Design principles
 
@@ -275,7 +275,7 @@ For instance, typing `n` produces the tengwa #quenya[n] (_númen_) while typing 
 
 #v(paragraph-skip-b)
 
-#h(-paragraph-indent)For tengwar associated with a sound starting with ‘k’, the standard glyphs are obtained using the spelling ‘c’ for _calma_ (#quenya[c]) or ‘q’ for _quessë_ (#quenya[qu]), and the alternatives glyphs with a ‘k’: 
+#h(-paragraph-indent)For tengwar associated with a sound starting with ‘k’, the standard glyphs are obtained using the spelling ‘c’ for _calma_ (#quenya[c]) or ‘qu’ for _quessë_ (#quenya[qu]), and the alternatives glyphs with a ‘k’ or ‘kw’: 
 
 #v(paragraph-skip-b)
 
@@ -343,7 +343,7 @@ Here are a few basic examples:
 
 #v(paragraph-skip-b)
 
-#h(-paragraph-indent)A full description of the Quenya mode is beyond the scope of this document. As a first approximation, consonant sounds are represented by _tengwar_ as follows:
+#h(-paragraph-indent)A full description of the Quenya mode is beyond the scope of this document. As a first approximation, consonant sounds are represented by _tengwar_ as follows#footnote[In these tables, the letter ‘u’ represents the consonant sound ‘w’.]:
 
 #v(paragraph-skip-b)
 
@@ -388,10 +388,10 @@ Here are a few basic examples:
   table.header(
     [*consonant*], [*tengwa*]
   ),
-  "cw", quenya[cw],
+  "qu", quenya[qu],
   "ngw", quenya[ngw],
   "hw", quenya[hw],
-  "ncw", quenya[ncw],
+  "nqu", quenya[nqu],
   "nw", quenya[nw],
   "w", quenya[w],
 ))
@@ -441,7 +441,7 @@ Diphthongs of the form _-i_ and _-u_ are obtained by adding a theta to an ‘i-g
 
 === Substitution rules<sec-quenya-subst-rules>
 
-The equivalences mentioned in Section~@sec-quenya-gen should give a correct phonetic transcription from the Latin alphabet to tengwar in the Quenya mode. 
+The equivalences mentioned in Section~@sec-quenya-gen should give an approximate phonetic transcription from the Latin alphabet to tengwar in the Quenya mode. 
 This does not mean, however, that the spelling is correct. 
 Further substitution rules are required for that; see for instance Reference @tengwar-eruantalince.
 
@@ -451,7 +451,7 @@ Further substitution rules are required for that; see for instance Reference @te
 
 - If #quenya[r] is followed by a vowel or _y_ and a vowel, it is replaced by #quenya[£r].
 
-- If #quenya[y] follows a consonant, it is replaced by two dots under the corresponding tengwa.
+- If #quenya[y] follows a consonant, it is replaced by two dots under the corresponding tengwa: #quenya[n:y] → #quenya[ny].
 
 - If a single #quenya[s] follows a consonant, it is replaced by an ‘s-hook’: for instance, #quenya[t:s] → #quenya[ts].
 
@@ -468,7 +468,7 @@ Further substitution rules are required for that; see for instance Reference @te
 === Capital letters
 
 There is, as far as I am aware, no standard way to write capital letters in Tengwar. 
-One possible option is to use bold to denote a capital letter: 
+One option is to use bold to denote a capital letter: 
 
 #v(paragraph-skip-b)
 
@@ -559,11 +559,11 @@ Quenya uses a base-12 system, with 12 digits listed in the following table:
 
 === Example: Namárië
 
-One of the most famous texts written in Quenya is the poem _Namárië_ (#quenya[Namárië]), originally written in Reference~@lotr #footnote[Book 2, ch. 8 "Farewell to Lórien"] and available for instance in Reference~@namarie.
+One of the most famous texts in Quenya is the poem _Namárië_ (#quenya[Namárië]), originally written in Reference~@lotr #footnote[Book 2, ch. 8 "Farewell to Lórien"] and available for instance in Reference~@namarie.
 Below we show the same text without (left) and with (right) the `#show: quenya` command.
 We use a spacing between line of 0.7em to clearly separate them (some tengwar have a relatively large vertical extension).
 
-#v(paragraph-skip-b)
+#v(4*paragraph-skip-b)
 
 #[
 #show: rest => columns(2, rest)
@@ -682,6 +682,10 @@ In math mode, you'll need to apply the conversion function to each part of a for
 
 #show-code("#let q = quenya 
 $
+  #q[6] times #q[7] = #q[42]
+$
+#v(1em)
+$
   integral_#q[0]^#q[2] #q[t]^#q[3] upright(d)#q[t]
   = [ #q[t]^#q[4] / #q[4] ]_#q[0]^#q[2]
   = #q[2]^#q[4] / #q[4]
@@ -700,6 +704,8 @@ $
 ")
 
 Writing math-heavy content in tengwar would probably require a specific module, though, as well as a different tengwar font designed for this purpose (or a math font designed to work well with a tengwar font).
+
+#pagebreak()
 
 = How to contribute
 

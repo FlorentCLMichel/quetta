@@ -2,6 +2,7 @@
 
 
 #let map-quenya = (
+  th     : sule,                 Th     : sule,
   "£t"   : tinco-alt,            "£T"   : tinco-alt,
   t      : tinco,                T      : tinco,
   "£nd"  : ando-alt,             "£Nd"  : ando-alt,
@@ -10,13 +11,12 @@
   "£s"   : silme-alt,            "£S"   : silme-alt,
   ss     : esse,                 Ss     : esse,
   s      : silme,                S      : silme,
-  th     : sule,                 Th     : sule,
   nt     : anto,                 Nt     : anto,
   "£ngw" : ungwe-alt,            "£Ngw" : ungwe-alt,
   nqu    : unque,                Nqu    : unque,
   ngw    : ungwe,                Ngw    : ungwe,
   nkw    : unque,                Nkw    : unque,
-  nw     : nwalme,               Nw     : nwalme,
+  ñw     : nwalme,               Ñw     : nwalme,
   "£ng"  : anga-alt,             "£Ng"  : anga-alt, 
   ng     : anga,                 Ng     : anga, 
   nc     : anca,                 Nc     : anca,

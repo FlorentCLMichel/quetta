@@ -256,12 +256,7 @@ This command takes text (possibly including formatting) as input and performs th
 
 #v(0.5em)
 
-Alternative glyphs, when available, can be obtained with the symbol `£`.
-For instance, typing `n` produces the tengwa #quenya[n] (_númen_) while typing `£n` (or, in this particular case, `ñ`) produces #quenya[£n] (_noldo_): 
-
-#v(paragraph-skip-b)
-
-#tengwar-snippet("quenya[n]") #h(1em) #tengwar-snippet("quenya[£n]") 
+Alternative glyphs, when available, can be obtained with the symbol `£`:
 
 #v(paragraph-skip-b)
 
@@ -328,7 +323,8 @@ For instance, a centred 16-points italic version of the Quenya word ‘tengwar�
 
 === Generalities<sec-quenya-gen>
 
-The implementation of the Quenya mode follows Reference @tengwar-eruantalince, summarizing information available in Appendix E of @lotr and examples provided in other parts of the book. 
+The implementation of the Quenya mode mostly follows Reference @tengwar-eruantalince, summarizing information available in Appendix E of @lotr and examples provided in other parts of the book. 
+In universe, the Quenya language and pronunciation evolved somewhat between its origins and events described in @lotr; in this implementation, we aim to stay close to the Second Age conventions.
 Here are a few basic examples: 
 
 #v(paragraph-skip-b)
@@ -354,7 +350,7 @@ Here are a few basic examples:
   ),
   "t", quenya[t],
   "nd", quenya[nd],
-  "s", quenya[s],
+  "th", quenya[th],
   "nt", quenya[nt],
   "n", quenya[n],
   "r", quenya[r],
@@ -392,7 +388,7 @@ Here are a few basic examples:
   "ngw", quenya[ngw],
   "hw", quenya[hw],
   "nqu", quenya[nqu],
-  "nw", quenya[nw],
+  "ñw", quenya[ñw],
   "w", quenya[w],
 ))
 #box(table(
@@ -400,9 +396,11 @@ Here are a few basic examples:
   table.header(
     [*consonant*], [*tengwa*]
   ),
+  "ñ", quenya[ñ],
   "rd", quenya[rd],
   "l", quenya[l],
   "ld", quenya[ld],
+  "s", quenya[s],
   "ss", quenya[ss],
 ))
 
@@ -637,7 +635,7 @@ Although the Black Speech is not implemented yet, the One Ring inscription can b
 #let ring-inscr-quenya = "
   _»Ka:nssangw:nd£rombta£lo£kwô, Ka:nssangw:ngwmbe­talo« 
   #linebreak()#v(0.7em) 
-  Ka:nssangw:s£rquata£lo£kwô, £Ngwa:mb£rossmokii:qu£rpe­talo_
+  Ka:nssangwth£rquata£lo£kwô, £Ngwa:mb£rossmokii:qu£rpe­talo_
 "
 
 #code-block("quenya[" + ring-inscr-quenya + "]")

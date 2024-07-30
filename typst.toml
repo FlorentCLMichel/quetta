@@ -7,7 +7,8 @@ entrypoint = "src/quetta.typ"
 authors = [
   "Florent Michel <https://github.com/FlorentCLMichel>",
 ]
-categories = [ "languages" ]
+categories = [ "text", "languages", "fun" ]
+disciplines = [ "linguistics", "literature" ]
 license = "MIT"
 description = "Write Tengwar easily with Typst."
 keywords = [ "typography", "tengwar", "fantasy" ]

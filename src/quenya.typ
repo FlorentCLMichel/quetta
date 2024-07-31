@@ -87,7 +87,9 @@
   ")"    : r-paren,
   "­"    : tilde,
   "/"    : slash,
+  "<"    : "\u{ffff}«\u{fffe}",
   "«"    : "\u{ffff}«\u{fffe}",
+  ">"    : "\u{ffff}»\u{fffe}",
   "»"    : "\u{ffff}»\u{fffe}",
   ":"    : "\u{fffd}",
   "?"    : questionmark,
@@ -226,6 +228,7 @@
 #let quenya(it, style: "normal") = { 
 
   show re-esse-adjust: adjust-esse
+  show re-digits-adjust: adjust-digits
 
   if it.has("text") {
     text(quenya-str(it.text, style: style), style: style)

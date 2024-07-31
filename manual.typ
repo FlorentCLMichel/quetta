@@ -215,7 +215,7 @@ We refer interested readers to Appendix E of the book @lotr and online reference
 
 In short, Tengwar (#quenya[tengwar] in Quenya mode) is one of the scripts invented by Tolkien, primarily consisting of 36 letters (called _tengwar_; singular: _tengwa_ (#quenya[tengwa])) and diacritics (_tehtar_ (#quenya[tehtar] ; singular: _tehta_ (#quenya[tehta]))). 
 There are several ways to relate tengwar to sounds, called _modes_.
-This module primarily focuses on the Quenya (#quenya[Quenya]), or ‘classical’, mode, in universe the original way to write tengwar.
+This module primarily focuses on the Quenya (#quenya[Quenya]), or ‘classical’, mode (in universe, it is the original way to write tengwar).
 Support for the other modes described by Tolkien is planned for a future version.
 
 = How to use
@@ -503,11 +503,11 @@ End-of-paragraph symbols can be obtained by combining commas and periods:
 
 #v(paragraph-skip-b)
 
-#h(-paragraph-indent) The decorations #h(0.5em)#quenya[»] and #quenya[«]#h(0.5em) are obtained using the French quotation marks ‘»’ and ‘«’:
+#h(-paragraph-indent) The decorations #h(0.5em)#quenya[»] and #quenya[«]#h(0.5em) are obtained using ‘>’ and ‘<’ (or the French quotation marks ‘»’ and ‘«’):
 
 #v(paragraph-skip-b)
 
-#tengwar-snippet("quenya[»quenya«]", margin: 4pt)
+#tengwar-snippet("quenya[>quenya<]", margin: 4pt)
 
 #v(paragraph-skip-b)
 

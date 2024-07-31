@@ -361,6 +361,10 @@
   "11" : "\u{fffb}",
 )
 
+#let digits = ("\u{00f0}", "\u{00f1}", "\u{00f2}", "\u{00f3}", "\u{00f4}",
+               "\u{00f5}", "\u{00f6}", "\u{00f7}", "\u{00f8}", "\u{00f9}",
+               "\u{00fa}", "\u{00fb}")
+
 #let numbers-unshift = (
   "\u{fff0}" : "\u{00f0}",
   "\u{fff1}" : "\u{00f1}",
@@ -389,7 +393,7 @@
   n_base_12.map(m => numbers-shifted.at(str(m))).join()
 }
 
-// Adjust the spacing between esses and other consonants
+// Adjust the spacing between esse and other consonants
 #let re-esse-adjust = regex(esse + "(" + array-to-string-or(consonants) + ")")
 #let adjust-esse(it) = {
   let m = it.text.match(re-esse-adjust).captures.first()
@@ -397,5 +401,20 @@
     esse + h(-0.15em) + m
   } else {
     esse + m
+  }
+}
+
+// Adjust the spacing between digits
+#let re-digits-adjust = regex("(" + array-to-string-or(digits) + ")" + "(" + array-to-string-or(digits) + ")")
+#let adjust-digits(it) = {
+  let m = it.text.match(re-digits-adjust)
+  let d1 = m.captures.at(0)
+  let d2 = m.captures.at(1)
+  if (d1 == digits.at(4)) and (digits.slice(7,9).contains(d2)) {
+    d1 + h(0.1em) + d2
+  } else if (d1 == digits.at(4)) and (d2 == digits.at(11)) {
+    d1 + h(0.05em) + d2
+  } else {
+    d1 + d2
   }
 }

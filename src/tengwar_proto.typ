@@ -278,7 +278,7 @@
   tehta-i + "y" : "\u{0054}",
   tehta-o + "y" : "\u{0059}",
   tehta-u + "y" : "\u{0055}",
-  tehta-y + "y" : "\u{00cd}",
+  tehta-y + "y" : "\u{00ce}",
   tehta-a + "d" : "\u{0045}",
   tehta-e + "d" : "\u{0046}",
   tehta-i + "d" : "\u{0047}",
@@ -389,4 +389,13 @@
   n_base_12.map(m => numbers-shifted.at(str(m))).join()
 }
 
-// TODO: add Sindarin and Beleriand modes
+// Adjust the spacing between esses and other consonants
+#let re-esse-adjust = regex(esse + "(" + array-to-string-or(consonants) + ")")
+#let adjust-esse(it) = {
+  let m = it.text.match(re-esse-adjust).captures.first()
+  if (text.style == "italic") and ("n", "m", "o").contains(letter-shapes.at(m)) {
+    esse + h(-0.15em) + m
+  } else {
+    esse + m
+  }
+}

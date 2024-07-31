@@ -224,17 +224,8 @@
 }
 
 #let quenya(it, style: "normal") = { 
-  
-  // Adjust the spacing between some letters in italic mode
-  let re-esse-adjust = regex(esse + "(" + array-to-string-or(consonants) + ")")
-  show re-esse-adjust: it => {
-    let m = it.text.match(re-esse-adjust).captures.first()
-    if (text.style == "italic") and ("n", "m", "o").contains(letter-shapes.at(m)) {
-      esse + h(-0.15em) + m
-    } else {
-      esse + m
-    }
-  }
+
+  show re-esse-adjust: adjust-esse
 
   if it.has("text") {
     text(quenya-str(it.text, style: style), style: style)

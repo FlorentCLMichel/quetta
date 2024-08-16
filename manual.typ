@@ -116,7 +116,9 @@
   spacing: 1em)
 
 // Footnote format
-#set footnote.entry(indent: 0pt)
+#set footnote.entry(indent: 1em)
+// Hack to remove the indent without breaking the link
+#show footnote.entry: it => h(-1em) + it
 #show footnote: set text(link-color)
 
 // Citation format

@@ -119,6 +119,8 @@
 #set footnote.entry(indent: 1em)
 // Hack to remove the indent without breaking the link
 #show footnote.entry: it => h(-1em) + it
+// TODO: replace the previous three lines by the following one when https://github.com/typst/typst/issues/4770 is solved
+// #set footnote.entry(indent: 0pt)
 #show footnote: set text(link-color)
 
 // Citation format

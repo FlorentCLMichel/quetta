@@ -616,10 +616,16 @@ Nai elyë hiruva. Namárië!
 
 #pagebreak()
 
-// == Sindarin—Mode of Gondor
+== Sindarin—Mode of Gondor
+
+*Work in Progress*
+
+// #gondor[Elessar Telcontar]
 // 
-// *Not yet implemented*
+// #gondor[aragorn]
 // 
+// #gondor[galadriel]
+
 // == Sindarin—Mode of Beleriand
 // 
 // *Not yet implemented*

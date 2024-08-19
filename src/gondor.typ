@@ -1,9 +1,10 @@
-// Impleentation of the Quenya Mode
+// Implementation of the Mode of Gondor
+// WIP; not working yet
 
 #import "tengwar_proto.typ": *
 
 
-#let map-quenya = (
+#let map-gondor = (
   th     : sule,                 Th     : sule,
   "£t"   : tinco-alt,            "£T"   : tinco-alt,
   t      : tinco,                T      : tinco,
@@ -98,51 +99,26 @@
 )
 
 
-#let quenya-str(txt, style: "normal") = { 
+#let gondor-str(txt, style: "normal") = { 
   // Set the font to Tengwar Annatar
   set text(font: tengwar-font, fallback: false)
 
   // Extract numbers, convert them to quenya, and shift the glyphs to avoid conflicts
+  // (Numbers are written similarly in the Quenya Mode and in the MOde of Gondor.)
   txt = txt.replace(regex("([0-9]+)"),
                     m => number-to-quenya(m.captures.first()))
 
   // Map symbols from the Latin alphabet to Tengwar glyphs
-  txt = txt.replace(regex("(" + array-to-string-or(map-quenya.keys()) + ")"),
-                    m => map-quenya.at(m.captures.first(), default: m.captures.first()))
+  txt = txt.replace(regex("(" + array-to-string-or(map-gondor.keys()) + ")"),
+                    m => map-gondor.at(m.captures.first(), default: m.captures.first()))
   
   // Undo the number glyph shifts
   txt = txt.replace(regex("(" + array-to-string-or(numbers-unshift.keys()) + ")"),
                     m => numbers-unshift.at(m.captures.first()))
   
-  // Replace aha by halla if followed by ore, romen, or lambe
-  txt = txt.replace(regex(aha + "(" + ore + "|" + romen + "|" + lambe + "|" + lambe-alt + ")"), 
-                    m => halla + m.captures.first())
-
-  // Exchange aha and hyarmen and add two dots below anna at start of word
-  txt = txt.replace(regex("(\ +)(" + aha + "|" + hyarmen + ")"), 
-    m => m.captures.at(0) + if m.captures.at(1) == aha {hyarmen} else {aha})
-  txt = txt.replace(regex("(\ +)" + anna), m => m.captures.first() + anna + tehta-y)
-  txt = txt.replace(regex("(.)"), 
-                    m => if m.captures.first() == aha { 
-                      hyarmen 
-                    } else if m.captures.first() == hyarmen {
-                      aha
-                    } else if m.captures.first() == anna {
-                      anna + tehta-y
-                    } else { 
-                      m.captures.first() 
-                    }, 
-                    count: 1)
-
-  // If anna follows a consonant, replace it by two dots under the tengwa
-  txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")" + "(\u{fffe}?)" + anna),
-                    m => m.captures.at(0) + m.captures.at(1) + tehta-y)
-  
-  // If órë is followed by a voyel or by anna and a voyel, replace it with rómen, and conversely
-  txt = txt.replace(regex("([" + ore + romen + "])" + "(" + array-to-string-or(voyels) + ")"),
-                    m => {if m.captures.at(0) == ore { romen } else { ore }} + m.captures.at(1))
-  txt = txt.replace(regex("([" + ore + romen + "])" + anna + "(" + array-to-string-or(voyels) + ")"),
-                    m => {if m.captures.at(0) == ore { romen } else { ore }} + anna + m.captures.first())
+  // If anna precedes a consonant, replace it by two dots under the tengwa
+  txt = txt.replace(regex(anna + "(\u{ffff}?)" + "(" + array-to-string-or(consonants) + ")"),
+                    m => tehta-y + m.captures.at(1) + m.captures.at(2))
    
   // Use S-hooks if possible, and move the following tehtar if needed
   txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")" 
@@ -155,6 +131,16 @@
     }
   )
 
+  // Deal with tehtar: 
+  //  * if a tehta is followed by a consonant, exchange them
+  //  * if a tehta is not followed by a consonant, add a carrier
+  txt = txt.replace(regex("(" + array-to-string-or(tehtar.slice(0,-1)) + ")(\u{fffe}?)(\u{ffff}?)(.?)"),
+    m => if (consonants + (carrier-i, carrier-j, tehta-y)).contains(m.captures.at(3)) {
+      m.captures.at(1) + m.captures.at(2) + m.captures.at(3) + m.captures.at(0)
+    } else {
+      carrier-i + m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + m.captures.at(3)
+    })
+
   // Use alternate versions of silme and esse if followed by a short voyel
   txt = txt.replace(regex(silme + "(" + array-to-string-or(tehtar) + ")"), 
                     m => silmenuquerna + m.captures.first())
@@ -164,14 +150,6 @@
                     m => silmenuquerna-alt + m.captures.first())
   txt = txt.replace(regex(esse-alt + "(" + array-to-string-or(tehtar) + ")"), 
                     m => essenuquerna-alt + m.captures.first())
-
-  // If a tehta is not on a consonnant nor preceded by \u{ffff}, add a carrier (exclude theta-y)
-  txt = txt.replace(regex("(.?)(\u{fffe}?)(\u{ffff}?)(" + array-to-string-or(tehtar.slice(0,-1)) + ")"),
-    m => if (consonants + (carrier-i, carrier-j, tehta-y)).contains(m.captures.at(0)) {
-      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + m.captures.at(3)
-    } else {
-      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + carrier-i + m.captures.at(3)
-    })
 
   // Fix the tilde width
   txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")([" + array-to-string-or(voyels) + "]?)" + tilde),
@@ -227,24 +205,24 @@
   txt
 }
 
-#let quenya(it, style: "normal") = { 
+#let gondor(it, style: "normal") = { 
 
   show re-esse-adjust: adjust-esse
   show re-digits-adjust: adjust-digits
 
   if it.has("text") {
-    text(quenya-str(it.text, style: style), style: style)
+    text(gondor-str(it.text, style: style), style: style)
   } else if it.has("body") {
     if (repr(it.func()) == "emph") {
       set text(style: "italic")
-      quenya(it.body, style: "italic")
+      gondor(it.body, style: "italic")
     } else {
-      it.func()(quenya(it.body, style: style))
+      it.func()(gondor(it.body, style: style))
     }
   } else if it.has("children") {
-    it.children.map(it => quenya(it, style: style)).join()
+    it.children.map(it => gondor(it, style: style)).join()
   } else if it.has("child") {
-    quenya(it.child, style: style)
+    gondor(it.child, style: style)
   } else {
     it
   }

@@ -42,7 +42,7 @@ Namárië!
 
 * Number conversion: done
 * Support for the Quenya mode: done
-* Support for the mode of Gondor: backlog
+* Support for the mode of Gondor: WIP
 * Support for the mode of Beleriand: backlog
 * Support for the Black Speech: backlog
 

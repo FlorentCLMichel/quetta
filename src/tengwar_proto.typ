@@ -50,6 +50,7 @@
 #let formen = "\u{0065}"
 #let ampa = "\u{0072}"
 #let malta = "\u{0074}"
+#let malta-s = "\u{009a}"
 #let vala = "\u{0079}"
 #let arda = "\u{0075}"
 #let silmenuquerna = "\u{0069}"
@@ -73,6 +74,7 @@
 #let ungwe = "\u{0078}"
 #let ungwe-alt = "\u{0058}"
 #let hwesta = "\u{0063}"
+#let hwesta-s = "\u{006f}"
 #let unque = "\u{0076}"
 #let nwalme = "\u{0062}"
 #let wilya = "\u{006e}"
@@ -125,6 +127,7 @@
   formen,
   ampa,
   malta,
+  malta-s,
   str(vala),
   arda,
   silmenuquerna,
@@ -147,6 +150,7 @@
   ungwe,
   ungwe-alt,
   hwesta,
+  hwesta-s,
   unque,
   nwalme,
   wilya,
@@ -188,6 +192,7 @@
   str(formen)           : "b",
   str(ampa)             : "bb",
   str(malta)            : "m",
+  str(malta-s)          : "m",
   str(vala)             : "n",
   str(arda)             : "y",
   str(silmenuquerna)    : "y",
@@ -211,6 +216,7 @@
   str(ungwe)            : "yy",
   str(ungwe-alt)        : "yy",
   str(hwesta)           : "b",
+  str(hwesta-s)          : "b",
   str(unque)            : "bb",
   str(nwalme)           : "m",
   str(wilya)            : "n",
@@ -327,6 +333,7 @@
   str(formen)     : "\u{00a1}",
   str(ampa)       : "\u{00a1}",
   str(malta)      : "\u{00a1}",
+  str(malta-s)    : "\u{00a1}",
   str(vala)       : "\u{00a1}",
   str(calma)      : "\u{007c}",
   str(calma-alt)  : "\u{007c}",
@@ -340,6 +347,7 @@
   str(quesse-alt) : "\u{007c}",
   str(ungwe-alt)  : "\u{007c}",
   str(hwesta)     : "\u{007c}",
+  str(hwesta-s)    : "\u{007c}",
   str(unque)      : "\u{007c}",
   str(nwalme)     : "\u{007c}",
   str(wilya)      : "\u{007c}",

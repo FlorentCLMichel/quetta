@@ -3,7 +3,6 @@
 
 #import "tengwar_proto.typ": *
 
-// TODO: p16, row 6, final r and initial w
 // TODO: p17, check vowels
 // TODO: p17, check diphtongues
 // TODO: p17, implement and check second block
@@ -32,10 +31,11 @@
   v      : ampa,                 V      : ampa,
   n      : numen,                N      : numen,
   m      : malta,                M      : malta,
-  r      : romen,                R      : romen,
+  r      : ore,                  R      : ore,
   l      : lambe,                L      : lambe,
   s      : silme,                S      : silme,
   h      : hyarmen,              H      : hyarmen,
+  w      : wilya,                W      : wilya,
   ai     : tehta-a + anna,       Ai     : tehta-a + anna,
   ei     : tehta-e + anna,       Ei     : tehta-e + anna,
   ui     : tehta-u + anna,       Ui     : tehta-u + anna,
@@ -129,6 +129,14 @@
                     m => silmenuquerna-alt + m.captures.first())
   txt = txt.replace(regex(esse-alt + "(" + array-to-string-or(tehtar) + ")"), 
                     m => essenuquerna-alt + m.captures.first())
+  
+  // If órë not final, replace it by rómen
+  txt = txt.replace(regex(ore + "(" + array-to-string-or(voyels) + "?)" + "(" + array-to-string-or(consonants) + ")"),
+                    m => romen + m.captures.at(0) + m.captures.at(1))
+
+  // If wilya directly follows a consonant, replace it with an overbar
+  txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")(" + array-to-string-or(voyels) + "?)" + wilya),
+                    m => m.captures.at(0) + tehta-w + m.captures.at(1))
 
   // Fix the tilde width
   txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")([" + array-to-string-or(voyels) + "]?)" + tilde),
@@ -140,6 +148,7 @@
            + ")(\u{fffe}?)"
            + "(\u{ffff}?)("
            + tehta-y + "?)("
+           + tehta-w + "?)("
            + array-to-string-or(voyels) + ")"),
     m => {
       let shifted-a = voyels-shifted.at(
@@ -148,18 +157,23 @@
       let shifted-b = voyels-shifted.at(
         m.captures.at(4) + letter-shapes.at(m.captures.at(0)),
         default: m.captures.at(4))
+      let shifted-c = voyels-shifted.at(
+        m.captures.at(5) + letter-shapes.at(m.captures.at(0)),
+        default: m.captures.at(5))
       m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + if (letter-shapes.keys().contains(m.captures.at(0))) {
         if style == "italic" {
           voyels-shifted-it.at(
             m.captures.at(3) + letter-shapes.at(m.captures.at(0)),
             default: shifted-a) + voyels-shifted-it.at(
             m.captures.at(4) + letter-shapes.at(m.captures.at(0)),
-            default: shifted-b)
+            default: shifted-b) + voyels-shifted-it.at(
+            m.captures.at(5) + letter-shapes.at(m.captures.at(0)),
+            default: shifted-c)
         } else {
-          shifted-a + shifted-b
+          shifted-a + shifted-b + shifted-c
         }
       } else {
-        m.captures.at(3) + m.captures.at(4)
+        m.captures.at(3) + m.captures.at(4) + m.captures.at(5)
       }
     })
 

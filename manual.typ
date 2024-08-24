@@ -136,7 +136,7 @@
   let inset = 3pt
   let radius = 5pt
   set text(bottom-edge: "bounds", top-edge: "bounds")
-  let y = eval(code, mode: "code", scope: (quenya: quenya))
+  let y = eval(code, mode: "code", scope: (quenya: quenya, gondor: gondor))
   let code-block = raw(code, block: true, lang: none)
   let height-l-t = measure([
       #set text(top-edge: "bounds", bottom-edge: "baseline")
@@ -620,11 +620,9 @@ Nai elyë hiruva. Namárië!
 
 *Work in Progress*
 
-// #gondor[Elessar Telcontar]
-// 
-// #gondor[aragorn]
-// 
-// #gondor[galadriel]
+#tengwar-snippet("gondor[Elessar Telcontar]")
+
+// #tengwar-snippet("galadriel")
 
 // == Sindarin—Mode of Beleriand
 // 

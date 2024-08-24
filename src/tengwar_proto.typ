@@ -97,6 +97,7 @@
 #let tehta-o = "\u{004e}"
 #let tehta-u = "\u{004d}"
 #let tehta-y = "\u{00cf}"
+#let tehta-w = "\u{00e9}"
 #let tehta-aa = "\u{ffff}\u{0043}\u{fffe}"
 #let tehta-ee = "\u{ffff}\u{0056}\u{fffe}"
 #let tehta-ii = "\u{ffff}\u{0042}\u{fffe}"
@@ -170,6 +171,7 @@
   tehta-o,
   tehta-u,
   tehta-y,
+  tehta-w,
 )
 
 #let letter-shapes = (
@@ -234,6 +236,7 @@
   str(tehta-o),
   str(tehta-u),
   str(tehta-y),
+  str(tehta-w),
 )
 
 #let voyels-shifted = (
@@ -243,54 +246,63 @@
   tehta-o + "m" : "\u{005e}",
   tehta-u + "m" : "\u{0026}",
   tehta-y + "m" : "\u{00cc}",
+  tehta-w + "m" : "\u{00e8}",
   tehta-a + "O" : "\u{0023}",
   tehta-e + "O" : "\u{0024}",
   tehta-i + "O" : "\u{0025}",
   tehta-o + "O" : "\u{005e}",
   tehta-u + "O" : "\u{0026}",
   tehta-y + "O" : "\u{00b4}",
+  tehta-w + "O" : "\u{00e8}",
   tehta-a + "yy" : "\u{0023}",
   tehta-e + "yy" : "\u{0024}",
   tehta-i + "yy" : "\u{0025}",
   tehta-o + "yy" : "\u{005e}",
   tehta-u + "yy" : "\u{0026}",
   tehta-y + "yy" : "\u{00cc}",
+  tehta-w + "yy" : "\u{00e8}",
   tehta-a + "bb" : "\u{0023}",
   tehta-e + "bb" : "\u{0024}",
   tehta-i + "bb" : "\u{0025}",
   tehta-o + "bb" : "\u{005e}",
   tehta-u + "bb" : "\u{0026}",
   tehta-y + "bb" : "\u{00cc}",
+  tehta-w + "bb" : "\u{00e8}",
   tehta-a + "n" : "\u{0045}",
   tehta-e + "n" : "\u{0052}",
   tehta-i + "n" : "\u{0054}",
   tehta-o + "n" : "\u{0059}",
   tehta-u + "n" : "\u{0055}",
   tehta-y + "n" : "\u{00cd}",
+  tehta-w + "n" : "\u{00e9}",
   tehta-a + "o" : "\u{0044}",
   tehta-e + "o" : "\u{0046}",
   tehta-i + "o" : "\u{0047}",
   tehta-o + "o" : "\u{0048}",
   tehta-u + "o" : "\u{004a}",
   tehta-y + "o" : "\u{00ce}",
+  tehta-w + "o" : "\u{00e9}",
   tehta-a + "b" : "\u{0044}",
   tehta-e + "b" : "\u{0046}",
   tehta-i + "b" : "\u{0047}",
   tehta-o + "b" : "\u{0048}",
   tehta-u + "b" : "\u{004a}",
   tehta-y + "b" : "\u{00cd}",
+  tehta-w + "b" : "\u{00ea}",
   tehta-a + "y" : "\u{0045}",
   tehta-e + "y" : "\u{0052}",
   tehta-i + "y" : "\u{0054}",
   tehta-o + "y" : "\u{0059}",
   tehta-u + "y" : "\u{0055}",
   tehta-y + "y" : "\u{00ce}",
+  tehta-w + "y" : "\u{00e9}",
   tehta-a + "d" : "\u{0045}",
   tehta-e + "d" : "\u{0046}",
   tehta-i + "d" : "\u{0047}",
   tehta-o + "d" : "\u{0048}",
   tehta-u + "d" : "\u{004a}",
   tehta-y + "d" : "\u{00cd}",
+  tehta-w + "d" : "\u{00ea}",
 )
 
 #let voyels-shifted-it = (

@@ -194,8 +194,8 @@
   align(
     center,
     text(17pt, font: font-sans)[#strong(title)]
-    + if (author != "") { v(.5em) + text(15pt, font: "Latin Modern Sans")[#author] }
-    + if (version != "") { v(.5em) + text(12pt, font: "Latin Modern Sans")[version #version] }
+    + if (author != "") { v(.5em) + text(15pt, font: "New Computer Modern Sans")[#author] }
+    + if (version != "") { v(.5em) + text(12pt, font: "New Computer Modern Sans")[version #version] }
   )
 }
 
@@ -730,5 +730,7 @@ Any kind of contribution is warmly welcome! Here are a few ways you can help:
 - *Feature requests:* Any feature request is welcome. I can't promise I'll have the time and knowledge to implement everything that would be nice to have; but if you'd like to see something implemented please let me know—or submit a pull request if you've already implemented it!
 
 #block(breakable: false, width: 100%, height: paragraph-skip-b + text-list-sep, align(right)[#quenya[Hantanyel!]])
+
+
 
 #bibliography("manual_files/biblio.yml")

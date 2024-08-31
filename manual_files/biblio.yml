@@ -17,3 +17,9 @@ tengwar-eruantalince:
   type: Web
   title: Quenya Tengwar – A mini course by Eruantalincë
   url: https://www.councilofelrond.com/languages/QTL.htm
+
+tengwar-textbook:
+  type: Book
+  title: Tengwar Textbook—Fourth Edition
+  author: Chris McKay
+  date: 2004-04

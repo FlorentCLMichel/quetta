@@ -616,9 +616,40 @@ Nai elyë hiruva. Namárië!
 
 #pagebreak()
 
-== Sindarin—Mode of Gondor
+== Sindarin (#gondor[Sindarin])—Mode of Gondor
+
+The implementation of the Mode of Gondor for the Sindarin language mostly follows Reference @tengwar-textbook. 
+In this section, we mostly focus on the differences compared with the Quanya languaga.
 
 *Work in Progress*
+
+=== Generalities
+
+#table(
+  columns: (auto, auto, auto),
+  table.header(
+    [*vowel*], [*short version*], [*long version*]
+  ),
+  "a", gondor[a], gondor[á], 
+  "e", gondor[e], gondor[é], 
+  "i", gondor[i], gondor[í], 
+  "o", gondor[o], gondor[ó], 
+  "u", gondor[u], gondor[ú], 
+  "y", gondor[y], gondor[ý], 
+)
+
+#v(paragraph-skip-b)
+
+#table(
+  columns: (auto, ) * 6,
+  "ai", "ei", "ui", "ae", "oe", "au",  
+  gondor[ai], gondor[ei], gondor[ui], 
+  gondor[ae], gondor[oe], gondor[au], 
+)
+
+
+
+=== Examples
 
 #tengwar-snippet("gondor[Elessar Telcontar]")
 

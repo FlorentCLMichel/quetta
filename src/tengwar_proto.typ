@@ -97,6 +97,7 @@
 #let tehta-o = "\u{004e}"
 #let tehta-u = "\u{004d}"
 #let tehta-y = "\u{00cf}"
+#let tehta-y-up = "\u{00d7}"
 #let tehta-w = "\u{00e9}"
 #let tehta-aa = "\u{ffff}\u{0043}\u{fffe}"
 #let tehta-ee = "\u{ffff}\u{0056}\u{fffe}"
@@ -171,6 +172,7 @@
   tehta-o,
   tehta-u,
   tehta-y,
+  tehta-y-up,
   tehta-w,
 )
 
@@ -236,6 +238,7 @@
   str(tehta-o),
   str(tehta-u),
   str(tehta-y),
+  str(tehta-y-up),
   str(tehta-w),
 )
 
@@ -246,6 +249,7 @@
   tehta-o + "m" : "\u{005e}",
   tehta-u + "m" : "\u{0026}",
   tehta-y + "m" : "\u{00cc}",
+  tehta-y-up + "m" : "\u{00d4}",
   tehta-w + "m" : "\u{00e8}",
   tehta-a + "O" : "\u{0023}",
   tehta-e + "O" : "\u{0024}",
@@ -253,6 +257,7 @@
   tehta-o + "O" : "\u{005e}",
   tehta-u + "O" : "\u{0026}",
   tehta-y + "O" : "\u{00b4}",
+  tehta-y-up + "O" : "\u{00d4}",
   tehta-w + "O" : "\u{00e8}",
   tehta-a + "yy" : "\u{0023}",
   tehta-e + "yy" : "\u{0024}",
@@ -260,6 +265,7 @@
   tehta-o + "yy" : "\u{005e}",
   tehta-u + "yy" : "\u{0026}",
   tehta-y + "yy" : "\u{00cc}",
+  tehta-y-up + "yy" : "\u{00d4}",
   tehta-w + "yy" : "\u{00e8}",
   tehta-a + "bb" : "\u{0023}",
   tehta-e + "bb" : "\u{0024}",
@@ -267,6 +273,7 @@
   tehta-o + "bb" : "\u{005e}",
   tehta-u + "bb" : "\u{0026}",
   tehta-y + "bb" : "\u{00cc}",
+  tehta-y-up + "bb" : "\u{00d4}",
   tehta-w + "bb" : "\u{00e8}",
   tehta-a + "n" : "\u{0045}",
   tehta-e + "n" : "\u{0052}",
@@ -274,6 +281,7 @@
   tehta-o + "n" : "\u{0059}",
   tehta-u + "n" : "\u{0055}",
   tehta-y + "n" : "\u{00cd}",
+  tehta-y-up + "n" : "\u{00d2}",
   tehta-w + "n" : "\u{00e9}",
   tehta-a + "o" : "\u{0044}",
   tehta-e + "o" : "\u{0046}",
@@ -281,6 +289,7 @@
   tehta-o + "o" : "\u{0048}",
   tehta-u + "o" : "\u{004a}",
   tehta-y + "o" : "\u{00ce}",
+  tehta-y-up + "o" : "\u{00d3}",
   tehta-w + "o" : "\u{00e9}",
   tehta-a + "b" : "\u{0044}",
   tehta-e + "b" : "\u{0046}",
@@ -288,6 +297,7 @@
   tehta-o + "b" : "\u{0048}",
   tehta-u + "b" : "\u{004a}",
   tehta-y + "b" : "\u{00cd}",
+  tehta-y-up + "b" : "\u{00d3}",
   tehta-w + "b" : "\u{00ea}",
   tehta-a + "y" : "\u{0045}",
   tehta-e + "y" : "\u{0052}",
@@ -295,6 +305,7 @@
   tehta-o + "y" : "\u{0059}",
   tehta-u + "y" : "\u{0055}",
   tehta-y + "y" : "\u{00ce}",
+  tehta-y-up + "y" : "\u{00d4}",
   tehta-w + "y" : "\u{00e9}",
   tehta-a + "d" : "\u{0045}",
   tehta-e + "d" : "\u{0046}",
@@ -302,6 +313,7 @@
   tehta-o + "d" : "\u{0048}",
   tehta-u + "d" : "\u{004a}",
   tehta-y + "d" : "\u{00cd}",
+  tehta-y-up + "d" : "\u{00d2}",
   tehta-w + "d" : "\u{00ea}",
 )
 

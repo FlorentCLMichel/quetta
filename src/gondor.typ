@@ -41,12 +41,12 @@
   oe     : tehta-o + iglide,       Oe     : tehta-o + iglide,
   au     : tehta-a + uglide,       Au     : tehta-a + uglide,
   aw     : tehta-a + uglide,       Aw     : tehta-a + uglide,
-  a      : tehta-a,                A      : tehta-a,
-  e      : tehta-e,                E      : tehta-e,
-  i      : tehta-i,                I      : tehta-i,
-  o      : tehta-o,                O      : tehta-o,
-  u      : tehta-u,                U      : tehta-u,
-  y      : tehta-y-up,             Y      : tehta-y-up,
+  a      : tehta-a,                A      : tehta-a,    â: tehta-a, 
+  e      : tehta-e,                E      : tehta-e,    ê: tehta-e, 
+  i      : tehta-i,                I      : tehta-i,    î: tehta-i, 
+  o      : tehta-o,                O      : tehta-o,    ô: tehta-o, 
+  u      : tehta-u,                U      : tehta-u,    û: tehta-u, 
+  y      : tehta-y-up,             Y      : tehta-y-up, ŷ: tehta-y-up, 
   á      : tehta-a + carrier-j,    Á      : tehta-a + carrier-j,
   é      : tehta-e + carrier-j,    É      : tehta-e + carrier-j,
   í      : tehta-i + carrier-j,    Í      : tehta-i + carrier-j,
@@ -58,7 +58,6 @@
   ï      : tehta-i,                Ï      : tehta-i,
   ö      : tehta-o,                Ö      : tehta-o,
   ü      : tehta-u,                Ü      : tehta-u,
-  ô      : tehta-oo,               Ô      : tehta-oo,
   ","    : comma,
   "."    : period,
   "--"   : em-dash,
@@ -73,7 +72,7 @@
   "«"    : "\u{ffff}«\u{fffe}",
   ">"    : "\u{ffff}»\u{fffe}",
   "»"    : "\u{ffff}»\u{fffe}",
-  ":"    : "\u{fffd}",
+  ":"    : " " + comma,
   "?"    : questionmark,
 )
 
@@ -95,10 +94,6 @@
   txt = txt.replace(regex("(" + array-to-string-or(numbers-unshift.keys()) + ")"),
                     m => numbers-unshift.at(m.captures.first()))
   
-  // If anna precedes a consonant, replace it by two dots under the tengwa
-  txt = txt.replace(regex(anna + "(\u{ffff}?)" + "(" + array-to-string-or(consonants) + ")"),
-                    m => tehta-y + m.captures.at(1) + m.captures.at(2))
-   
   // Use S-hooks if possible, and move the following tehtar if needed
   txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")" 
                           + "(\u{fffe}?)" + silme

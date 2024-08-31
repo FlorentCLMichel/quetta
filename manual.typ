@@ -323,7 +323,7 @@ For instance, a centred 16-points italic version of the Quenya word ‘tengwar�
      )[#box(quenya[_tengwar_])]
 ]
 
-== Quenya (#quenya[Quenya])
+== Quenya (#quenya[Quenya])<sec-quenya>
 
 === Generalities<sec-quenya-gen>
 
@@ -618,12 +618,13 @@ Nai elyë hiruva. Namárië!
 
 == Sindarin (#gondor[Sindarin])—Mode of Gondor
 
-The implementation of the Mode of Gondor for the Sindarin language mostly follows Reference @tengwar-textbook. 
-In this section, we mostly focus on the differences compared with the Quanya languaga.
-
-*Work in Progress*
+The implementation of the Mode of Gondor for the Sindarin language mostly follows Reference @tengwar-textbook, to which we refer for more information. 
+In this section, we mostly focus on the differences compared with the implementation of the Quenya language described in Section~@sec-quenya.
+The most important difference is probably the position of tehtar: when applicable, a tehta is placed on the _previous_ tengwa in Qurnya but on the _following_ one in Sindarin.
 
 === Generalities
+
+*Work in Progress*
 
 #table(
   columns: (auto, auto, auto),
@@ -651,7 +652,35 @@ In this section, we mostly focus on the differences compared with the Quanya lan
 
 === Examples
 
-#tengwar-snippet("gondor[Elessar Telcontar]")
+*Work in Progress*
+
+#v(paragraph-skip-b)
+
+#[
+#show: rest => columns(2, rest)
+#set par(
+  leading: 0.7em,
+  first-line-indent: 0em)
+#show par: it => it + v(0.5em)
+
+#set text(size: 12pt)
+
+#let txt = [
+Elessar Telcontar: Aragorn Arathornion Edhelharn, aran Gondor ar Hîr i Mbair Annui, anglennatha i Varanduiniant erin dolothen Ethuil, egor ben genediad Drannail erin Gwirith edwen. 
+Ar e aníra ennas suilannad mhellyn în phain: edregol e aníra tírad i Cherdir Perhael (i sennui Panthael estathar aen) Condir i Drann, ar Meril bess dîn; ar Elanor, Meril, Glorfinniel, ar Eirien sellath dîn; ar Iorhael, Gelir, Cordof, ar Baravorn, ionnath dîn ,., \
+A Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen uin Echuir ,.,
+]
+
+#txt
+
+#colbreak()
+
+#set text(size: 11pt)
+#show: gondor
+
+#txt
+
+]
 
 // #tengwar-snippet("galadriel")
 

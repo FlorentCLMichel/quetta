@@ -443,7 +443,8 @@
 }
 
 // Adjust the vertical positions of tehtars above a tilde or upper y
-#let re-tehtar-adjust = regex("([\u{00e8}|\u{00e9}|\u{00ea}|\u{00d2}|\u{00d3}|\u{00d4}])" 
+#let codes-w-yup = vowels-shifted.keys().filter(it => (tehta-w,tehta-y-up).contains(it.at(0))).map(it => vowels-shifted.at(it))
+#let re-tehtar-adjust = regex("(" + array-to-string-or(codes-w-yup) + ")"
   + "(" + array-to-string-or(vowels-shifted.values().map(escape-regxp)) + ")")
 #let adjust-tehtar(it) = {
   let m = it.text.match(re-tehtar-adjust).captures

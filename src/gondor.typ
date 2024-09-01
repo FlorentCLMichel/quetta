@@ -41,12 +41,12 @@
   oe     : tehta-o + iglide,       Oe     : tehta-o + iglide,
   au     : tehta-a + uglide,       Au     : tehta-a + uglide,
   aw     : tehta-a + uglide,       Aw     : tehta-a + uglide,
-  a      : tehta-a,                A      : tehta-a,    â: tehta-a, 
-  e      : tehta-e,                E      : tehta-e,    ê: tehta-e, 
-  i      : tehta-i,                I      : tehta-i,    î: tehta-i, 
-  o      : tehta-o,                O      : tehta-o,    ô: tehta-o, 
-  u      : tehta-u,                U      : tehta-u,    û: tehta-u, 
-  y      : tehta-y-up,             Y      : tehta-y-up, ŷ: tehta-y-up, 
+  a      : tehta-a,                A      : tehta-a, 
+  e      : tehta-e,                E      : tehta-e, 
+  i      : tehta-i,                I      : tehta-i, 
+  o      : tehta-o,                O      : tehta-o, 
+  u      : tehta-u,                U      : tehta-u, 
+  y      : tehta-y-up,             Y      : tehta-y-up, 
   á      : tehta-a + carrier-j,    Á      : tehta-a + carrier-j,
   é      : tehta-e + carrier-j,    É      : tehta-e + carrier-j,
   í      : tehta-i + carrier-j,    Í      : tehta-i + carrier-j,
@@ -58,6 +58,12 @@
   ï      : tehta-i,                Ï      : tehta-i,
   ö      : tehta-o,                Ö      : tehta-o,
   ü      : tehta-u,                Ü      : tehta-u,
+  â      : tehta-a + carrier-j, 
+  ê      : tehta-e + carrier-j, 
+  î      : tehta-i + carrier-j, 
+  ô      : tehta-o + carrier-j, 
+  û      : tehta-u + carrier-j, 
+  ŷ      : tehta-y-up + carrier-j, 
   ","    : comma,
   "."    : period,
   "--"   : em-dash,
@@ -105,14 +111,22 @@
     }
   )
 
-  //  If a tehta is followed by a consonant, exchange them
+  // Combine repeated consonants
+  txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")(" + array-to-string-or(consonants) + ")"),
+    m => if (m.captures.at(0) == m.captures.at(1)) {
+      m.captures.first() + undertilde.at(letter-shapes.at(m.captures.at(0)))
+    } else {
+      m.captures.at(0) + m.captures.at(1)
+    })
+
+  // If a tehta is followed by a consonant, exchange them
   txt = txt.replace(regex("(" + array-to-string-or(tehtar.slice(0,-1)) + ")(\u{fffe}?)(\u{ffff}?)(" 
-    + array-to-string-or(consonants) + ")"),
+    + array-to-string-or((carrier-i, carrier-j) + consonants) + ")"),
     m => m.captures.at(1) + m.captures.at(2) + m.captures.at(3) + m.captures.at(0))
   
-  //  If a tehta is not followed by a consonant, add a carrier
+  // If a tehta is not followed by a consonant, add a carrier
   txt = txt.replace(regex("(.?)(\u{fffe}?)(\u{ffff}?)(" + array-to-string-or(tehtar.slice(0,-1)) + ")"),
-    m => if (consonants).contains(m.captures.at(0)) {
+    m => if (consonants + (carrier-i, carrier-j)).contains(m.captures.at(0)) {
       m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + m.captures.at(3)
     } else {
       m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + carrier-i + m.captures.at(3)
@@ -129,7 +143,7 @@
                     m => essenuquerna-alt + m.captures.first())
   
   // If órë not final, replace it by rómen
-  txt = txt.replace(regex(ore + "(" + array-to-string-or(vowels) + "?)" + "(" + array-to-string-or(consonants) + ")"),
+  txt = txt.replace(regex(ore + "(" + array-to-string-or(vowels) + "*)" + "(" + array-to-string-or((carrier-i, carrier-j) + consonants) + ")"),
                     m => romen + m.captures.at(0) + m.captures.at(1))
 
   // If wilya directly follows a consonant, replace it with an overbar
@@ -173,14 +187,6 @@
       } else {
         m.captures.at(3) + m.captures.at(4) + m.captures.at(5)
       }
-    })
-
-  // Combine repeated consonants
-  txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")(" + array-to-string-or(consonants) + ")"),
-    m => if (m.captures.at(0) == m.captures.at(1)) {
-      m.captures.first() + undertilde.at(letter-shapes.at(m.captures.at(0)))
-    } else {
-      m.captures.at(0) + m.captures.at(1)
     })
 
   // Use alt font for text between \u{ffff} and \u{fffe}

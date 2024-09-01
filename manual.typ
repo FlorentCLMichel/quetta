@@ -652,9 +652,40 @@ The most important difference is probably the position of tehtar: when applicabl
 
 === Examples
 
-*Work in Progress*
+// TODO: check and debug
 
-#gondor[iop]
+The following example, taken from #link("https://www.omniglot.com/conscripts/sindarin.htm")[omniglot.com], is a SIndarin translation of Article 1 of the Universal Declaration of Human Rights.
+
+#v(paragraph-skip-b)
+
+#[
+#show: rest => columns(2, rest)
+#set par(first-line-indent: 0em, leading: 0.6em)
+#show par: it => it + v(0.5em)
+
+#set text(size: 12pt)
+
+#let txt = [
+Firiath ennin lîn ar îf vi virwas ar 'ernais. Sevir channas ar faelas ar bórar lengad anith vi faer gwadoras.
+]
+
+#txt
+
+#colbreak()
+
+#set text(size: 11pt)
+#set par(leading: 0.7em)
+#show: gondor
+
+#txt
+
+]
+
+
+#v(paragraph-skip-b)
+
+The next example is the third version of the King's Letter which would have been part of a dropped epilogue to the Lord of the Rings trilogy, available on #link("https://glaemscrafu.jrrvf.com/english/lettreduroi.html")[glaemscrafu.jrrvf.com/]. 
+We use the three symbols ‘,.,’ to end paragraphs to reproduce the symbol #gondor[,.,].
 
 #v(paragraph-skip-b)
 

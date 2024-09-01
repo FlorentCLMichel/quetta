@@ -443,7 +443,7 @@
 }
 
 // Adjust the vertical positions of tehtars above a tilde or upper y
-#let codes-w-yup = vowels-shifted.keys().filter(it => (tehta-w,tehta-y-up).contains(it.at(0))).map(it => vowels-shifted.at(it))
+#let codes-w-yup = vowels-shifted.keys().filter(it => (tehta-w,tehta-y-up).contains(it.at(0))).map(it => vowels-shifted.at(it)).dedup()
 #let re-tehtar-adjust = regex("(" + array-to-string-or(codes-w-yup) + ")"
   + "(" + array-to-string-or(vowels-shifted.values().map(escape-regxp)) + ")")
 #let adjust-tehtar(it) = {

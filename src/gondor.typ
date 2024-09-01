@@ -105,14 +105,17 @@
     }
   )
 
-  // Deal with tehtar: 
-  //  * if a tehta is followed by a consonant, exchange them
-  //  * if a tehta is not followed by a consonant, add a carrier
-  txt = txt.replace(regex("(" + array-to-string-or(tehtar.slice(0,-1)) + ")(\u{fffe}?)(\u{ffff}?)(.?)"),
-    m => if (consonants + (carrier-i, carrier-j, tehta-y)).contains(m.captures.at(3)) {
-      m.captures.at(1) + m.captures.at(2) + m.captures.at(3) + m.captures.at(0)
+  //  If a tehta is followed by a consonant, exchange them
+  txt = txt.replace(regex("(" + array-to-string-or(tehtar.slice(0,-1)) + ")(\u{fffe}?)(\u{ffff}?)(" 
+    + array-to-string-or(consonants) + ")"),
+    m => m.captures.at(1) + m.captures.at(2) + m.captures.at(3) + m.captures.at(0))
+  
+  //  If a tehta is not followed by a consonant, add a carrier
+  txt = txt.replace(regex("(.?)(\u{fffe}?)(\u{ffff}?)(" + array-to-string-or(tehtar.slice(0,-1)) + ")"),
+    m => if (consonants).contains(m.captures.at(0)) {
+      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + m.captures.at(3)
     } else {
-      carrier-i + m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + m.captures.at(3)
+      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + carrier-i + m.captures.at(3)
     })
 
   // Use alternate versions of silme and esse if followed by a short vowel

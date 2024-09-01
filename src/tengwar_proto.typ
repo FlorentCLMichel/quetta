@@ -3,6 +3,12 @@
 #let tengwar-font-alt = "Tengwar Annatar Alt";
 #let tengwar-font-alt-fallback = "tngana";
 
+#let escape-regxp(x) = if ("$", "^").contains(x) {
+  "\\" + x
+} else {
+  x
+}
+
 #let to-string(content) = {
   if content.has("text") {
     content.text
@@ -434,6 +440,14 @@
   } else {
     esse + m
   }
+}
+
+// Adjust the vertical positions of tehtars above a tilde or upper y
+#let re-tehtar-adjust = regex("([\u{00e8}|\u{00e9}|\u{00ea}|\u{00d2}|\u{00d3}|\u{00d4}])" 
+  + "(" + array-to-string-or(voyels-shifted.values().map(escape-regxp)) + ")")
+#let adjust-tehtar(it) = {
+  let m = it.text.match(re-tehtar-adjust).captures
+  m.at(0) + box(height: 0pt, move(dy: -1em, m.at(1)))
 }
 
 // Adjust the spacing between digits

@@ -230,6 +230,7 @@
 #let quenya(it, style: "normal") = { 
 
   show re-esse-adjust: adjust-esse
+  show re-tehtar-adjust: adjust-tehtar
   show re-digits-adjust: adjust-digits
 
   if it.has("text") {

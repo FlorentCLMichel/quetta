@@ -187,15 +187,13 @@
     text(font: tengwar-font-alt, fallback: false, m)
   }
 
-  // Remove \u{fffd}
-  show "\u{fffd}": ""
-  
   txt
 }
 
 #let gondor(it, style: "normal") = { 
 
   show re-esse-adjust: adjust-esse
+  show re-tehtar-adjust: adjust-tehtar
   show re-digits-adjust: adjust-digits
 
   if it.has("text") {

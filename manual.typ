@@ -658,9 +658,7 @@ The most important difference is probably the position of tehtar: when applicabl
 
 #[
 #show: rest => columns(2, rest)
-#set par(
-  leading: 0.7em,
-  first-line-indent: 0em)
+#set par(first-line-indent: 0em, leading: 0.6em)
 #show par: it => it + v(0.5em)
 
 #set text(size: 12pt)
@@ -676,6 +674,7 @@ A Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen uin Echuir ,.,
 #colbreak()
 
 #set text(size: 11pt)
+#set par(leading: 0.7em)
 #show: gondor
 
 #txt

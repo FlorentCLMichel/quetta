@@ -169,7 +169,7 @@
   uglide,
 )
 
-#let voyels = (
+#let vowels = (
   carrier-i,
   carrier-j,
   tehta-a,
@@ -248,7 +248,7 @@
   str(tehta-w),
 )
 
-#let voyels-shifted = (
+#let vowels-shifted = (
   tehta-a + "m" : "\u{0023}",
   tehta-e + "m" : "\u{0024}",
   tehta-i + "m" : "\u{0025}",
@@ -323,7 +323,7 @@
   tehta-w + "d" : "\u{00ea}",
 )
 
-#let voyels-shifted-it = (
+#let vowels-shifted-it = (
   tehta-o + "y" : "\u{0048}",
 )
 
@@ -444,7 +444,7 @@
 
 // Adjust the vertical positions of tehtars above a tilde or upper y
 #let re-tehtar-adjust = regex("([\u{00e8}|\u{00e9}|\u{00ea}|\u{00d2}|\u{00d3}|\u{00d4}])" 
-  + "(" + array-to-string-or(voyels-shifted.values().map(escape-regxp)) + ")")
+  + "(" + array-to-string-or(vowels-shifted.values().map(escape-regxp)) + ")")
 #let adjust-tehtar(it) = {
   let m = it.text.match(re-tehtar-adjust).captures
   m.at(0) + box(height: 0pt, move(dy: -1em, m.at(1)))

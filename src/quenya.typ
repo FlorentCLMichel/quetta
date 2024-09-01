@@ -138,10 +138,10 @@
   txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")" + "(\u{fffe}?)" + anna),
                     m => m.captures.at(0) + m.captures.at(1) + tehta-y)
   
-  // If órë is followed by a voyel or by anna and a voyel, replace it with rómen, and conversely
-  txt = txt.replace(regex("([" + ore + romen + "])" + "(" + array-to-string-or(voyels) + ")"),
+  // If órë is followed by a vowel or by anna and a vowel, replace it with rómen, and conversely
+  txt = txt.replace(regex("([" + ore + romen + "])" + "(" + array-to-string-or(vowels) + ")"),
                     m => {if m.captures.at(0) == ore { romen } else { ore }} + m.captures.at(1))
-  txt = txt.replace(regex("([" + ore + romen + "])" + anna + "(" + array-to-string-or(voyels) + ")"),
+  txt = txt.replace(regex("([" + ore + romen + "])" + anna + "(" + array-to-string-or(vowels) + ")"),
                     m => {if m.captures.at(0) == ore { romen } else { ore }} + anna + m.captures.first())
    
   // Use S-hooks if possible, and move the following tehtar if needed
@@ -155,7 +155,7 @@
     }
   )
 
-  // Use alternate versions of silme and esse if followed by a short voyel
+  // Use alternate versions of silme and esse if followed by a short vowel
   txt = txt.replace(regex(silme + "(" + array-to-string-or(tehtar) + ")"), 
                     m => silmenuquerna + m.captures.first())
   txt = txt.replace(regex(esse + "(" + array-to-string-or(tehtar) + ")"), 
@@ -174,7 +174,7 @@
     })
 
   // Fix the tilde width
-  txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")([" + array-to-string-or(voyels) + "]?)" + tilde),
+  txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")([" + array-to-string-or(vowels) + "]?)" + tilde),
     m =>  m.captures.at(0) + m.captures.at(1) + overtilde.at(letter-shapes.at(m.captures.at(0))))
 
   // Adjust the positions of tehtars
@@ -183,19 +183,19 @@
            + ")(\u{fffe}?)"
            + "(\u{ffff}?)("
            + tehta-y + "?)("
-           + array-to-string-or(voyels) + ")"),
+           + array-to-string-or(vowels) + ")"),
     m => {
-      let shifted-a = voyels-shifted.at(
+      let shifted-a = vowels-shifted.at(
         m.captures.at(3) + letter-shapes.at(m.captures.at(0)),
         default: m.captures.at(3)) 
-      let shifted-b = voyels-shifted.at(
+      let shifted-b = vowels-shifted.at(
         m.captures.at(4) + letter-shapes.at(m.captures.at(0)),
         default: m.captures.at(4))
       m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + if (letter-shapes.keys().contains(m.captures.at(0))) {
         if style == "italic" {
-          voyels-shifted-it.at(
+          vowels-shifted-it.at(
             m.captures.at(3) + letter-shapes.at(m.captures.at(0)),
-            default: shifted-a) + voyels-shifted-it.at(
+            default: shifted-a) + vowels-shifted-it.at(
             m.captures.at(4) + letter-shapes.at(m.captures.at(0)),
             default: shifted-b)
         } else {

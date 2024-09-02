@@ -18,7 +18,7 @@
 #let title = "Manual for the quetta (" + quenya[Quetta] + ") module"
 #let author = "Florent Michel"
 #let keywords = ("Tengwar", "Typst")
-#let version = "0.1.0"
+#let version = "0.1.1"
 #set document(
   title: title,
   author: author,

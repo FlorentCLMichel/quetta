@@ -166,6 +166,13 @@
                     m => essenuquerna-alt + m.captures.first())
 
   // If a tehta is not on a consonnant nor preceded by \u{ffff}, add a carrier (exclude theta-y)
+  // (Run twice to deal with sequences of multiple tehtar)
+  txt = txt.replace(regex("(.?)(\u{fffe}?)(\u{ffff}?)(" + array-to-string-or(tehtar.slice(0,-1)) + ")"),
+    m => if (consonants + (carrier-i, carrier-j, tehta-y)).contains(m.captures.at(0)) {
+      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + m.captures.at(3)
+    } else {
+      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + carrier-i + m.captures.at(3)
+    })
   txt = txt.replace(regex("(.?)(\u{fffe}?)(\u{ffff}?)(" + array-to-string-or(tehtar.slice(0,-1)) + ")"),
     m => if (consonants + (carrier-i, carrier-j, tehta-y)).contains(m.captures.at(0)) {
       m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + m.captures.at(3)

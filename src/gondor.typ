@@ -132,6 +132,14 @@
       m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + carrier-i + m.captures.at(3)
     })
 
+  // If a tehta is still not on a consonnant nor preceded by \u{ffff}, add a carrier (exclude theta-y)
+  txt = txt.replace(regex("(.?)(\u{fffe}?)(\u{ffff}?)(" + array-to-string-or(tehtar.slice(0,-1)) + ")"),
+    m => if (consonants + (carrier-i, carrier-j, tehta-y)).contains(m.captures.at(0)) {
+      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + m.captures.at(3)
+    } else {
+      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + carrier-i + m.captures.at(3)
+    })
+
   // Use alternate versions of silme and esse if followed by a short vowel
   txt = txt.replace(regex(silme + "(" + array-to-string-or(tehtar) + ")"), 
                     m => silmenuquerna + m.captures.first())

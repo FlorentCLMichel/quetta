@@ -1,6 +1,8 @@
 // Implementation of the Mode of Gondor
 // WIP; not working yet
 
+// TODO: initial i
+
 #import "tengwar_proto.typ": *
 
 // TODO: p17, implement and check second block
@@ -110,6 +112,10 @@
       m.captures.at(0) + m.captures.at(1) + sule + m.captures.at(2)
     }
   )
+  
+  // If numen or malta precedes a consonant, replace it by an overbar
+  txt = txt.replace(regex("([" + numen  + "|"+ malta + "])(" + array-to-string-or(consonants) + ")"),
+                    m => m.captures.at(1) + overbar.at(letter-shapes.at(m.captures.at(1))))
 
   // Combine repeated consonants
   txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")(" + array-to-string-or(consonants) + ")"),
@@ -118,7 +124,7 @@
     } else {
       m.captures.at(0) + m.captures.at(1)
     })
-
+  
   // If a tehta is followed by a consonant, exchange them
   txt = txt.replace(regex("(" + array-to-string-or(tehtar.slice(0,-1)) + ")(\u{fffe}?)(\u{ffff}?)(" 
     + array-to-string-or((carrier-i, carrier-j) + consonants) + ")"),

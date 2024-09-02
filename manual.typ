@@ -714,6 +714,43 @@ A Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen uin Echuir ,.,
 
 ]
 
+#v(paragraph-skip-b)
+
+// TODO: add a description
+The third example ...
+
+#v(paragraph-skip-b)
+
+#[
+#show: rest => columns(2, rest)
+#set par(first-line-indent: 0em, leading: 0.6em)
+#set align(center)
+#show par: it => it + v(0.5em)
+
+#set text(size: 12pt)
+
+#let txt = [
+A Elbereth Gilthoniel, \
+silivren penna míriel \
+o menel aglar elenath! \
+Na-chaered palan-díriel \
+o galadhremmin ennorath, \
+Fanuilos, le linnathon \
+nef aear, sí nef aearon!
+]
+
+#txt
+
+#colbreak()
+
+#set text(size: 11pt)
+#set par(leading: 0.7em)
+#show: gondor
+
+#txt
+
+]
+
 // #tengwar-snippet("galadriel")
 
 // == Sindarin—Mode of Beleriand
@@ -754,7 +791,7 @@ Here is the result, with a colour gradient in the background to mimic a golden s
 #let code-ring-inscription-quenya = "#set text(top-edge: \"ascender\", bottom-edge: \"descender\", 
           fill: gradient.linear(rgb(150,0,0), rgb(100,20,0), rgb(255,0,0), space: rgb, angle: 20deg))
 #align(center, block(
-  fill: gradient.linear(rgb(157,103,7), rgb(250,250,152), rgb(157,103,7), space: rgb, angle: 80deg),
+  fill: gradient.linear(rgb(157,103,7), rgb(250,250,152), rgb(157,103,7), angle: 80deg),
   inset: (top: 1em, left: 1em, right: 1em, bottom: 1.5em),
   radius: 5pt,
   quenya(eval(ring-inscr-quenya, mode: \"markup\"))))"

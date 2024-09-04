@@ -716,8 +716,7 @@ A Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen uin Echuir ,.,
 
 #v(paragraph-skip-b)
 
-// TODO: add a description
-The third example ...
+The third example is the first stanza of the poem _A Elbereth Gilthoniel_ from Reference~@lotr#footnote[Book 1, chapter3; Book 1, chapter 2; Book 4, chapter 10.]:
 
 #v(paragraph-skip-b)
 

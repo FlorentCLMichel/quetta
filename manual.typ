@@ -624,7 +624,15 @@ The most important difference is probably the position of tehtar: when applicabl
 
 === Generalities
 
-*Work in Progress*
+_Work in Progress_
+
+#h(-paragraph-indent) *Table of consonants:*
+
+_TODO_
+
+#v(paragraph-skip-b)
+
+#h(-paragraph-indent) *Table of simple vowels:*
 
 #table(
   columns: (auto, auto, auto),
@@ -640,6 +648,8 @@ The most important difference is probably the position of tehtar: when applicabl
 )
 
 #v(paragraph-skip-b)
+
+*Table of complex vowels:*
 
 #table(
   columns: (auto, ) * 6,

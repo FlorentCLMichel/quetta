@@ -644,12 +644,21 @@ _TODO_
   "i", gondor[i], gondor[í], 
   "o", gondor[o], gondor[ó], 
   "u", gondor[u], gondor[ú], 
-  "y", gondor[y], gondor[ý], 
+  "y", gondor[y] + " / " + gondor[I], gondor[ý], 
 )
+
+*Note:* This package is mostly case-insensitive. 
+One exception is the letter `i` in the Mode of Gondor. 
+As an initial `i` _usually_, but not always, represents the consonant sound ‘y’ in this mode, we use `I` to represent the tengwa #gondor[I]: 
 
 #v(paragraph-skip-b)
 
-*Table of complex vowels:*
+#tengwar-snippet("gondor[Iarwain]")
+#h(1em) #tengwar-snippet("gondor[iCherdir]")
+
+#v(paragraph-skip-b)
+
+#h(-paragraph-indent) *Table of complex vowels:*
 
 #table(
   columns: (auto, ) * 6,
@@ -658,7 +667,7 @@ _TODO_
   gondor[ae], gondor[oe], gondor[au], 
 )
 
-
+#pagebreak()
 
 === Examples
 
@@ -771,6 +780,8 @@ nef aear, sí nef aearon!
 // *Not yet implemented*
 // 
 // #pagebreak()
+
+#pagebreak()
 
 == The One Ring inscription
 

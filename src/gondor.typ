@@ -1,8 +1,6 @@
 // Implementation of the Mode of Gondor
 // WIP; not working yet
 
-// TODO: initial i
-
 #import "tengwar_proto.typ": *
 
 // TODO: p17, implement and check second block
@@ -12,6 +10,7 @@
   th     : sule,                   Th     : sule,
   ph     : formen,                 Ph     : formen,
   kh     : hwesta,                 Kh     : hwesta,
+  ch     : hwesta,                 Ch     : hwesta,
   dh     : anto,                   Dh     : anto,
   gh     : unque,                  Gh     : unque,
   ng     : nwalme,                 Ng     : nwalme,
@@ -45,7 +44,7 @@
   aw     : tehta-a + uglide,       Aw     : tehta-a + uglide,
   a      : tehta-a,                A      : tehta-a, 
   e      : tehta-e,                E      : tehta-e, 
-  i      : tehta-i,                I      : tehta-i, 
+  i      : tehta-i,                I      : iglide, 
   o      : tehta-o,                O      : tehta-o, 
   u      : tehta-u,                U      : tehta-u, 
   y      : tehta-y-up,             Y      : tehta-y-up, 

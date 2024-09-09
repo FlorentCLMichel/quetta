@@ -456,12 +456,17 @@
 }
 
 // Adjust the vertical positions of tehtars above a tilde or upper y
+#let v-adjust-tehta = (
+  "\u{00e8}": -1em, 
+  "\u{00e9}": -1.1em, 
+  "\u{00ea}": -1.1em, 
+)
 #let codes-w-yup = vowels-shifted.keys().filter(it => (tehta-w,tehta-y-up).contains(it.at(0))).map(it => vowels-shifted.at(it)).dedup()
 #let re-tehtar-adjust = regex("(" + array-to-string-or(codes-w-yup) + ")"
   + "(" + array-to-string-or(vowels-shifted.values().map(escape-regxp)) + ")")
 #let adjust-tehtar(it) = {
   let m = it.text.match(re-tehtar-adjust).captures
-  m.at(0) + box(height: 0pt, move(dy: -1em, m.at(1)))
+  m.at(0) + box(height: 0pt, move(dy: v-adjust-tehta.at(m.at(0)), m.at(1)))
 }
 
 // Adjust the spacing between digits

@@ -460,6 +460,10 @@
   "\u{00e8}": -1em, 
   "\u{00e9}": -1.1em, 
   "\u{00ea}": -1.1em, 
+  "\u{00d2}": -1em, 
+  "\u{00d3}": -1em, 
+  "\u{00d4}": -1em, 
+  "\u{00d7}": -1em, 
 )
 #let codes-w-yup = vowels-shifted.keys().filter(it => (tehta-w,tehta-y-up).contains(it.at(0))).map(it => vowels-shifted.at(it)).dedup()
 #let re-tehtar-adjust = regex("(" + array-to-string-or(codes-w-yup) + ")"

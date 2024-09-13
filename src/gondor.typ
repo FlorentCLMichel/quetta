@@ -3,9 +3,6 @@
 
 #import "tengwar_proto.typ": *
 
-// TODO: p17, implement and check second block
-// TODO: check all consonants
-
 #let map-gondor = (
   th     : sule,                   Th     : sule,
   ph     : formen,                 Ph     : formen,
@@ -124,17 +121,13 @@
       m.captures.at(0) + m.captures.at(1)
     })
   
-  // If a tehta is followed by a consonant, exchange them
+  // If a tehta is followed by a consonant, exchange them, else add a carrier
   txt = txt.replace(regex("(" + array-to-string-or(tehtar.slice(0,-1)) + ")(\u{fffe}?)(\u{ffff}?)(" 
-    + array-to-string-or((carrier-i, carrier-j) + consonants) + ")"),
-    m => m.captures.at(1) + m.captures.at(2) + m.captures.at(3) + m.captures.at(0))
-  
-  // If a tehta is not followed by a consonant, add a carrier
-  txt = txt.replace(regex("(.?)(\u{fffe}?)(\u{ffff}?)(" + array-to-string-or(tehtar.slice(0,-1)) + ")"),
-    m => if (consonants + (carrier-i, carrier-j)).contains(m.captures.at(0)) {
-      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + m.captures.at(3)
+    + array-to-string-or((carrier-i, carrier-j) + consonants) + "?)"),
+    m => if (m.captures.at(3) != "") {
+      m.captures.at(1) + m.captures.at(2) + m.captures.at(3) + m.captures.at(0)
     } else {
-      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + carrier-i + m.captures.at(3)
+      carrier-i + m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + m.captures.at(3)
     })
 
   // If a tehta is still not on a consonnant nor preceded by \u{ffff}, add a carrier (exclude theta-y)
@@ -158,6 +151,10 @@
   // If órë not final, replace it by rómen
   txt = txt.replace(regex(ore + "(" + array-to-string-or(vowels) + "*)" + "(" + array-to-string-or((carrier-i, carrier-j) + consonants) + ")"),
                     m => romen + m.captures.at(0) + m.captures.at(1))
+  
+  // A final formen is replaced by ampa
+  txt = txt.replace(regex(formen + "(" + array-to-string-or(vowels) + "*)" + "(" + array-to-string-or((carrier-i, carrier-j) + consonants) + "?)"),
+                    m => if (m.captures.at(1) == "") { ampa + m.captures.at(0)} else { formen + m.captures.at(0) + m.captures.at(1) })
 
   // If wilya directly follows a consonant, replace it with an overbar
   txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")(" + array-to-string-or(vowels) + "?)" + wilya),

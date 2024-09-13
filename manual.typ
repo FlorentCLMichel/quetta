@@ -624,11 +624,64 @@ The most important difference is probably the position of tehtar: when applicabl
 
 === Generalities
 
-_Work in Progress_
+*Table of consonants:*
 
-#h(-paragraph-indent) *Table of consonants:*
-
-_TODO_
+#h(-paragraph-indent)#box(table(
+  columns: (auto, auto),
+  table.header(
+    [*consonant*], [*tengwa*]
+  ),
+  "t", gondor[t],
+  "d", gondor[d],
+  "th", gondor[th],
+  "dh", gondor[dh],
+  "n", gondor[n],
+  "r", gondor[r],
+))
+#box(table(
+  columns: (auto, auto),
+  table.header(
+    [*consonant*], [*tengwa*]
+  ),
+  "p", gondor[t],
+  "b", gondor[d],
+  "f", gondor[th],
+  "v", gondor[dh],
+  "m", gondor[n],
+  "lh" , gondor[lh],
+))
+#box(table(
+  columns: (auto, auto),
+  table.header(
+    [*consonant*], [*tengwa*]
+  ),
+  "c / k", gondor[c],
+  "g", gondor[g],
+  "kh", gondor[kh],
+  "gh", gondor[gh],
+  "ng", gondor[ng],
+  "w", gondor[w],
+))
+#box(table(
+  columns: (auto, auto),
+  table.header(
+    [*consonant*], [*tengwa*]
+  ),
+  "s", gondor[s],
+  "ss", gondor[ss],
+  "h", gondor[h],
+  "rh", gondor[rh],
+  "hw", gondor[hw],
+  "l", gondor[l],
+))
+#box(table(
+  columns: (auto, auto),
+  table.header(
+    [*consonant*], [*tengwa(r)*]
+  ),
+  "mh", gondor[mh],
+  "rt", gondor[rt],
+))
 
 #v(paragraph-skip-b)
 

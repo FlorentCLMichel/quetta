@@ -620,7 +620,7 @@ Nai elyë hiruva. Namárië!
 
 The implementation of the Mode of Gondor for the Sindarin language mostly follows Reference @tengwar-textbook, to which we refer for more information. 
 In this section, we mostly focus on the differences compared with the implementation of the Quenya language described in Section~@sec-quenya.
-The most important difference is probably the position of tehtar: when applicable, a tehta is placed on the _previous_ tengwa in Qurnya but on the _following_ one in Sindarin.
+The most important difference is probably the position of tehtar: when applicable, a tehta is placed on the _previous_ tengwa in Quenya but on the _following_ one in Sindarin.
 
 === Generalities
 
@@ -726,7 +726,7 @@ As an initial `i` _usually_, but not always, represents the consonant sound ‘y
 
 // TODO: check and debug
 
-The following example, taken from #link("https://www.omniglot.com/conscripts/sindarin.htm")[omniglot.com], is a SIndarin translation of Article 1 of the Universal Declaration of Human Rights.
+The following example, taken from #link("https://www.omniglot.com/conscripts/sindarin.htm")[omniglot.com], is a Sindarin translation of Article 1 of the Universal Declaration of Human Rights.
 
 #v(paragraph-skip-b)
 
@@ -738,7 +738,7 @@ The following example, taken from #link("https://www.omniglot.com/conscripts/sin
 #set text(size: 12pt)
 
 #let txt = [
-Firiath ennin lîn ar îf vi virwas ar 'ernais. Sevir channas ar faelas ar bórar lengad anith vi faer gwadoras.
+Firiath ennin lîn ar îf vi virwas ar ernais. Sevir channas ar faelas ar bórar lengad anith vi faer gwadoras.
 ]
 
 #txt
@@ -769,7 +769,7 @@ We use the three symbols ‘,.,’ to end paragraphs to reproduce the symbol #go
 #set text(size: 12pt)
 
 #let txt = [
-Elessar Telcontar: Aragorn Arathornion Edhelharn, aran Gondor ar Hîr i Mbair Annui, anglennatha i Varanduiniant erin dolothen Ethuil, egor ben genediad Drannail erin Gwirith edwen. 
+Elessar Telcontar: Aragorn Arathornion Edhelharn, aran Gondor ar Hîr i Mbair Annui, anglennatha i Varanduiniant erin dolothen Ethuil, egor ben genediad Drannail erin Gwirith edwen . 
 Ar e aníra ennas suilannad mhellyn în phain: edregol e aníra tírad i Cherdir Perhael (i sennui Panthael estathar aen) Condir i Drann, ar Meril bess dîn; ar Elanor, Meril, Glorfinniel, ar Eirien sellath dîn; ar Iorhael, Gelir, Cordof, ar Baravorn, ionnath dîn ,., \
 A Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen uin Echuir ,.,
 ]

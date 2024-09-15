@@ -1,5 +1,4 @@
 // Implementation of the Mode of Gondor
-// WIP; not working yet
 
 #import "tengwar_proto.typ": *
 
@@ -10,7 +9,6 @@
   ch     : hwesta,                 Ch     : hwesta,
   dh     : anto,                   Dh     : anto,
   gh     : unque,                  Gh     : unque,
-  ng     : nwalme,                 Ng     : nwalme,
   rh     : arda,                   Rh     : arda,
   lh     : alda,                   Lh     : alda,
   ss     : esse,                   Ss     : esse,
@@ -76,7 +74,7 @@
   "«"    : "\u{ffff}«\u{fffe}",
   ">"    : "\u{ffff}»\u{fffe}",
   "»"    : "\u{ffff}»\u{fffe}",
-  ":"    : " " + comma,
+  ":"    : " " + period,
   "?"    : questionmark,
 )
 
@@ -98,17 +96,30 @@
   txt = txt.replace(regex("(" + array-to-string-or(numbers-unshift.keys()) + ")"),
                     m => numbers-unshift.at(m.captures.first()))
   
-  // Use S-hooks if possible, and move the following tehtar if needed
-  txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")" 
-                          + "(\u{fffe}?)" + silme
-                          + "([" + array-to-string-or(tehtar) + "]?)"),
-    m => if s-hooks.keys().contains(m.captures.at(0)) {
-      m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + s-hooks.at(m.captures.at(0))
+  // // Use S-hooks if possible, and move the following tehtar if needed
+  // txt = txt.replace(regex("(" + array-to-string-or(consonants) + ")" 
+  //                         + "(\u{fffe}?)" + silme
+  //                         + "([" + array-to-string-or(tehtar) + "]?)"),
+  //   m => if s-hooks.keys().contains(m.captures.at(0)) {
+  //     m.captures.at(0) + m.captures.at(1) + m.captures.at(2) + s-hooks.at(m.captures.at(0))
+  //   } else {
+  //     m.captures.at(0) + m.captures.at(1) + sule + m.captures.at(2)
+  //   }
+  // )
+ 
+  // It unque and numen is initial or final, replace them by nwalme
+  // TODO
+  txt = txt.replace(regex(
+    "(" + array-to-string-or(all-letters) + "?)" 
+    + unque + numen 
+    + "(" + array-to-string-or(all-letters) + "?)"),
+    m => if (m.captures.at(0) == "" or m.captures.at(2) == "") { 
+      m.captures.at(0) + nwalme + m.captures.at(2)
     } else {
-      m.captures.at(0) + m.captures.at(1) + sule + m.captures.at(2)
-    }
-  )
-  
+      m.captures.at(0) + unque + numen + m.captures.at(2)
+    })
+
+
   // If numen or malta precedes a consonant, replace it by an overbar
   txt = txt.replace(regex("([" + numen  + "|"+ malta + "])(" + array-to-string-or(consonants) + ")"),
                     m => m.captures.at(1) + overbar.at(letter-shapes.at(m.captures.at(1))))

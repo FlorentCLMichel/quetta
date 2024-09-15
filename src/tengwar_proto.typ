@@ -182,6 +182,8 @@
   tehta-w,
 )
 
+#let all-letters = vowels + consonants
+
 #let letter-shapes = (
   str(tinco)            : "y",
   str(tinco-alt)        : "y",

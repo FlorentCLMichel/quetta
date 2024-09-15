@@ -93,7 +93,7 @@
   "«"    : "\u{ffff}«\u{fffe}",
   ">"    : "\u{ffff}»\u{fffe}",
   "»"    : "\u{ffff}»\u{fffe}",
-  ":"    : "\u{fffd}",
+  "|"    : "\u{fffd}",
   "?"    : questionmark,
 )
 

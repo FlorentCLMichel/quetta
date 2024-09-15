@@ -182,7 +182,7 @@
   tehta-w,
 )
 
-#let all-letters = vowels + consonants
+#let all-letters = ("\u{fffd}",) + vowels + consonants
 
 #let letter-shapes = (
   str(tinco)            : "y",

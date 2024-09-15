@@ -74,7 +74,9 @@
   "«"    : "\u{ffff}«\u{fffe}",
   ">"    : "\u{ffff}»\u{fffe}",
   "»"    : "\u{ffff}»\u{fffe}",
-  ":"    : " " + period,
+  ";"    : " " + comma,
+  ":"    : " " + comma,
+  "|"    : "\u{fffd}",
   "?"    : questionmark,
 )
 
@@ -108,7 +110,6 @@
   // )
  
   // It unque and numen is initial or final, replace them by nwalme
-  // TODO
   txt = txt.replace(regex(
     "(" + array-to-string-or(all-letters) + "?)" 
     + unque + numen 
@@ -160,7 +161,7 @@
                     m => essenuquerna-alt + m.captures.first())
   
   // If órë not final, replace it by rómen
-  txt = txt.replace(regex(ore + "(" + array-to-string-or(vowels) + "*)" + "(" + array-to-string-or((carrier-i, carrier-j) + consonants) + ")"),
+  txt = txt.replace(regex(ore + "(" + array-to-string-or(vowels + ("\u{fffd}",)) + "*)" + "(" + array-to-string-or((carrier-i, carrier-j) + consonants) + ")"),
                     m => romen + m.captures.at(0) + m.captures.at(1))
   
   // A final formen is replaced by ampa
@@ -216,6 +217,9 @@
     let m = it.text.match(re-alt-font).captures.first()
     text(font: tengwar-font-alt, fallback: false, m)
   }
+  
+  // Remove \u{fffd}
+  show "\u{fffd}": ""
 
   txt
 }

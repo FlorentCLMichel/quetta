@@ -18,7 +18,7 @@
 #let title = "Manual for the quetta (" + quenya[Quetta] + ") module"
 #let author = "Florent Michel"
 #let keywords = ("Tengwar", "Typst")
-#let version = "0.1.1"
+#let version = "0.2.0"
 #set document(
   title: title,
   author: author,
@@ -515,12 +515,12 @@ End-of-paragraph symbols can be obtained by combining commas and periods:
 
 #v(paragraph-skip-b)
 
-#h(-paragraph-indent) The symbol ‘:’ can be used to prevent glyph combination: 
+#h(-paragraph-indent) The symbol ‘|’ can be used to prevent glyph combination: 
 
 #v(paragraph-skip-b)
 
-#tengwar-snippet("quenya[nn n:n]") #h(1em)
-#tengwar-snippet("quenya[na n:a]")
+#tengwar-snippet("quenya[nn n|n]") #h(1em)
+#tengwar-snippet("quenya[na n|a]")
 
 === Number system
 
@@ -724,8 +724,6 @@ As an initial `i` _usually_, but not always, represents the consonant sound ‘y
 
 === Examples
 
-// TODO: check and debug
-
 The following example, taken from #link("https://www.omniglot.com/conscripts/sindarin.htm")[omniglot.com], is a Sindarin translation of Article 1 of the Universal Declaration of Human Rights.
 
 #v(paragraph-skip-b)
@@ -756,8 +754,8 @@ Firiath ennin lîn ar îf vi virwas ar ernais. Sevir channas ar faelas ar bórar
 
 #v(paragraph-skip-b)
 
-The next example is the third version of the King's Letter which would have been part of a dropped epilogue to the Lord of the Rings trilogy, available on #link("https://glaemscrafu.jrrvf.com/english/lettreduroi.html")[glaemscrafu.jrrvf.com/]. 
-We use the three symbols ‘,.,’ to end paragraphs to reproduce the symbol #gondor[,.,].
+The next example is the third version of the King's Letter which would have been part of a dropped epilogue to the Lord of the Rings trilogy, available on #link("https://glaemscrafu.jrrvf.com/english/lettreduroi.html")[glaemscrafu.jrrvf.com/].#footnote[The Tengwar version shown here slightly differs from the original one by combining #gondor[r|h] into #gondor[rh] and #gondor[l|h] into #gondor[lh]. I am not sure why the original version does not use these symbol; this may reflect Tolkien's evolving view on Sindarin writing.]
+We use the three symbols ‘,.,’ to end paragraphs to reproduce the symbol #gondor[,.,]. 
 
 #v(paragraph-skip-b)
 
@@ -769,8 +767,8 @@ We use the three symbols ‘,.,’ to end paragraphs to reproduce the symbol #go
 #set text(size: 12pt)
 
 #let txt = [
-Elessar Telcontar: Aragorn Arathornion Edhelharn, aran Gondor ar Hîr i Mbair Annui, anglennatha i Varanduiniant erin dolothen Ethuil, egor ben genediad Drannail erin Gwirith edwen . 
-Ar e aníra ennas suilannad mhellyn în phain: edregol e aníra tírad i Cherdir Perhael (i sennui Panthael estathar aen) Condir i Drann, ar Meril bess dîn; ar Elanor, Meril, Glorfinniel, ar Eirien sellath dîn; ar Iorhael, Gelir, Cordof, ar Baravorn, ionnath dîn ,., \
+Elessar Telcontar; Aragorn Arathornion Edhelharn , aran Gondor ar Hîr iMbair Annui , anglennatha iVaranduiniant erin dolothen Ethuil , egor ben genediad Drannail erin Gwirith edwen . 
+Ar e aníra ennas suilannad mhellyn în phain; edregol e aníra tírad iCherdir Perhael (i sennui Panthael estathar aen) Condir iDrann , ar Meril bess dîn; ar Elanor , Meril , Glorfinniel , ar Eirien sellath dîn; ar Iorhael , Gelir , Cordof , ar Baravorn , ionnath dîn ,., \
 A Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen uin Echuir ,.,
 ]
 
@@ -789,6 +787,8 @@ A Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen uin Echuir ,.,
 #v(paragraph-skip-b)
 
 The third example is the first stanza of the poem _A Elbereth Gilthoniel_ from Reference~@lotr#footnote[Book 1, chapter3; Book 1, chapter 2; Book 4, chapter 10.]:
+
+// TODO: check and debug
 
 #v(paragraph-skip-b)
 
@@ -843,9 +843,9 @@ Although the Black Speech is not implemented yet, the One Ring inscription can b
 #v(paragraph-skip-b)
 
 #let ring-inscr-quenya = "
-  _»Ka:nssangw:nd£rombta£lo£kwô, Ka:nssangw:ngwmbe­talo« 
+  _»Ka|nssangw|nd£rombta£lo£kwô, Ka|nssangw|ngwmbe­talo« 
   #linebreak()#v(0.7em) 
-  Ka:nssangwth£rquata£lo£kwô, £Ngwa:mb£rossmokii:qu£rpe­talo_
+  Ka|nssangwth£rquata£lo£kwô, £Ngwa|mb£rossmokii|qu£rpe­talo_
 "
 
 #code-block("quenya[" + ring-inscr-quenya + "]")
@@ -856,7 +856,7 @@ Obviously, that's not quite how the ring inscription is supposed to sound.
 One reason is simply that the Quenya and Black Speech modes have different relations between symbols and sounds: to obtain the same written result, one has to ‘transcribe’ the phonetic description to how it would be read in the Quenya mode. 
 Another difference is that some of the tengwa forms used in the ring inscription are generally not used in Quenya; we thus use the symbol `£` to get variants. 
 We also use `£` to switch between #quenya[r] and #quenya[£r].
-Finally, words are separated with `:` to avoid repeated consonants being combined.
+Finally, words are separated with `|` to avoid repeated consonants being combined.
 Here is the result, with a colour gradient in the background to mimic a golden surface and on the text to represent incandescence:
 
 #v(paragraph-skip-b)

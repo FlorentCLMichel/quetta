@@ -1,6 +1,6 @@
 [package]
 name = "quetta"
-version = "0.1.1"
+version = "0.2.0"
 compiler = "0.11.0"
 repository = "https://github.com/FlorentCLMichel/quetta"
 entrypoint = "src/quetta.typ"

@@ -19,7 +19,7 @@ The following line may be used to convert the whole document below to Tengwar in
 **Example:**
 
 ```
-#import "@preview/quetta:0.1.0"
+#import "@preview/quetta:0.2.0"
 
 // Use the function `quenya` to write a small amount of text in Tengwar (Quenya mode)
 #text(size: 16pt, 
@@ -45,6 +45,17 @@ Namárië!
 * Support for the mode of Gondor: WIP
 * Support for the mode of Beleriand: backlog
 * Support for the Black Speech: backlog
+
+## Changelog
+
+### v0.2.0
+
+* Add support for Sindarin—Mode of Gondor
+* **Breaking change:** The symbol used to prevent combination was changed from `:` to `|`.
+
+### v0.1.0
+
+Initial release with Quenya support.
 
 ## How can I contribute?
 

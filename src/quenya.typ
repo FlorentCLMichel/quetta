@@ -237,6 +237,7 @@
 #let quenya(it, style: "normal") = { 
 
   show re-esse-adjust: adjust-esse
+  show re-lambe-silmenuquerna-adjust: adjust-lambe-silmenuquerna
   show re-tehtar-adjust: adjust-tehtar
   show re-digits-adjust: adjust-digits
 

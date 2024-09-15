@@ -1,4 +1,5 @@
 #import "src/quetta.typ": *
+#import "src/tengwar_proto.typ" as tengwar
 
 // Define the fonts
 #let font-serif = "New Computer Modern"
@@ -70,9 +71,6 @@
   stroke: font-stroke-width + link-color)
 
 // Reference format
-#show ref: set text(
-  link-color,
-  stroke: font-stroke-width + link-color)
 #let numbering-section(x, depth) = x.slice(0, depth).map(str).join(".")
 #show ref: it => {
   let el = it.element
@@ -124,11 +122,10 @@
 #show footnote: set text(link-color)
 
 // Citation format
+#set cite(style: "manual_files/ieee-nobrackets.csl")
 #show cite: it => {
-  set text(fill: black)
-  //show regex("\[|\]"): ""
-  show regex("\d+"): set text(fill: link-color)
-  it
+  set text(fill: link-color)
+  text(black, "[") + it + text(black, "]")
 }
 
 // Code snippet
@@ -636,7 +633,7 @@ The most important difference is probably the position of tehtar: when applicabl
   "th", gondor[th],
   "dh", gondor[dh],
   "n", gondor[n],
-  "r", gondor[r],
+  "r", gondor[r] + " / " + text(font: tengwar.tengwar-font, fallback: false, tengwar.romen),
 ))
 #box(table(
   columns: (auto, auto),
@@ -677,10 +674,9 @@ The most important difference is probably the position of tehtar: when applicabl
 #box(table(
   columns: (auto, auto),
   table.header(
-    [*consonant*], [*tengwa(r)*]
+    [*consonant*], [*tengwa*]
   ),
   "mh", gondor[mh],
-  "rt", gondor[rt],
 ))
 
 #v(paragraph-skip-b)
@@ -754,7 +750,7 @@ Firiath ennin lîn ar îf vi virwas ar ernais. Sevir channas ar faelas ar bórar
 
 #v(paragraph-skip-b)
 
-The next example is the third version of the King's Letter which would have been part of a dropped epilogue to the Lord of the Rings trilogy, available on #link("https://glaemscrafu.jrrvf.com/english/lettreduroi.html")[glaemscrafu.jrrvf.com/].#footnote[The Tengwar version shown here slightly differs from the original one by combining #gondor[r|h] into #gondor[rh] and #gondor[l|h] into #gondor[lh]. I am not sure why the original version does not use these symbol; this may reflect Tolkien's evolving view on Sindarin writing.]
+The next example is the third version of the King's Letter which would have been part of a dropped epilogue to the Lord of the Rings trilogy, available on #link("https://glaemscrafu.jrrvf.com/english/lettreduroi.html")[glaemscrafu.jrrvf.com].#footnote[The Tengwar version shown here slightly differs from the original one by combining #gondor[r|h] into #gondor[rh] and #gondor[l|h] into #gondor[lh]. I am not sure why the original version does not use these symbol; this may reflect Tolkien's evolving view on Sindarin writing.]
 We use the three symbols ‘,.,’ to end paragraphs to reproduce the symbol #gondor[,.,]. 
 
 #v(paragraph-skip-b)
@@ -788,26 +784,24 @@ A Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen uin Echuir ,.,
 
 The third example is the first stanza of the poem _A Elbereth Gilthoniel_ from Reference~@lotr#footnote[Book 1, chapter3; Book 1, chapter 2; Book 4, chapter 10.]:
 
-// TODO: check and debug
-
 #v(paragraph-skip-b)
 
 #[
 #show: rest => columns(2, rest)
-#set par(first-line-indent: 0em, leading: 0.6em)
+#set par(first-line-indent: 0em, leading: 0.95em)
 #set align(center)
 #show par: it => it + v(0.5em)
 
 #set text(size: 12pt)
 
 #let txt = [
-A Elbereth Gilthoniel, \
+_A Elbereth Gilthoniel, \
 silivren penna míriel \
 o menel aglar elenath! \
 Na-chaered palan-díriel \
 o galadhremmin ennorath, \
 Fanuilos, le linnathon \
-nef aear, sí nef aearon!
+nef aear, sí nef aearon!_
 ]
 
 #txt
@@ -815,14 +809,12 @@ nef aear, sí nef aearon!
 #colbreak()
 
 #set text(size: 11pt)
-#set par(leading: 0.7em)
+#set par(leading: 1em)
 #show: gondor
 
 #txt
 
 ]
-
-// #tengwar-snippet("galadriel")
 
 // == Sindarin—Mode of Beleriand
 // 

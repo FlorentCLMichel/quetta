@@ -447,13 +447,24 @@
 }
 
 // Adjust the spacing between esse and other consonants
-#let re-esse-adjust = regex(esse + "(" + array-to-string-or(consonants) + ")")
+#let re-esse-adjust = regex(esse + "(" + array-to-string-or(tehtar) + "*)" + "(" + array-to-string-or(consonants) + ")")
 #let adjust-esse(it) = {
-  let m = it.text.match(re-esse-adjust).captures.first()
-  if (text.style == "italic") and ("n", "m", "o").contains(letter-shapes.at(m)) {
-    esse + h(-0.15em) + m
+  let m = it.text.match(re-esse-adjust).captures
+  if (text.style == "italic") and ("n", "m", "o").contains(letter-shapes.at(m.at(1))) {
+    esse + h(-0.15em) + m.at(0) + m.at(1)
   } else {
-    esse + m
+    esse + m.at(0) + m.at(1)
+  }
+}
+
+// Adjust the spacing between lambe and silmenuquerna
+#let re-lambe-silmenuquerna-adjust = regex(lambe + "(" + array-to-string-or(tehtar) + "*)" + silmenuquerna)
+#let adjust-lambe-silmenuquerna(it) = {
+  let m = it.text.match(re-lambe-silmenuquerna-adjust).captures
+  if (text.style == "italic") {
+    lambe + h(-0.22em) + m.at(0) + silmenuquerna
+  } else {
+    lambe + m.at(0) + silmenuquerna
   }
 }
 

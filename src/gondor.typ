@@ -8,6 +8,7 @@
   kh     : hwesta,                 Kh     : hwesta,
   ch     : hwesta,                 Ch     : hwesta,
   dh     : anto,                   Dh     : anto,
+  ng     : nwalme,                 Ng     : nwalme,
   gh     : unque,                  Gh     : unque,
   rh     : arda,                   Rh     : arda,
   lh     : alda,                   Lh     : alda,
@@ -109,17 +110,13 @@
   //   }
   // )
  
-  // It unque and numen is initial or final, replace them by nwalme
+  // It nwalme is neither initial nor final, replace it by numen + ungwe
   txt = txt.replace(regex(
-    "(" + array-to-string-or(all-letters) + "?)" 
-    + unque + numen 
-    + "(" + array-to-string-or(all-letters) + "?)"),
-    m => if (m.captures.at(0) == "" or m.captures.at(2) == "") { 
-      m.captures.at(0) + nwalme + m.captures.at(2)
-    } else {
-      m.captures.at(0) + unque + numen + m.captures.at(2)
-    })
-
+    "(" + array-to-string-or(all-letters) + ")" 
+    + nwalme
+    + "(" + array-to-string-or(all-letters) + ")"),
+      m => m.captures.at(0) + numen + ungwe + m.captures.at(1)
+    )
 
   // If numen or malta precedes a consonant, replace it by an overbar
   txt = txt.replace(regex("([" + numen  + "|"+ malta + "])(" + array-to-string-or(consonants) + ")"),
@@ -227,6 +224,7 @@
 #let gondor(it, style: "normal") = { 
 
   show re-esse-adjust: adjust-esse
+  show re-lambe-silmenuquerna-adjust: adjust-lambe-silmenuquerna
   show re-tehtar-adjust: adjust-tehtar
   show re-digits-adjust: adjust-digits
 

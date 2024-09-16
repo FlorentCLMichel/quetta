@@ -17,7 +17,7 @@
 
 // Document metadata
 #let title = "Manual for the quetta (" + quenya[Quetta] + ") module"
-#let author = "Florent Michel"
+#let author = ""
 #let keywords = ("Tengwar", "Typst")
 #let version = "0.2.0"
 #set document(
@@ -206,8 +206,8 @@ _‘Quetta’_ (#quenya[Quetta]) means ‘word’ in Quenya @elfdict#footnote[ht
 It thus seemed fitting for a module aimed at making the process of typing these languages easier. 
 
 Words are also, loosely speaking, the base units this module works on, as we shall see in more details below. 
-While its general philosophy is to map each symbol used in Tolkien's elvish languages to letters from the Latin alphabet, a few word-wise substitution rules were implemented so that, in _most_ (but probably not all) cases the correct spelling can be obtained by typing the word phonetically. 
-For the same reason, the mapping generally works on groups of letters rather than individual ones, at least when there is no natural one-to-one mapping between individual symbols.
+While its general philosophy is to map each symbol used in Tolkien's elvish languages to letters from the Latin alphabet, a few word-wise substitution rules were implemented so that, in _most_ (but probably not all) cases the correct spelling can be obtained by typing the tet phonetically. 
+For the same reason, the mapping generally works on groups of letters, from individual ones to whole words.
 
 == The Tengwar script
 
@@ -216,38 +216,73 @@ We refer interested readers to Appendix E of the book @lotr and online reference
 
 In short, Tengwar (#quenya[tengwar] in Quenya mode) is one of the scripts invented by Tolkien, primarily consisting of 36 letters (called _tengwar_; singular: _tengwa_ (#quenya[tengwa])) and diacritics (_tehtar_ (#quenya[tehtar] ; singular: _tehta_ (#quenya[tehta]))). 
 There are several ways to relate tengwar to sounds, called _modes_.
-This module primarily focuses on the Quenya (#quenya[Quenya]), or ‘classical’, mode (in universe, it is the original way to write tengwar).
-Support for the other modes described by Tolkien is planned for a future version.
+This module primarily focuses on the Quenya (#quenya[Quenya]), or ‘classical’, mode, and one of the Sindarin (#gondor[Sindarin]) modes, often called _mode of Gondor_ (#gondor[Gondor]).
+Support for the other modes described by Tolkien is planned for future versions.
 
 = How to use
 
 == Requirements
 
-- #link("https://github.com/typst/typst")[Typst] version 1.11.0 or up
+- #link("https://github.com/typst/typst")[Typst] version 1.11.0 or 1.11.1,
 
 - The #link("https://www.fontspace.com/tengwar-annatar-font-f2244")[Tengwar Annatar] fonts version 1.20 (support for other Tengwar fonts is not currently planned).
 
 == Importing the module
 
-To import the module, simply add
+=== Using Typst's packaage manager
+
+Simply add 
 
 #v(paragraph-skip-b)
 
 ```typst
-#import "<path>/quetta.typ": *
+#import "@preview/quetta:0.2.0": *
+```
+
+#v(paragraph-skip-b)
+
+at the top of your `.typ` file. 
+This will import the module core functions (`quenya` and `gondor`) to the global namespace.
+Alternatively, the module can be imported without adding functions to the global namespace with 
+
+#v(paragraph-skip-b)
+
+```typst
+#import "@preview/quetta:0.2.0"
+```
+
+#v(paragraph-skip-b)
+
+The aforementioned functions must then be preceded by `quetta.` to be used.
+
+=== Manual install
+
+You can download the module by cloning the #link("https://github.com/FlorentCLMichel/quetta.git")[Git repository] and import it by adding
+
+#v(paragraph-skip-b)
+
+```typst
+#import "<path>/src/quetta.typ": *
 ```
 #v(paragraph-skip-b)
 
-at the top of your `.typ` file, where `<path>` is the path to the quetta module. 
+at the top of your `.typ` file, where `<path>` is the path to the cloned repository. 
+Alternatively, the module can be imported without adding functions to the global namespace with 
+
+#v(paragraph-skip-b)
+
+```typst
+#import "<path>/src/quetta.typ"
+```
 
 == Design principles
 
-This module provides one main command for each supported mode—at the moment, only `quenya` is implemented. 
-This command takes text (possibly including formatting) as input and performs the following sequence of operations (not necessarily in this order): 
+This module provides one main command for each supported mode—at the moment, only `quenya` and `gondor` are implemented. 
+These commands take text (possibly including formatting) as input and perform the following sequence of operations (not necessarily in this order): 
 
-+ Phonetic translation into tengwar and tehtar—for instance, converting `quenya` to #quenya[quen:ya].
++ Phonetic translation into tengwar and tehtar—for instance, converting `quenya` to #quenya[quen|ya].
 
-+ Application of spelling rules—for instance, converting #quenya[quen:ya] to #quenya[quenya].
++ Application of spelling rules—for instance, converting #quenya[quen|ya] to #quenya[quenya].
 
 + Conversion of numbers in base 12 and conversion to the tengwar number system (see below)—for instance, `144` becomes #quenya[144].
 
@@ -271,7 +306,7 @@ Alternative glyphs, when available, can be obtained with the symbol `£`:
 
 #v(paragraph-skip-b)
 
-#h(-paragraph-indent)For tengwar associated with a sound starting with ‘k’, the standard glyphs are obtained using the spelling ‘c’ for _calma_ (#quenya[c]) or ‘qu’ for _quessë_ (#quenya[qu]), and the alternatives glyphs with a ‘k’ or ‘kw’: 
+#h(-paragraph-indent)In Quenya mode only, for tengwar associated with a sound starting with ‘k’, the standard glyphs are obtained using the spelling ‘c’ for _calma_ (#quenya[c]) or ‘qu’ for _quessë_ (#quenya[qu]), and the alternatives glyphs with a ‘k’ or ‘kw’: 
 
 #v(paragraph-skip-b)
 
@@ -319,6 +354,8 @@ For instance, a centred 16-points italic version of the Quenya word ‘tengwar�
       fill: gradient.linear(blue, green)
      )[#box(quenya[_tengwar_])]
 ]
+
+#v(paragraph-skip-b)
 
 == Quenya (#quenya[Quenya])<sec-quenya>
 

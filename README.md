@@ -2,14 +2,19 @@ A simple module to write [tengwar](https://en.wikipedia.org/wiki/Tengwar) in [Ty
 
 ## Requirements
 
-- [Typst](https://github.com/typst/typst) version 1.11.0 or up
+- [Typst](https://github.com/typst/typst) version 1.11.0
 - The [Tengwar Annatar](https://www.fontspace.com/tengwar-annatar-font-f2244) fonts version 1.20
 
-For use with the [Typst web app](https://typst.app/), you need to upload the font files to your project.
+To use this module with the [Typst web app](https://typst.app/), you need to upload the font files to your project.
 
 ## Usage
 
-The main functionality of this module is provided by the function `quenya` taking content and converting all text in Tenwar using the Quenya mode. The original text is used as a phonetic transcription. (This module does not translate English into Quenya.) See the [manual](manual.pdf) for more information. 
+The main functionality of this module is provided by functions taking content and converting all text in Tenwar: 
+
+* `quenya` converts text using the mode of Quenya,
+* `gondor` converts text using the Sindarin mode of Gondor.
+
+The original text is used as a phonetic transcription. (This module does not translate English into Quenya or Sindarin.) See the [manual](manual.pdf) for more information. 
 
 The following line may be used to convert the whole document below to Tengwar in Quenya mode (other `show` rules might interfere with it):
 ```
@@ -42,7 +47,7 @@ Namárië!
 
 * Number conversion: done
 * Support for the Quenya mode: done
-* Support for the mode of Gondor: WIP
+* Support for the mode of Gondor: done
 * Support for the mode of Beleriand: backlog
 * Support for the Black Speech: backlog
 
@@ -63,5 +68,5 @@ I (the original author) am definitely not en expert in either Typst nor Tengwar.
 
 * Identify and resolve inefficiencies in the Typst code.
 * Identify cases where the result differs from the expected one. (In particular, there are probably rules for writing in Tengwar that I either am not aware of or have not properly understood. Any advice on that is warmly welcome!)
-* References on Tengar, Quenya, and Sidarin.
+* References on Tengar, Quenya, and Sindarin.
 * Support for other Tengwar fonts. 

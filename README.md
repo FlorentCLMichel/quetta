@@ -57,6 +57,7 @@ Namárië!
 
 * Add support for Sindarin—Mode of Gondor
 * **Breaking change:** The symbol used to prevent combination was changed from `:` to `|`.
+* Small changes to the kerning between several tengwar and to tehtar positions.
 
 ### v0.1.0
 

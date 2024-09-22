@@ -357,23 +357,11 @@ For instance, a centred 16-points italic version of the Quenya word ‘tengwar�
 
 === Generalities<sec-quenya-gen>
 
-The implementation of the Quenya mode mostly follows Reference @tengwar-eruantalince, summarizing information available in Appendix E of @lotr and examples provided in other parts of the book. 
-In universe, the Quenya language and pronunciation evolved somewhat between its origins and events described in @lotr; in this implementation, we aim to stay close to the Second Age conventions.
-Here are a few basic examples: 
+The implementation of the Quenya mode mostly follows Reference @tengwar-eruantalince, summarizing information available in Appendix E of the trilogy @lotr and examples provided in other parts of the books. 
+In Tolkien's invented universe, the Quenya language and pronunciation evolved somewhat between its origins and events described in @lotr; in this implementation, we aim to stay close to the Second Age conventions.
+Here are a few basic examples : 
 
-#v(paragraph-skip-b)
-
-#tengwar-snippet("quenya[quenya]")
-
-#tengwar-snippet("quenya[quetta]")
-
-#tengwar-snippet("quenya[tengwar]")
-
-#tengwar-snippet("quenya[namárië]")
-
-#v(paragraph-skip-b)
-
-#h(-paragraph-indent)A full description of the Quenya mode is beyond the scope of this document. As a first approximation, consonant sounds are represented by _tengwar_ as follows#footnote[In these tables, the letter ‘u’ represents the consonant sound ‘w’.]:
+A full description of the Quenya mode is beyond the scope of this document. As a first approximation, consonant sounds are represented by _tengwar_ as follows#footnote[In these tables, the letter ‘u’ represents the consonant sound ‘w’.]:
 
 #v(paragraph-skip-b)
 
@@ -425,6 +413,7 @@ Here are a few basic examples:
   "ñw", quenya[ñw],
   "w", quenya[w],
 ))
+
 #box(table(
   columns: (auto, auto),
   table.header(
@@ -473,23 +462,20 @@ Diphthongs of the form _-i_ and _-u_ are obtained by adding a theta to an ‘i-g
 
 === Substitution rules<sec-quenya-subst-rules>
 
-The equivalences mentioned in Section~@sec-quenya-gen should give an approximate phonetic transcription from the Latin alphabet to tengwar in the Quenya mode. 
-This does not mean, however, that the spelling is correct. 
-Further substitution rules are required for that; see for instance Reference @tengwar-eruantalince.
+The equivalences mentioned in Section~@sec-quenya-gen should give an approximate phonetic transcription from the Latin alphabet to Tengwar in the Quenya mode. 
+But additional substitution rules are required to get the correct spelling; see for instance Reference @tengwar-eruantalince.
 
 #v(text-list-sep)
 
-- As briefly mentioned above, a short vowel sound following a consonant sound is written as a tehta on the latter. For instance, _númen_ (_west_) is written #quenya[númen], with #quenya[me] replacing #quenya[m:e]. This does not apply to long vowels, the second consecutive vowel after a consonant, or (obviously) to a vowel sound at the start of a word.
+- As briefly mentioned above, a short vowel sound following a consonant sound is written as a tehta on the latter. For instance, _númen_ (_west_) is written #quenya[númen], with #quenya[me] replacing #quenya[m|e]. This does not apply to long vowels, the second consecutive vowel after a consonant, or (obviously) to a vowel sound at the start of a word.
 
-- If #quenya[r] is followed by a vowel or _y_ and a vowel, it is replaced by #quenya[£r].
+- If #quenya[r] is followed by a vowel or _y_ and a vowel, it is replaced by #quenya[£r]: #quenya[r|a] → #quenya[ra].
 
-- If #quenya[y] follows a consonant, it is replaced by two dots under the corresponding tengwa: #quenya[n:y] → #quenya[ny].
+- If #quenya[y] follows a consonant, it is replaced by two dots under the corresponding tengwa: #quenya[n|y] → #quenya[ny].
 
-- If a single #quenya[s] follows a consonant, it is replaced by an ‘s-hook’: for instance, #quenya[t:s] → #quenya[ts].
+- If a single #quenya[s] follows a consonant, it is replaced by an ‘s-hook’: for instance, #quenya[t|s] → #quenya[ts].
 
-- If #quenya[s] is followed by a short vowel, it is reversed: #quenya[s:a] → #quenya[sa].
-
-- If #quenya[ss] is followed by a short vowel, it is reversed: #quenya[ss:a] → #quenya[ssa].
+- If #quenya[s] or #quenya[ss] is followed by a short vowel, it is reversed: #quenya[s|a] → #quenya[sa] ; #quenya[ss|a] → #quenya[ssa].
 
 - If #quenya[h] is part of the consonant cluster _hl_ or _hr_, it is written with a vertical bar as in _hrívë_ (_winter_): #quenya[hrívë].
 
@@ -497,10 +483,19 @@ Further substitution rules are required for that; see for instance Reference @te
 
 - Two successive identical tengwar with no tehta on the first one are replaced by a single tengwa with a wavy line under it. For instance, the word _anna_ (_gift_) is written #quenya[anna], with #quenya[nn] replacing two #quenya[n]s. Similarly, in #quenya[quetta] (_quetta_), #quenya[tt] replaces two #quenya[t]s.
 
+#v(paragraph-skip-b)
+
+#h(-paragraph-indent) The symbol ‘|’ can be used to prevent glyph combination: 
+
+#v(paragraph-skip-b)
+
+#tengwar-snippet("quenya[nn n|n]") #h(1em)
+#tengwar-snippet("quenya[na n|a]")
+
 === Capital letters
 
 There is, as far as I am aware, no standard way to write capital letters in Tengwar. 
-One option is to use bold to denote a capital letter: 
+One option is to use a bold font: 
 
 #v(paragraph-skip-b)
 
@@ -526,7 +521,7 @@ The proper Tengwar parenthesis is mapped to ‘/’.
 
 #v(paragraph-skip-b)
 
-End-of-paragraph symbols can be obtained by combining commas and periods:
+End-of-paragraph symbols can be obtained by combining commas dashes, and periods:
 
 #v(paragraph-skip-b)
 
@@ -544,13 +539,6 @@ End-of-paragraph symbols can be obtained by combining commas and periods:
 #tengwar-snippet("quenya[>quenya<]", margin: 4pt)
 
 #v(paragraph-skip-b)
-
-#h(-paragraph-indent) The symbol ‘|’ can be used to prevent glyph combination: 
-
-#v(paragraph-skip-b)
-
-#tengwar-snippet("quenya[nn n|n]") #h(1em)
-#tengwar-snippet("quenya[na n|a]")
 
 === Number system
 

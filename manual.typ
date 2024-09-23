@@ -637,8 +637,8 @@ Nai elyë hiruva. Namárië!
 == Sindarin (#gondor[Sindarin])—Mode of Gondor
 
 The implementation of the Mode of Gondor for the Sindarin language mostly follows Reference @tengwar-textbook, to which we refer for more information. 
-In this section, we mostly focus on the differences compared with the implementation of the Quenya language described in Section~@sec-quenya.
-The most important difference is probably the position of tehtar: when applicable, a tehta is placed on the _previous_ tengwa in Quenya but on the _following_ one in Sindarin.
+In this section, we focus on the differences with the implementation of the Quenya language described in Section~@sec-quenya.
+The most important one is probably the position of tehtar: when applicable, a tehta is placed on the _previous_ tengwa in Quenya but on the _following_ one in Sindarin.
 
 === Generalities
 
@@ -771,7 +771,7 @@ Firiath ennin lîn ar îf vi virwas ar ernais. Sevir channas ar faelas ar bórar
 
 #v(paragraph-skip-b)
 
-The next example is the third version of the King's Letter which would have been part of a dropped epilogue to the Lord of the Rings trilogy, available on #link("https://glaemscrafu.jrrvf.com/english/lettreduroi.html")[glaemscrafu.jrrvf.com].#footnote[The Tengwar version shown here slightly differs from the original one by combining #gondor[r|h] into #gondor[rh] and #gondor[l|h] into #gondor[lh]. I am not sure why the original version does not use these symbol; this may reflect Tolkien's evolving view on Sindarin writing.]
+The next example is the third version of the King's Letter which would have been part of a dropped epilogue to the Lord of the Rings trilogy, available on #link("https://glaemscrafu.jrrvf.com/english/lettreduroi.html")[glaemscrafu.jrrvf.com].#footnote[The Tengwar version shown here slightly differs from the original one by combining #gondor[r|h] into #gondor[rh] and #gondor[l|h] into #gondor[lh]. I am not sure why the original version does not use these symbols; this may reflect Tolkien's evolving view on Sindarin writing.]
 We use the three symbols ‘,.,’ to end paragraphs to reproduce the symbol #gondor[,.,]. 
 
 #v(paragraph-skip-b)
@@ -803,7 +803,7 @@ A Pherhael ar am Meril suilad uin aran o Minas Tirith nelchaenen uin Echuir ,.,
 
 #v(paragraph-skip-b)
 
-The third example is the first stanza of the poem _A Elbereth Gilthoniel_ from Reference~@lotr#footnote[Book 1, chapter3; Book 1, chapter 2; Book 4, chapter 10.]:
+The third example is the first stanza of the poem _A Elbereth Gilthoniel_ from Reference~@lotr#footnote[Book 1, chapter 3; Book 1, chapter 2; Book 4, chapter 10.]:
 
 #v(paragraph-skip-b)
 
@@ -851,7 +851,7 @@ nef aear, sí nef aearon!_
 
 == The One Ring inscription
 
-Although the Black Speech is not implemented yet, the One Ring inscription can be reproduced using the Quenya mode as follows:#footnote[This is obviously a bit of a hack, meant only to show how the limitations of having only one mode implemented can be circumvented. This example is not supposed to be stable and might render differently in a later version.]
+Although the Black Speech is not implemented yet, the One Ring inscription can be reproduced using the Quenya mode as follows:
 
 #v(paragraph-skip-b)
 
@@ -867,7 +867,7 @@ Although the Black Speech is not implemented yet, the One Ring inscription can b
 
 Obviously, that's not quite how the ring inscription is supposed to sound.
 One reason is simply that the Quenya and Black Speech modes have different relations between symbols and sounds: to obtain the same written result, one has to ‘transcribe’ the phonetic description to how it would be read in the Quenya mode. 
-Another difference is that some of the tengwa forms used in the ring inscription are generally not used in Quenya; we thus use the symbol `£` to get variants. 
+Another difference is that some of the tengwar forms used in the ring inscription are generally not used in Quenya; we thus use the symbol `£` to get variants. 
 We also use `£` to switch between #quenya[r] and #quenya[£r].
 Finally, words are separated with `|` to avoid repeated consonants being combined.
 Here is the result, with a colour gradient in the background to mimic a golden surface and on the text to represent incandescence:
@@ -934,13 +934,13 @@ Any kind of contribution is warmly welcome! Here are a few ways you can help:
 
 #v(text-list-sep)
 
-- *Bug reports:* Some text rendering incorrectly in Tengwar? Unexpected formatting? Any other issue with the code or documentation? Please report it! This module was only tested on a very small corpus so far, and identifying any corner case where it does not work as intended is very useful!
+- *Bug reports:* Some text rendering incorrectly in Tengwar? Unexpected formatting? Any other issue with the code or documentation? Please report it! This module was only tested on a very small corpus so far, and identifying any corner case where it does not work as intended is very useful.
 
-- *References:* There is a lot of content available, both online and in printed books and magazines, about the languages invented by Tolkien, how they relate to his works, and their relevance in today's cultural fabric. I am unfortunately not very familiar with them; but if you know good references please let me know and I'll cite them.
+- *References:* There is a lot of content available, both online and in printed books and magazines, about the languages invented by Tolkien, how they relate to his literary works, and their relevance in today's cultural fabric. I am unfortunately not very familiar with them; but if you know good references please let me know and I'll cite them.
 
 - *Language help:* My knowledge of Tengwar and the languages invented by J. R. R. Tolkien is quite superficial, and I may well have missed or misunderstood some of the rules for writing in Tengwar. If you spot anything that looks wrong, please let me know!
 
-- *Implementation:* The Typst code is likely not quite as efficient nor as clean as it could be. If you can see better ways to implement something, please feel free to let me now or to submit a pull request with an improved version!
+- *Implementation:* The Typst code is likely not quite as efficient nor as clean as it could be. If you can see better ways to implement something, please feel free to let me now or to submit a pull request with an improved version.
 
 - *Feature requests:* Any feature request is welcome. I can't promise I'll have the time and knowledge to implement everything that would be nice to have; but if you'd like to see something implemented please let me know—or submit a pull request if you've already implemented it!
 

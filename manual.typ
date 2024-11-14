@@ -27,7 +27,7 @@
   date: auto)
   
 // Page format
-#set page (
+#set page(
   width: 21cm,
   height: 29.7cm,
   margin: (
@@ -45,7 +45,7 @@
   stroke: 0.5pt)
   
 // Main font
-#set text (
+#set text(
   font: font-serif,
   weight: 500,
   fallback: false,

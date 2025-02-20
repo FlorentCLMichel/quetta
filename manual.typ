@@ -27,7 +27,7 @@
   date: auto)
   
 // Page format
-#set page (
+#set page(
   width: 21cm,
   height: 29.7cm,
   margin: (
@@ -45,7 +45,7 @@
   stroke: 0.5pt)
   
 // Main font
-#set text (
+#set text(
   font: font-serif,
   weight: 500,
   fallback: false,
@@ -94,7 +94,7 @@
 
 // Outline format
 #set outline(
-  indent: true, 
+  indent: auto, 
   depth: 2)
 #show outline: set text(
   font: font-sans,
@@ -219,7 +219,7 @@ Support for the other modes described by Tolkien is planned for future versions.
 
 == Requirements
 
-- #link("https://github.com/typst/typst")[Typst] version 1.11.0 or 1.11.1,
+- #link("https://github.com/typst/typst")[Typst] version 1.11.0 to 1.13.0,
 
 - The #link("https://www.fontspace.com/tengwar-annatar-font-f2244")[Tengwar Annatar] fonts version 1.20 (support for other Tengwar fonts is not currently planned).
 
